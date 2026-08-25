@@ -1,2 +1,5 @@
 .planning/research/.cache/
 node_modules/
+.planning/milestone.lock
+.claude/settings.local.json
+.claude/worktrees/
