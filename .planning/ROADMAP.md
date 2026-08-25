@@ -21,7 +21,6 @@
 
 ### Phase 1: 준비 (Prep)
 **Goal**: 개발을 시작하기 위한 전제조건(외부 API 접근, 데이터 모델, 화면 구조, 서비스 정체성)을 모두 확정한다
-**Mode:** mvp
 **Depends on**: Nothing (first phase)
 **Requirements**: (설정 단계 — 기능 요구사항 없음, Phase 2 이후 요구사항의 전제조건)
 **Success Criteria** (what must be TRUE):
