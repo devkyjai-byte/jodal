@@ -32,13 +32,14 @@
   3. 핵심 DB 스키마와 화면 와이어프레임이 확정되어 있다
   4. 서비스명과 도메인이 확정되어 있다
 
-**Plans**: TBD
+**Plans**: 4 plans
 
 Plans:
 
-- [x] 01-01-PLAN.md
-- [x] 01-02-PLAN.md
-- [x] 01-01: TBD (`/gsd-plan-phase 1`에서 세부 계획 생성)
+- [x] 01-01-PLAN.md — 나라장터 API 4종 활용신청 체크리스트 + 서비스명·도메인 확정 (SC-1, SC-4)
+- [x] 01-02-PLAN.md — 업종 ↔ 물품분류번호 매핑 설계 문서 (SC-2)
+- [ ] 01-03-PLAN.md — 핵심 DB 스키마 설계 문서 (SC-3, gap closure)
+- [ ] 01-04-PLAN.md — MVP 4화면 텍스트 와이어프레임 명세 (SC-3, gap closure)
 
 ### Phase 2: MVP — 맞춤 매칭·알림
 
@@ -139,7 +140,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. 준비 (Prep) | 2/2 | In Progress|  |
+| 1. 준비 (Prep) | 2/4 | In Progress|  |
 | 2. MVP — 맞춤 매칭·알림 | 0/TBD | Not started | - |
 | 3. 모바일 스토어 출시 (Mobile Launch) | 0/TBD | Not started | - |
 | 4. 입찰 자격요건 자동 판별 (Eligibility) | 0/TBD | Not started | - |
