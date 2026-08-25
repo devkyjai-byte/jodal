@@ -10,16 +10,16 @@
 - Integer phases (1, 2, 3): Planned milestone work
 - Decimal phases (2.1, 2.2): Urgent insertions (marked with INSERTED)
 
-- [ ] **Phase 1: 준비** - API 활용 신청, 스키마·와이어프레임·서비스명 확정
+- [ ] **Phase 1: 준비 (Prep)** - API 활용 신청, 스키마·와이어프레임·서비스명 확정
 - [ ] **Phase 2: MVP — 맞춤 매칭·알림** - 공고 수집·정규화 + 업체 프로필 + 매칭 알림 + 검색 웹 UI
-- [ ] **Phase 3: 모바일 스토어 출시** - Capacitor 네이티브 푸시 + 스토어 심사 대응 + 온보딩
-- [ ] **Phase 4: 입찰 자격요건 자동 판별** - 참가자격 파싱 + 프로필 대조 + 3단계 판정
-- [ ] **Phase 5: 낙찰가·경쟁 분석** - 낙찰 데이터 누적 + 낙찰률 분포·경쟁 강도 통계
-- [ ] **Phase 6: AI 입찰서류 작성 지원** - 서류 체크리스트 + RAG 기반 제안서·견적서 초안
+- [ ] **Phase 3: 모바일 스토어 출시 (Mobile Launch)** - Capacitor 네이티브 푸시 + 스토어 심사 대응 + 온보딩
+- [ ] **Phase 4: 입찰 자격요건 자동 판별 (Eligibility)** - 참가자격 파싱 + 프로필 대조 + 3단계 판정
+- [ ] **Phase 5: 낙찰가·경쟁 분석 (Bid Analysis)** - 낙찰 데이터 누적 + 낙찰률 분포·경쟁 강도 통계
+- [ ] **Phase 6: AI 입찰서류 작성 지원 (Doc Assist)** - 서류 체크리스트 + RAG 기반 제안서·견적서 초안
 
 ## Phase Details
 
-### Phase 1: 준비
+### Phase 1: 준비 (Prep)
 **Goal**: 개발을 시작하기 위한 전제조건(외부 API 접근, 데이터 모델, 화면 구조, 서비스 정체성)을 모두 확정한다
 **Mode:** mvp
 **Depends on**: Nothing (first phase)
@@ -49,7 +49,7 @@ Plans:
 Plans:
 - [ ] 02-01: TBD (`/gsd-plan-phase 2`에서 세부 계획 생성)
 
-### Phase 3: 모바일 스토어 출시
+### Phase 3: 모바일 스토어 출시 (Mobile Launch)
 **Goal**: Phase 2의 웹 코드베이스를 그대로 iOS/Android 스토어에 출시해 "웹+모바일 동시 출시"를 완성한다
 **Mode:** mvp
 **Depends on**: Phase 2
@@ -64,7 +64,7 @@ Plans:
 Plans:
 - [ ] 03-01: TBD (`/gsd-plan-phase 3`에서 세부 계획 생성)
 
-### Phase 4: 입찰 자격요건 자동 판별
+### Phase 4: 입찰 자격요건 자동 판별 (Eligibility)
 **Goal**: 공고 참가자격을 업체 프로필과 자동 대조해 참가 가능 여부를 즉시 판정한다
 **Mode:** mvp
 **Depends on**: Phase 3
@@ -78,7 +78,7 @@ Plans:
 Plans:
 - [ ] 04-01: TBD (`/gsd-plan-phase 4`에서 세부 계획 생성)
 
-### Phase 5: 낙찰가·경쟁 분석
+### Phase 5: 낙찰가·경쟁 분석 (Bid Analysis)
 **Goal**: 과거 낙찰 데이터를 축적해 예정가격 대비 낙찰률과 경쟁 강도를 통계로 보여준다
 **Mode:** mvp
 **Depends on**: Phase 4
@@ -92,7 +92,7 @@ Plans:
 Plans:
 - [ ] 05-01: TBD (`/gsd-plan-phase 5`에서 세부 계획 생성)
 
-### Phase 6: AI 입찰서류 작성 지원
+### Phase 6: AI 입찰서류 작성 지원 (Doc Assist)
 **Goal**: 공고별 필요서류를 체크리스트로 안내하고, 회사 정보를 반영한 제안서·견적서 초안을 AI로 생성한다
 **Mode:** mvp
 **Depends on**: Phase 5
@@ -113,9 +113,9 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. 준비 | 0/TBD | Not started | - |
+| 1. 준비 (Prep) | 0/TBD | Not started | - |
 | 2. MVP — 맞춤 매칭·알림 | 0/TBD | Not started | - |
-| 3. 모바일 스토어 출시 | 0/TBD | Not started | - |
-| 4. 입찰 자격요건 자동 판별 | 0/TBD | Not started | - |
-| 5. 낙찰가·경쟁 분석 | 0/TBD | Not started | - |
-| 6. AI 입찰서류 작성 지원 | 0/TBD | Not started | - |
+| 3. 모바일 스토어 출시 (Mobile Launch) | 0/TBD | Not started | - |
+| 4. 입찰 자격요건 자동 판별 (Eligibility) | 0/TBD | Not started | - |
+| 5. 낙찰가·경쟁 분석 (Bid Analysis) | 0/TBD | Not started | - |
+| 6. AI 입찰서류 작성 지원 (Doc Assist) | 0/TBD | Not started | - |
