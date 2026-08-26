@@ -20,7 +20,8 @@ model Company {
   /// 이 플랜(02-01)의 재량으로 추가. 실제 해시 생성(crypto.scrypt)은 02-02 범위.
   passwordHash           String   @map("password_hash")
   /// 활동 지역 시/도 코드, 복수 선택 (PROF-02, §복수성·병합 규칙 (a))
-  regionCodes            String[] @map("region_codes") @db.VarChar(10)
+  /// 02-02 발견: 원본 마이그레이션이 NOT NULL DEFAULT '{}'를 누락함(20260826000003에서 수정) — 아래 @default([])로 Prisma 레벨도 맞춤.
+  regionCodes            String[] @default([]) @map("region_codes") @db.VarChar(10)
   /// 사업자등록번호: 평문 컬럼을 두지 않는다 — 암호문 + HMAC 다이제스트 두 컬럼만 존재한다.
   businessRegNoEncrypted Bytes    @map("business_reg_no_encrypted")
   businessRegNoDigest    Bytes    @map("business_reg_no_digest")
@@ -94,7 +95,8 @@ model BidAnnouncement {
   /// 물품분류번호, NULL 허용 (§스파인이 강제하는 설계 제약 (c))
   classificationCode String?   @map("classification_code") @db.VarChar(8)
   /// 참가가능지역, 복수 (§복수성·병합 규칙 (a))
-  regionCodes        String[]  @map("region_codes") @db.VarChar(10)
+  /// 02-02 발견: 원본 마이그레이션이 NOT NULL DEFAULT '{}'를 누락함(20260826000003에서 수정).
+  regionCodes        String[]  @default([]) @map("region_codes") @db.VarChar(10)
   agencyName         String?   @map("agency_name") @db.VarChar(255)
   budgetAmount       Decimal?  @map("budget_amount") @db.Decimal(15, 0)
   bidOpenAt          DateTime? @map("bid_open_at") @db.Timestamptz(6)
