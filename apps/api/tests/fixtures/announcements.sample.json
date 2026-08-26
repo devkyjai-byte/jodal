@@ -1,0 +1,82 @@
+[
+  {
+    "sourceBidNo": "20260801001",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "2026년 정보시스템 유지보수 용역 (서울지역)",
+    "classificationCode": "43211501",
+    "regionCodes": ["11"],
+    "agencyName": "서울특별시청",
+    "budgetAmount": "85000000",
+    "bidOpenAt": "2026-08-20T09:00:00+09:00",
+    "bidCloseAt": "2026-09-05T18:00:00+09:00",
+    "rawPayload": {
+      "note": "픽스처 — 정보기술(43211501) + 서울(11) 매칭 검증용",
+      "sourceService": "나라장터 입찰공고정보서비스(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260801002",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "공공기관 네트워크 장비 유지보수 (전국)",
+    "classificationCode": "43211501",
+    "regionCodes": [],
+    "agencyName": "조달청",
+    "budgetAmount": "120000000",
+    "bidOpenAt": "2026-08-22T09:00:00+09:00",
+    "bidCloseAt": "2026-09-10T18:00:00+09:00",
+    "rawPayload": {
+      "note": "픽스처 — 정보기술(43211501) + 전국(region_codes 빈 배열) 매칭 검증용",
+      "sourceService": "나라장터 입찰공고정보서비스(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260801003",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "사무용품(복사용지·문구류) 정기 납품",
+    "classificationCode": "44121511",
+    "regionCodes": ["11", "41"],
+    "agencyName": "경기도교육청",
+    "budgetAmount": "15000000",
+    "bidOpenAt": "2026-08-18T09:00:00+09:00",
+    "bidCloseAt": "2026-09-01T18:00:00+09:00",
+    "rawPayload": {
+      "note": "픽스처 — 사무용품(44121511) 매칭 검증용",
+      "sourceService": "나라장터 입찰공고정보서비스(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260801004",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "기관 홍보 인쇄물 제작 및 출판",
+    "classificationCode": "55101500",
+    "regionCodes": ["26"],
+    "agencyName": "부산광역시청",
+    "budgetAmount": "9500000",
+    "bidOpenAt": "2026-08-19T09:00:00+09:00",
+    "bidCloseAt": "2026-09-02T18:00:00+09:00",
+    "rawPayload": {
+      "note": "픽스처 — 인쇄출판(55101500) 매칭 검증용",
+      "sourceService": "나라장터 입찰공고정보서비스(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260801005",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "지역 상수도 시설 부대설비 공사(분류코드 파싱 실패 원문)",
+    "classificationCode": null,
+    "regionCodes": ["48"],
+    "agencyName": "경상남도청",
+    "budgetAmount": "230000000",
+    "bidOpenAt": "2026-08-21T09:00:00+09:00",
+    "bidCloseAt": "2026-09-08T18:00:00+09:00",
+    "rawPayload": {
+      "note": "픽스처 — classification_code가 NULL인 공고(원문 파싱 실패 시뮬레이션). db-schema-design.md §스파인이 강제하는 설계 제약 (c) 검증용 — 분류코드 결측이 매칭 후보에서 제외되지 않아야 한다.",
+      "sourceService": "나라장터 입찰공고정보서비스(시드)"
+    }
+  }
+]

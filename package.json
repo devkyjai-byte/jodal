@@ -1,0 +1,26 @@
+{
+  "name": "jodalmate",
+  "version": "0.1.0",
+  "private": true,
+  "description": "조달메이트 — 나라장터 공고 매칭·알림 서비스 (모노레포 루트)",
+  "workspaces": [
+    "apps/api",
+    "apps/web"
+  ],
+  "scripts": {
+    "dev": "node scripts/dev.cjs",
+    "build": "npm run build --workspace=apps/api && npm run build --workspace=apps/web",
+    "test": "npm run test --workspace=apps/api",
+    "test:e2e": "npm run test:e2e --workspace=apps/api",
+    "db:seed": "npm run db:seed --workspace=apps/api",
+    "db:migrate:deploy": "npm run db:migrate:deploy --workspace=apps/api"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "allowScripts": {
+    "prisma@7.10.0": true,
+    "@prisma/engines@7.10.0": true,
+    "unrs-resolver@1.12.2": true
+  }
+}

@@ -3,3 +3,15 @@ node_modules/
 .planning/milestone.lock
 .claude/settings.local.json
 .claude/worktrees/
+
+# Local secrets — never commit real values (see env.example for placeholders)
+.env
+.env.local
+apps/api/.env
+apps/web/.env.local
+
+# Build output
+apps/api/dist/
+apps/web/.next/
+apps/web/out/
+
