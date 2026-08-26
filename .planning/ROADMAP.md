@@ -54,16 +54,17 @@ Plans:
   3. 사용자는 자신의 프로필과 적합도 높은 신규 공고를 이메일 또는 푸시 알림으로 받는다
   4. 사용자는 웹(Next.js PWA)에서 공고를 키워드·업종·지역·마감일로 검색·필터링해 볼 수 있다
 
-**Plans**: 6 plans
+**Plans**: 7 plans
 
 Plans:
 
-- [ ] 02-01-PLAN.md — 모노레포 스캐폴딩(NestJS+Next.js) + 9테이블 Prisma 스키마 + 회원가입→업종등록→매칭→알림기록 tracer (PROF-05 일부, MATCH-01, CLIENT-01)
-- [ ] 02-02-PLAN.md — 로그인 + 국세청 사업자등록번호 진위확인 비동기 연동 (PROF-05 완결)
-- [ ] 02-03-PLAN.md — 업종(다중)·지역·실적·인증 프로필 완성, 온보딩 스텝 2~5 (PROF-01~04)
-- [ ] 02-04-PLAN.md — 배치 수집(픽스처/실API 어댑터)·정규화·개정병합 + 팬아웃 재매칭 (ING-01~03, MATCH-01)
-- [ ] 02-05-PLAN.md — 검색엔진 색인 + 공고 피드·상세 화면 (ING-04, CLIENT-01)
-- [ ] 02-06-PLAN.md — 이메일·웹푸시 실제 발송 + 알림 설정 화면 (MATCH-02, MATCH-03, CLIENT-01)
+- [ ] 02-01-PLAN.md — 모노레포 스캐폴딩(NestJS+Next.js) + 9테이블 Prisma 스키마 + 로컬 개발환경 기동 검증 (인프라, CLIENT-01)
+- [ ] 02-02-PLAN.md — 회원가입→업종등록→매칭→알림기록 tracer (백엔드 비즈니스 로직) (PROF-05 일부, MATCH-01, CLIENT-01)
+- [ ] 02-03-PLAN.md — 로그인 + 국세청 사업자등록번호 진위확인 비동기 연동 (PROF-05 완결)
+- [ ] 02-04-PLAN.md — 업종(다중)·지역·실적·인증 프로필 완성 + GET /companies/me, 온보딩 스텝 2~5 (PROF-01~04)
+- [ ] 02-05-PLAN.md — 배치 수집(픽스처/실API 어댑터)·정규화·개정병합 + 팬아웃 재매칭 (ING-01~03, MATCH-01)
+- [ ] 02-06-PLAN.md — 검색엔진 색인 + 공고 피드·상세 화면 (ING-04, CLIENT-01)
+- [ ] 02-07-PLAN.md — 이메일·웹푸시 실제 발송 + 알림 설정 화면 (MATCH-02, MATCH-03, CLIENT-01)
 
 ### Phase 3: 모바일 스토어 출시 (Mobile Launch)
 
@@ -146,7 +147,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. 준비 (Prep) | 4/4 | Complete (human actions pending: API 신청·도메인 구매) | 2026-08-26 |
-| 2. MVP — 맞춤 매칭·알림 | 0/6 | Planned | - |
+| 2. MVP — 맞춤 매칭·알림 | 0/7 | Planned | - |
 | 3. 모바일 스토어 출시 (Mobile Launch) | 0/TBD | Not started | - |
 | 4. 입찰 자격요건 자동 판별 (Eligibility) | 0/TBD | Not started | - |
 | 5. 낙찰가·경쟁 분석 (Bid Analysis) | 0/TBD | Not started | - |
