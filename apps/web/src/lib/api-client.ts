@@ -91,6 +91,21 @@ export function signup(payload: SignupPayload): Promise<SignupResponse> {
   });
 }
 
+export interface LoginPayload {
+  email: string;
+  password: string;
+}
+
+/** 로그인 응답은 회원가입과 동일한 형태(accessToken + company)다. */
+export type LoginResponse = SignupResponse;
+
+export function login(payload: LoginPayload): Promise<LoginResponse> {
+  return request<LoginResponse>('/auth/login', {
+    method: 'POST',
+    body: JSON.stringify(payload),
+  });
+}
+
 /** 회원가입/로그인 성공 후 JWT를 로컬에 저장한다. 02-03이 로그인 흐름에서도 재사용한다. */
 const ACCESS_TOKEN_STORAGE_KEY = 'jodalmate_access_token';
 

@@ -15,7 +15,10 @@ datasource db {
 model Company {
   id                     String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   companyName            String   @map("company_name") @db.VarChar(255)
-  contactEmail           String   @map("contact_email") @db.VarChar(255)
+  /// 02-03 발견: 로그인 식별자(POST /auth/login)로 쓰이므로 UNIQUE가 필요하다 — 원본
+  /// db-schema-design.md는 NOT NULL만 명시했고 UNIQUE 제약이 없었다(20260826000004에서 추가).
+  /// UNIQUE 없이는 두 업체가 동일 이메일로 가입할 경우 로그인 시 어느 계정인지 특정할 수 없다.
+  contactEmail           String   @unique @map("contact_email") @db.VarChar(255)
   /// 로그인용 비밀번호 해시 — 원본 설계에 없던 컬럼. ASVS V2 Authentication 충족을 위해
   /// 이 플랜(02-01)의 재량으로 추가. 실제 해시 생성(crypto.scrypt)은 02-02 범위.
   passwordHash           String   @map("password_hash")

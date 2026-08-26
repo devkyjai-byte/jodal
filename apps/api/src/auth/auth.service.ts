@@ -1,7 +1,10 @@
 import {
   BadRequestException,
   ConflictException,
+  Inject,
   Injectable,
+  Logger,
+  UnauthorizedException,
 } from '@nestjs/common';
 import { Company, Prisma } from '@prisma/client';
 import jwt from 'jsonwebtoken';
@@ -11,8 +14,29 @@ import {
   encryptBusinessRegNo,
   isValidBusinessRegNoFormat,
 } from './crypto/business-reg-no.crypto';
-import { hashPassword } from './crypto/password.crypto';
+import { hashPassword, verifyPassword } from './crypto/password.crypto';
+import { LoginDto } from './dto/login.dto';
 import { SignupDto } from './dto/signup.dto';
+import { NTS_VERIFICATION_PORT } from './verification/nts-verification.port';
+import type { NtsVerificationPort } from './verification/nts-verification.port';
+
+// T-02-18 위협 대응 — 이메일 미존재/비밀번호 불일치를 항상 동일한 401 문구로 응답한다
+// (사용자 열거 방지, 02-03-PLAN.md threat_model).
+const INVALID_CREDENTIALS_MESSAGE = '이메일 또는 비밀번호가 올바르지 않습니다.';
+
+/**
+ * 존재하지 않는 email로 로그인 시도해도 scrypt 비교를 항상 실행해 응답 시간 차이를
+ * 최소화하기 위한 더미 해시. 최초 호출 시 1회만 계산해 캐시한다(요청마다 재계산하면
+ * 매번 새 scrypt 비용이 들 뿐 타이밍 안전성에는 기여하지 않음 — 파라미터 N/r/p가
+ * 고정이라 salt/hash 값 자체는 타이밍에 영향을 주지 않는다).
+ */
+let dummyPasswordHashPromise: Promise<string> | null = null;
+function getDummyPasswordHash(): Promise<string> {
+  dummyPasswordHashPromise ??= hashPassword(
+    'dummy-password-for-timing-safety-x7q9',
+  );
+  return dummyPasswordHashPromise;
+}
 
 export interface SignupResult {
   accessToken: string;
@@ -28,13 +52,19 @@ const JWT_EXPIRES_IN = '24h';
 
 @Injectable()
 export class AuthService {
-  constructor(private readonly prisma: PrismaService) {}
+  private readonly logger = new Logger(AuthService.name);
+
+  constructor(
+    private readonly prisma: PrismaService,
+    @Inject(NTS_VERIFICATION_PORT)
+    private readonly ntsVerification: NtsVerificationPort,
+  ) {}
 
   /**
    * 회원가입: 사업자등록번호 형식 검증 → 암호화+다이제스트 → 비밀번호 해시 → companies +
    * notification_settings 생성(Prisma 중첩 쓰기 — 관계형 DB에서 암묵적 단일 트랜잭션으로
    * 실행됨, https://www.prisma.io/docs/orm/prisma-client/queries/transactions#nested-writes)
-   * → JWT 발급. 로그인 엔드포인트(POST /auth/login)는 02-03 범위.
+   * → JWT 발급 → (201 응답 반환 직후) 국세청 진위확인을 non-blocking으로 트리거.
    */
   async signup(dto: SignupDto): Promise<SignupResult> {
     if (!dto.privacyConsent) {
@@ -80,6 +110,71 @@ export class AuthService {
         throw new ConflictException('이미 등록된 사업자등록번호입니다.');
       }
       throw err;
+    }
+
+    const accessToken = this.signToken(company.id);
+
+    // 국세청 진위확인 — 01-onboarding.md §엣지 케이스 "진위확인 API 지연·실패": 등록 자체는
+    // 막지 않는다. 아래 await 없이(non-blocking) 트리거하므로 signup()의 반환(→ 컨트롤러의
+    // 201 응답)에는 영향을 주지 않는다.
+    this.triggerVerification(company.id, dto.businessRegNo);
+
+    return {
+      accessToken,
+      company: {
+        id: company.id,
+        companyName: company.companyName,
+        contactEmail: company.contactEmail,
+      },
+    };
+  }
+
+  /**
+   * 국세청 진위확인 비동기 트리거 — 반드시 await 하지 않는다. 성공 시에만
+   * verification_status/verified_at을 갱신하고, 실패(네트워크 오류·응답 파싱 실패 등)해도
+   * verification_status는 변경하지 않은 채(pending 유지) 로그만 남긴다 — 정확한 API
+   * 엔드포인트·파라미터명이 미확정이라(RESEARCH.md Open Question 2) 어댑터가 던지는 모든
+   * 예외를 여기서 흡수해 unhandled rejection을 방지한다.
+   */
+  private triggerVerification(companyId: string, bizNo: string): void {
+    void this.ntsVerification
+      .verify(bizNo)
+      .then((result) =>
+        this.prisma.company.update({
+          where: { id: companyId },
+          data: {
+            verificationStatus: result,
+            verifiedAt: result === 'verified' ? new Date() : null,
+          },
+        }),
+      )
+      .catch((err: unknown) => {
+        const message = err instanceof Error ? err.message : 'unknown error';
+        this.logger.warn(
+          `NTS verification failed for company ${companyId}, verification_status unchanged: ${message}`,
+        );
+      });
+  }
+
+  /**
+   * 로그인: `companies.contact_email`로 조회 후 password.crypto.ts의 scrypt 비교로 검증한다.
+   * 이메일을 1차 로그인 식별자로 채택한 이유(02-03-PLAN.md 재량 결정) — 와이어프레임에
+   * 로그인 화면 필드가 명시되어 있지 않았고, contact_email이 이미 NOT NULL이며,
+   * 사업자등록번호를 로그인 폼에 다시 입력시키면 마스킹 규칙과 충돌하기 때문이다.
+   *
+   * T-02-18 대응: 이메일 미존재/비밀번호 불일치를 항상 동일한 401 문구로 응답하고,
+   * 이메일이 존재하지 않아도 더미 해시와 scrypt 비교를 수행해 응답 시간 차이를 줄인다.
+   */
+  async login(dto: LoginDto): Promise<SignupResult> {
+    const company = await this.prisma.company.findUnique({
+      where: { contactEmail: dto.email },
+    });
+
+    const storedHash = company?.passwordHash ?? (await getDummyPasswordHash());
+    const isValid = await verifyPassword(dto.password, storedHash);
+
+    if (!company || !isValid) {
+      throw new UnauthorizedException(INVALID_CREDENTIALS_MESSAGE);
     }
 
     const accessToken = this.signToken(company.id);

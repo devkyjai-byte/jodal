@@ -13,7 +13,7 @@
 - [x] **PROF-02**: 업체는 활동 지역을 등록할 수 있다
 - [x] **PROF-03**: 업체는 과거 실적을 등록할 수 있다
 - [x] **PROF-04**: 업체는 보유 인증을 등록할 수 있다
-- [ ] **PROF-05**: 업체는 사업자등록번호로 가입·인증할 수 있다
+- [x] **PROF-05**: 업체는 사업자등록번호로 가입·인증할 수 있다
 
 ### 공고 수집·검색 (Ingestion)
 
@@ -83,7 +83,7 @@ Phase 5 시점 이후 "검토 가능"으로만 언급된, 아직 커밋되지 �
 | PROF-02 | Phase 1 | Complete |
 | PROF-03 | Phase 1 | Complete |
 | PROF-04 | Phase 1 | Complete |
-| PROF-05 | Phase 1 | Pending |
+| PROF-05 | Phase 1 | Complete |
 | ING-01 | Phase 1 | Pending |
 | ING-02 | Phase 1 | Pending |
 | ING-03 | Phase 1 | Pending |
