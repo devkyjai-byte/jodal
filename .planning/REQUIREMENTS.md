@@ -17,9 +17,9 @@
 
 ### 공고 수집·검색 (Ingestion)
 
-- [ ] **ING-01**: 시스템은 나라장터 입찰공고를 배치로 자동 수집한다 (일 4~6회 폴링)
-- [ ] **ING-02**: 시스템은 수집한 공고문에서 품목·지역·참가자격 조건을 파싱해 정규화한다
-- [ ] **ING-03**: 시스템은 중복 공고와 개정 공고를 하나로 병합한다
+- [x] **ING-01**: 시스템은 나라장터 입찰공고를 배치로 자동 수집한다 (일 4~6회 폴링)
+- [x] **ING-02**: 시스템은 수집한 공고문에서 품목·지역·참가자격 조건을 파싱해 정규화한다
+- [x] **ING-03**: 시스템은 중복 공고와 개정 공고를 하나로 병합한다
 - [ ] **ING-04**: 사용자는 공고를 키워드·업종·지역·마감일로 검색·필터링할 수 있다
 
 ### 맞춤 매칭·알림 (Match) — MVP 핵심
@@ -84,9 +84,9 @@ Phase 5 시점 이후 "검토 가능"으로만 언급된, 아직 커밋되지 �
 | PROF-03 | Phase 1 | Complete |
 | PROF-04 | Phase 1 | Complete |
 | PROF-05 | Phase 1 | Complete |
-| ING-01 | Phase 1 | Pending |
-| ING-02 | Phase 1 | Pending |
-| ING-03 | Phase 1 | Pending |
+| ING-01 | Phase 1 | Complete |
+| ING-02 | Phase 1 | Complete |
+| ING-03 | Phase 1 | Complete |
 | ING-04 | Phase 1 | Pending |
 | MATCH-01 | Phase 1 | Pending |
 | MATCH-02 | Phase 1 | Pending |

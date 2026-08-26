@@ -155,4 +155,107 @@ export class MatchingService {
 
     return { matchIds };
   }
+
+  /**
+   * 팬아웃 재매칭 — 배치 수집으로 새로 upsert된 공고들에 대해 등록 업체 전체를 대상으로
+   * matches를 재계산한다(MATCH-01 완성, 02-05-PLAN.md Task 2). scoreAndUpsert()(단일 업체
+   * 버전, 02-02)와 동일한 scoreMatch/toQualitativeTier를 재사용해 아키텍처를 바꾸지 않는다.
+   *
+   * 조회 방향이 scoreAndUpsert()와 반대다 — 여기서는 "공고 1건에 대해 어떤 업체들이
+   * 후보인가"를 물어야 한다. 공고의 classification_code에서 2/4/6/8자리 prefix를 모두
+   * 전개해 company_classification_codes.classification_code IN (...) 리터럴 OR절로
+   * 조회한다(db-schema-design.md §스파인이 강제하는 설계 제약 (b) 권장안의 반대 방향
+   * 적용 — 여전히 리터럴 상수 조회이므로 인덱스를 탈 수 있다).
+   */
+  async scoreAndUpsertForAnnouncements(
+    announcementIds: string[],
+  ): Promise<{ matchIds: string[] }> {
+    if (announcementIds.length === 0) {
+      return { matchIds: [] };
+    }
+
+    const announcements = await this.prisma.bidAnnouncement.findMany({
+      where: { id: { in: announcementIds } },
+    });
+
+    const matchIds: string[] = [];
+
+    for (const announcement of announcements) {
+      const candidateCompanyIds = await this.findCandidateCompanyIds(
+        announcement.classificationCode,
+      );
+
+      for (const companyId of candidateCompanyIds) {
+        const company = await this.prisma.company.findUniqueOrThrow({
+          where: { id: companyId },
+          include: {
+            classificationCodes: true,
+            performances: { take: 1 },
+            certifications: { take: 1 },
+          },
+        });
+
+        const companyProfile: CompanyProfileForScoring = {
+          classificationCodes: company.classificationCodes.map(
+            (c) => c.classificationCode,
+          ),
+          regionCodes: company.regionCodes,
+          hasPerformances: company.performances.length > 0,
+          hasCertifications: company.certifications.length > 0,
+        };
+
+        const score = scoreMatch(companyProfile, {
+          classificationCode: announcement.classificationCode,
+          regionCodes: announcement.regionCodes,
+        });
+
+        const match = await this.prisma.match.upsert({
+          where: {
+            companyId_announcementId: {
+              companyId,
+              announcementId: announcement.id,
+            },
+          },
+          create: {
+            companyId,
+            announcementId: announcement.id,
+            score: new Prisma.Decimal(score),
+          },
+          update: {
+            score: new Prisma.Decimal(score),
+          },
+        });
+        matchIds.push(match.id);
+      }
+    }
+
+    return { matchIds };
+  }
+
+  /**
+   * 공고의 classification_code(있다면) prefix가 등록된 업체를 리터럴 IN절로 조회한다.
+   * classification_code가 NULL인 공고는 매칭에서 완전히 제외하지 않고 전체 업체를
+   * 후보로 남긴다(scoreMatch()가 고정 20점을 부여) — §스파인이 강제하는 설계 제약 (c).
+   */
+  private async findCandidateCompanyIds(
+    classificationCode: string | null,
+  ): Promise<string[]> {
+    if (!classificationCode) {
+      const allCompanies = await this.prisma.company.findMany({
+        select: { id: true },
+      });
+      return allCompanies.map((c) => c.id);
+    }
+
+    const prefixCandidates = [2, 4, 6, 8]
+      .filter((len) => len <= classificationCode.length)
+      .map((len) => classificationCode.slice(0, len));
+
+    const matches = await this.prisma.companyClassificationCode.findMany({
+      where: { classificationCode: { in: prefixCandidates } },
+      select: { companyId: true },
+      distinct: ['companyId'],
+    });
+    return matches.map((m) => m.companyId);
+  }
 }

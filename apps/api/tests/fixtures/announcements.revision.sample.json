@@ -1,0 +1,34 @@
+[
+  {
+    "sourceBidNo": "20260850001",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "지역 정보시스템 구축 용역 (최초 공고)",
+    "classificationCode": "43211501",
+    "regionCodes": ["11"],
+    "agencyName": "서울특별시청",
+    "budgetAmount": "95000000",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-15T18:00:00+09:00",
+    "rawPayload": {
+      "note": "개정 병합 검증용 픽스처 — 차수 0(최초 공고). 02-05-PLAN.md ING-03 acceptance_criteria.",
+      "sourceService": "나라장터 입찰공고정보서비스(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260850001",
+    "sourceRevisionNo": "1",
+    "isLatestRevision": true,
+    "title": "지역 정보시스템 구축 용역 (1차 정정공고 — 예산 변경)",
+    "classificationCode": "43211501",
+    "regionCodes": ["11"],
+    "agencyName": "서울특별시청",
+    "budgetAmount": "102000000",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-20T18:00:00+09:00",
+    "rawPayload": {
+      "note": "개정 병합 검증용 픽스처 — 차수 1(정정공고). 같은 source_bid_no(20260850001)로 재수집되면 차수 0 행은 is_latest_revision=false로 갱신되고, 이 행이 새로 삽입되어 is_latest_revision=true가 되어야 한다(기존 matches 행은 삭제되지 않음).",
+      "sourceService": "나라장터 입찰공고정보서비스(시드)"
+    }
+  }
+]

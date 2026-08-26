@@ -7,6 +7,8 @@ import { AuthModule } from './auth/auth.module';
 import { CompaniesModule } from './companies/companies.module';
 import { MatchingModule } from './matching/matching.module';
 import { NotificationsModule } from './notifications/notifications.module';
+import { AnnouncementsModule } from './announcements/announcements.module';
+import { QueuesModule } from './queues/queues.module';
 
 @Module({
   imports: [
@@ -19,6 +21,8 @@ import { NotificationsModule } from './notifications/notifications.module';
     CompaniesModule,
     MatchingModule,
     NotificationsModule,
+    AnnouncementsModule,
+    QueuesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
