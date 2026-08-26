@@ -3,6 +3,10 @@ import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PrismaModule } from './prisma/prisma.module';
+import { AuthModule } from './auth/auth.module';
+import { CompaniesModule } from './companies/companies.module';
+import { MatchingModule } from './matching/matching.module';
+import { NotificationsModule } from './notifications/notifications.module';
 
 @Module({
   imports: [
@@ -11,6 +15,10 @@ import { PrismaModule } from './prisma/prisma.module';
       envFilePath: ['.env'],
     }),
     PrismaModule,
+    AuthModule,
+    CompaniesModule,
+    MatchingModule,
+    NotificationsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
