@@ -3,8 +3,15 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { CompanyClassificationCode } from '@prisma/client';
+import {
+  CompanyCertification,
+  CompanyClassificationCode,
+  CompanyPerformance,
+  Prisma,
+} from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
+import { AddCertificationDto } from './dto/add-certification.dto';
+import { AddPerformanceDto } from './dto/add-performance.dto';
 
 export interface CompanyProfileResponse {
   id: string;
@@ -99,5 +106,81 @@ export class CompaniesService {
       data: { regionCodes },
     });
     return { regionCodes: updated.regionCodes };
+  }
+
+  // --- 실적 (PROF-03, 선택 입력) ---
+
+  addPerformance(
+    companyId: string,
+    dto: AddPerformanceDto,
+  ): Promise<CompanyPerformance> {
+    return this.prisma.companyPerformance.create({
+      data: {
+        companyId,
+        projectName: dto.projectName,
+        contractAmount:
+          dto.contractAmount !== undefined
+            ? new Prisma.Decimal(dto.contractAmount)
+            : undefined,
+        contractDate: dto.contractDate ? new Date(dto.contractDate) : undefined,
+        agencyName: dto.agencyName,
+      },
+    });
+  }
+
+  listPerformances(companyId: string): Promise<CompanyPerformance[]> {
+    return this.prisma.companyPerformance.findMany({
+      where: { companyId },
+      orderBy: { createdAt: 'asc' },
+    });
+  }
+
+  async deletePerformance(companyId: string, id: string): Promise<void> {
+    const row = await this.prisma.companyPerformance.findUnique({
+      where: { id },
+    });
+    if (!row) {
+      throw new NotFoundException('실적을 찾을 수 없습니다.');
+    }
+    if (row.companyId !== companyId) {
+      throw new ForbiddenException('본인 업체의 실적만 삭제할 수 있습니다.');
+    }
+    await this.prisma.companyPerformance.delete({ where: { id } });
+  }
+
+  // --- 인증 (PROF-04, 선택 입력) ---
+
+  addCertification(
+    companyId: string,
+    dto: AddCertificationDto,
+  ): Promise<CompanyCertification> {
+    return this.prisma.companyCertification.create({
+      data: {
+        companyId,
+        certType: dto.certType,
+        certNumber: dto.certNumber,
+        expiresAt: dto.expiresAt ? new Date(dto.expiresAt) : undefined,
+      },
+    });
+  }
+
+  listCertifications(companyId: string): Promise<CompanyCertification[]> {
+    return this.prisma.companyCertification.findMany({
+      where: { companyId },
+      orderBy: { createdAt: 'asc' },
+    });
+  }
+
+  async deleteCertification(companyId: string, id: string): Promise<void> {
+    const row = await this.prisma.companyCertification.findUnique({
+      where: { id },
+    });
+    if (!row) {
+      throw new NotFoundException('인증을 찾을 수 없습니다.');
+    }
+    if (row.companyId !== companyId) {
+      throw new ForbiddenException('본인 업체의 인증만 삭제할 수 있습니다.');
+    }
+    await this.prisma.companyCertification.delete({ where: { id } });
   }
 }
