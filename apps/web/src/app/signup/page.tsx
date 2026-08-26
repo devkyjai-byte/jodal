@@ -1,12 +1,15 @@
 'use client';
 
+import Link from 'next/link';
 import { useState, type FormEvent } from 'react';
 import { ApiError, signup, storeAccessToken } from '../../lib/api-client';
 
 /**
  * 01-onboarding.md 스텝 1 — 사업자등록번호·업체명·이메일·비밀번호·개인정보 동의.
- * 사업자등록번호 마스킹 재노출, 409(중복 가입) 전용 안내, 스텝 2~5는 02-03 이후 범위.
- * 이 화면은 최초 제출 흐름(가입 → JWT 저장)만 완성한다(02-02-PLAN.md 지시).
+ * 사업자등록번호 마스킹 재노출, 409(중복 가입) 전용 안내는 02-03 이후 범위.
+ * 스텝 2~5(업종·지역·실적·인증·알림설정)는 02-04-PLAN.md가 /onboarding 라우트로 구현했다 —
+ * 가입 성공 화면에서 그 라우트로 넘어갈 링크가 없으면 온보딩이 UI로 도달 불가능해지므로
+ * [Rule 2 - Missing Critical] 이 링크를 추가한다(02-02가 남긴 스텁, 02-04-SUMMARY.md 참고).
  */
 export default function SignupPage() {
   const [businessRegNo, setBusinessRegNo] = useState('');
@@ -84,8 +87,14 @@ export default function SignupPage() {
         <div className="max-w-sm text-center">
           <h1 className="text-2xl font-semibold">가입이 완료되었습니다</h1>
           <p className="mt-3 text-zinc-600 dark:text-zinc-400">
-            이어서 업종·지역 등록은 곧 제공될 온보딩 화면에서 진행할 수 있습니다.
+            이어서 업종·지역 등록을 진행해주세요.
           </p>
+          <Link
+            href="/onboarding"
+            className="mt-6 inline-block rounded bg-foreground px-4 py-2 text-background"
+          >
+            프로필 등록 계속하기
+          </Link>
         </div>
       </div>
     );
