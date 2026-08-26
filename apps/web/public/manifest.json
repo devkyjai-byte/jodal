@@ -1,0 +1,19 @@
+{
+  "name": "조달메이트",
+  "short_name": "조달메이트",
+  "description": "조달청 나라장터 공고를 업체 프로필과 자동으로 매칭해 알림받는 서비스",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#111827",
+  "lang": "ko",
+  "icons": [
+    {
+      "src": "/next.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

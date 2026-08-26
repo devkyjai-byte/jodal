@@ -1,0 +1,183 @@
+// 조달메이트 — Prisma 스키마
+// 근거: docs/design/db-schema-design.md (8테이블) + 02-RESEARCH.md Pitfall 1 (push_subscriptions 1개) = 9테이블
+// CHECK 제약(classification_code 길이·숫자 패턴)은 Prisma 스키마 언어가 표현하지 못해
+// 별도 마이그레이션(20260826_add_check_constraints)에서 raw SQL로 추가한다 (RESEARCH.md Pattern 3).
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+/// 업체 프로필 — db-schema-design.md §테이블 정의 > 업체 프로필군
+model Company {
+  id                     String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  companyName            String   @map("company_name") @db.VarChar(255)
+  contactEmail           String   @map("contact_email") @db.VarChar(255)
+  /// 로그인용 비밀번호 해시 — 원본 설계에 없던 컬럼. ASVS V2 Authentication 충족을 위해
+  /// 이 플랜(02-01)의 재량으로 추가. 실제 해시 생성(crypto.scrypt)은 02-02 범위.
+  passwordHash           String   @map("password_hash")
+  /// 활동 지역 시/도 코드, 복수 선택 (PROF-02, §복수성·병합 규칙 (a))
+  regionCodes            String[] @map("region_codes") @db.VarChar(10)
+  /// 사업자등록번호: 평문 컬럼을 두지 않는다 — 암호문 + HMAC 다이제스트 두 컬럼만 존재한다.
+  businessRegNoEncrypted Bytes    @map("business_reg_no_encrypted")
+  businessRegNoDigest    Bytes    @map("business_reg_no_digest")
+  /// 'pending' | 'verified' | 'failed' (PROF-05)
+  verificationStatus     String   @default("pending") @map("verification_status") @db.VarChar(20)
+  verifiedAt             DateTime? @map("verified_at") @db.Timestamptz(6)
+  createdAt              DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt              DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  classificationCodes   CompanyClassificationCode[]
+  performances          CompanyPerformance[]
+  certifications         CompanyCertification[]
+  matches                Match[]
+  notificationSettings   NotificationSetting?
+  pushSubscriptions      PushSubscription[]
+
+  @@unique([businessRegNoDigest], map: "uq_companies_business_reg_no_digest")
+  @@map("companies")
+}
+
+/// 업체가 등록한 물품분류번호(대/중/소/세분류 prefix) — D-06 조인 키의 물리 구현
+model CompanyClassificationCode {
+  id                 String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  companyId          String   @map("company_id") @db.Uuid
+  classificationCode String   @map("classification_code") @db.VarChar(8)
+  createdAt          DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+
+  company Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  @@unique([companyId, classificationCode])
+  @@map("company_classification_codes")
+}
+
+/// 업체 과거 실적 (PROF-03, 선택 입력)
+model CompanyPerformance {
+  id              String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  companyId       String    @map("company_id") @db.Uuid
+  projectName     String    @map("project_name") @db.VarChar(255)
+  contractAmount  Decimal?  @map("contract_amount") @db.Decimal(15, 0)
+  contractDate    DateTime? @map("contract_date") @db.Date
+  agencyName      String?   @map("agency_name") @db.VarChar(255)
+  createdAt       DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+
+  company Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  @@map("company_performances")
+}
+
+/// 업체 보유 인증 (PROF-04, 선택 입력)
+model CompanyCertification {
+  id          String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  companyId   String    @map("company_id") @db.Uuid
+  certType    String    @map("cert_type") @db.VarChar(100)
+  certNumber  String?   @map("cert_number") @db.VarChar(100)
+  expiresAt   DateTime? @map("expires_at") @db.Date
+  createdAt   DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+
+  company Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  @@map("company_certifications")
+}
+
+/// 나라장터 공고 (ING-01~03)
+model BidAnnouncement {
+  id                 String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  sourceBidNo        String    @map("source_bid_no") @db.VarChar(50)
+  sourceRevisionNo   String    @default("0") @map("source_revision_no") @db.VarChar(10)
+  /// §복수성·병합 규칙 (b)
+  isLatestRevision   Boolean   @default(true) @map("is_latest_revision")
+  title              String
+  /// 물품분류번호, NULL 허용 (§스파인이 강제하는 설계 제약 (c))
+  classificationCode String?   @map("classification_code") @db.VarChar(8)
+  /// 참가가능지역, 복수 (§복수성·병합 규칙 (a))
+  regionCodes        String[]  @map("region_codes") @db.VarChar(10)
+  agencyName         String?   @map("agency_name") @db.VarChar(255)
+  budgetAmount       Decimal?  @map("budget_amount") @db.Decimal(15, 0)
+  bidOpenAt          DateTime? @map("bid_open_at") @db.Timestamptz(6)
+  bidCloseAt         DateTime? @map("bid_close_at") @db.Timestamptz(6)
+  /// 원문 API 응답 전체 보관 (재파싱 대비)
+  rawPayload         Json      @map("raw_payload")
+  fetchedAt          DateTime  @default(now()) @map("fetched_at") @db.Timestamptz(6)
+
+  matches Match[]
+
+  @@unique([sourceBidNo, sourceRevisionNo], map: "uq_bid_announcements_source_bid_no_revision")
+  @@index([classificationCode], map: "idx_bid_announcements_classification_code_pattern")
+  @@index([bidCloseAt], map: "idx_bid_announcements_bid_close_at")
+  @@map("bid_announcements")
+}
+
+/// 업체 × 공고 매칭 결과 (MATCH-01)
+model Match {
+  id             String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  companyId      String   @map("company_id") @db.Uuid
+  announcementId String   @map("announcement_id") @db.Uuid
+  score          Decimal  @db.Decimal(5, 2)
+  matchedAt      DateTime @default(now()) @map("matched_at") @db.Timestamptz(6)
+
+  company      Company          @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  announcement BidAnnouncement  @relation(fields: [announcementId], references: [id], onDelete: Cascade)
+  notificationLogs NotificationLog[]
+
+  @@unique([companyId, announcementId])
+  @@index([companyId, matchedAt(sort: Desc)], map: "idx_matches_company_id_matched_at")
+  @@map("matches")
+}
+
+/// 알림 발송 이력 (MATCH-02/03)
+model NotificationLog {
+  id           String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  matchId      String    @map("match_id") @db.Uuid
+  /// 'email' | 'push'
+  channel      String    @db.VarChar(20)
+  /// 'pending' | 'sent' | 'failed'
+  status       String    @default("pending") @db.VarChar(20)
+  sentAt       DateTime? @map("sent_at") @db.Timestamptz(6)
+  errorMessage String?   @map("error_message")
+  updatedAt    DateTime  @default(now()) @map("updated_at") @db.Timestamptz(6)
+
+  match Match @relation(fields: [matchId], references: [id], onDelete: Cascade)
+
+  @@unique([matchId, channel])
+  @@map("notification_logs")
+}
+
+/// 업체별 알림 설정 (1:1)
+model NotificationSetting {
+  id                       String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  companyId                String    @unique @map("company_id") @db.Uuid
+  emailEnabled             Boolean   @default(true) @map("email_enabled")
+  pushEnabled              Boolean   @default(false) @map("push_enabled")
+  minScoreThreshold        Decimal   @default(60.00) @map("min_score_threshold") @db.Decimal(5, 2)
+  /// 'immediate' | 'daily_digest'
+  digestFrequency          String    @default("immediate") @map("digest_frequency") @db.VarChar(20)
+  quietHoursStart          DateTime? @map("quiet_hours_start") @db.Time(6)
+  quietHoursEnd            DateTime? @map("quiet_hours_end") @db.Time(6)
+  deadlineReminderEnabled  Boolean   @default(true) @map("deadline_reminder_enabled")
+  deadlineReminderDays     Int       @default(3) @map("deadline_reminder_days") @db.SmallInt
+  updatedAt                DateTime  @default(now()) @map("updated_at") @db.Timestamptz(6)
+
+  company Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  @@map("notification_settings")
+}
+
+/// 브라우저 웹 푸시 구독 객체 — 02-RESEARCH.md Pitfall 1이 발견한 신규 테이블(db-schema-design.md에는 없었음).
+/// 한 업체가 여러 기기/브라우저에서 구독할 수 있으므로 company_id는 1:N.
+model PushSubscription {
+  id         String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  companyId  String   @map("company_id") @db.Uuid
+  endpoint   String
+  p256dh     String
+  auth       String
+  createdAt  DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+
+  company Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  @@unique([endpoint])
+  @@map("push_subscriptions")
+}
