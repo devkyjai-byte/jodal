@@ -2,7 +2,9 @@ import { Module } from '@nestjs/common';
 import { BullModule } from '@nestjs/bullmq';
 import { ConfigService } from '@nestjs/config';
 import { AnnouncementsModule } from '../announcements/announcements.module';
+import { MatchingModule } from '../matching/matching.module';
 import { IngestProcessor } from './ingest.processor';
+import { MatchProcessor } from './match.processor';
 
 /**
  * ingest/match/notify 3개 큐를 한 번에 등록한다(02-05-PLAN.md) — 다른 모듈(matching,
@@ -31,8 +33,9 @@ import { IngestProcessor } from './ingest.processor';
       { name: 'notify' },
     ),
     AnnouncementsModule,
+    MatchingModule,
   ],
-  providers: [IngestProcessor],
+  providers: [IngestProcessor, MatchProcessor],
   exports: [BullModule],
 })
 export class QueuesModule {}
