@@ -1,0 +1,3602 @@
+[
+  {
+    "sourceBidNo": "20260900001",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 1 (분류 43211501)",
+    "classificationCode": "43211501",
+    "regionCodes": [
+      "11"
+    ],
+    "agencyName": "벌크 테스트 기관 1",
+    "budgetAmount": "10000137",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900002",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 2 (분류 43211502)",
+    "classificationCode": "43211502",
+    "regionCodes": [
+      "26"
+    ],
+    "agencyName": "벌크 테스트 기관 2",
+    "budgetAmount": "10000274",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900003",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 3 (분류 43211503)",
+    "classificationCode": "43211503",
+    "regionCodes": [
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 3",
+    "budgetAmount": "10000411",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900004",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 4 (분류 43233501)",
+    "classificationCode": "43233501",
+    "regionCodes": [
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 4",
+    "budgetAmount": "10000548",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900005",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 5 (분류 43223001)",
+    "classificationCode": "43223001",
+    "regionCodes": [],
+    "agencyName": "벌크 테스트 기관 5",
+    "budgetAmount": "10000685",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900006",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 6 (분류 43211501)",
+    "classificationCode": "43211501",
+    "regionCodes": [
+      "11",
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 6",
+    "budgetAmount": "10000822",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900007",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 7 (분류 43211502)",
+    "classificationCode": "43211502",
+    "regionCodes": [
+      "26",
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 7",
+    "budgetAmount": "10000959",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900008",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 8 (분류 43211503)",
+    "classificationCode": "43211503",
+    "regionCodes": [
+      "11"
+    ],
+    "agencyName": "벌크 테스트 기관 8",
+    "budgetAmount": "10001096",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900009",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 9 (분류 43233501)",
+    "classificationCode": "43233501",
+    "regionCodes": [
+      "26"
+    ],
+    "agencyName": "벌크 테스트 기관 9",
+    "budgetAmount": "10001233",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900010",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 10 (분류 43223001)",
+    "classificationCode": "43223001",
+    "regionCodes": [
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 0",
+    "budgetAmount": "10001370",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900011",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 11 (분류 43211501)",
+    "classificationCode": "43211501",
+    "regionCodes": [
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 1",
+    "budgetAmount": "10001507",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900012",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 12 (분류 43211502)",
+    "classificationCode": "43211502",
+    "regionCodes": [],
+    "agencyName": "벌크 테스트 기관 2",
+    "budgetAmount": "10001644",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900013",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 13 (분류 43211503)",
+    "classificationCode": "43211503",
+    "regionCodes": [
+      "11",
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 3",
+    "budgetAmount": "10001781",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900014",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 14 (분류 43233501)",
+    "classificationCode": "43233501",
+    "regionCodes": [
+      "26",
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 4",
+    "budgetAmount": "10001918",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900015",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 15 (분류 43223001)",
+    "classificationCode": "43223001",
+    "regionCodes": [
+      "11"
+    ],
+    "agencyName": "벌크 테스트 기관 5",
+    "budgetAmount": "10002055",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900016",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 16 (분류 43211501)",
+    "classificationCode": "43211501",
+    "regionCodes": [
+      "26"
+    ],
+    "agencyName": "벌크 테스트 기관 6",
+    "budgetAmount": "10002192",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900017",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 17 (분류 43211502)",
+    "classificationCode": "43211502",
+    "regionCodes": [
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 7",
+    "budgetAmount": "10002329",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900018",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 18 (분류 43211503)",
+    "classificationCode": "43211503",
+    "regionCodes": [
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 8",
+    "budgetAmount": "10002466",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900019",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 19 (분류 43233501)",
+    "classificationCode": "43233501",
+    "regionCodes": [],
+    "agencyName": "벌크 테스트 기관 9",
+    "budgetAmount": "10002603",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900020",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 20 (분류 43223001)",
+    "classificationCode": "43223001",
+    "regionCodes": [
+      "11",
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 0",
+    "budgetAmount": "10002740",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900021",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 21 (분류 43211501)",
+    "classificationCode": "43211501",
+    "regionCodes": [
+      "26",
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 1",
+    "budgetAmount": "10002877",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900022",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 22 (분류 43211502)",
+    "classificationCode": "43211502",
+    "regionCodes": [
+      "11"
+    ],
+    "agencyName": "벌크 테스트 기관 2",
+    "budgetAmount": "10003014",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900023",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 23 (분류 43211503)",
+    "classificationCode": "43211503",
+    "regionCodes": [
+      "26"
+    ],
+    "agencyName": "벌크 테스트 기관 3",
+    "budgetAmount": "10003151",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900024",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 24 (분류 43233501)",
+    "classificationCode": "43233501",
+    "regionCodes": [
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 4",
+    "budgetAmount": "10003288",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900025",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 25 (분류 43223001)",
+    "classificationCode": "43223001",
+    "regionCodes": [
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 5",
+    "budgetAmount": "10003425",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900026",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 26 (분류 43211501)",
+    "classificationCode": "43211501",
+    "regionCodes": [],
+    "agencyName": "벌크 테스트 기관 6",
+    "budgetAmount": "10003562",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900027",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 27 (분류 43211502)",
+    "classificationCode": "43211502",
+    "regionCodes": [
+      "11",
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 7",
+    "budgetAmount": "10003699",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900028",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 28 (분류 43211503)",
+    "classificationCode": "43211503",
+    "regionCodes": [
+      "26",
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 8",
+    "budgetAmount": "10003836",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900029",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 29 (분류 43233501)",
+    "classificationCode": "43233501",
+    "regionCodes": [
+      "11"
+    ],
+    "agencyName": "벌크 테스트 기관 9",
+    "budgetAmount": "10003973",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900030",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 30 (분류 43223001)",
+    "classificationCode": "43223001",
+    "regionCodes": [
+      "26"
+    ],
+    "agencyName": "벌크 테스트 기관 0",
+    "budgetAmount": "10004110",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900031",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 31 (분류 43211501)",
+    "classificationCode": "43211501",
+    "regionCodes": [
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 1",
+    "budgetAmount": "10004247",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900032",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 32 (분류 43211502)",
+    "classificationCode": "43211502",
+    "regionCodes": [
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 2",
+    "budgetAmount": "10004384",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900033",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 33 (분류 43211503)",
+    "classificationCode": "43211503",
+    "regionCodes": [],
+    "agencyName": "벌크 테스트 기관 3",
+    "budgetAmount": "10004521",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900034",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 34 (분류 43233501)",
+    "classificationCode": "43233501",
+    "regionCodes": [
+      "11",
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 4",
+    "budgetAmount": "10004658",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900035",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 35 (분류 43223001)",
+    "classificationCode": "43223001",
+    "regionCodes": [
+      "26",
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 5",
+    "budgetAmount": "10004795",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900036",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 36 (분류 43211501)",
+    "classificationCode": "43211501",
+    "regionCodes": [
+      "11"
+    ],
+    "agencyName": "벌크 테스트 기관 6",
+    "budgetAmount": "10004932",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900037",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 37 (분류 43211502)",
+    "classificationCode": "43211502",
+    "regionCodes": [
+      "26"
+    ],
+    "agencyName": "벌크 테스트 기관 7",
+    "budgetAmount": "10005069",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900038",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 38 (분류 43211503)",
+    "classificationCode": "43211503",
+    "regionCodes": [
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 8",
+    "budgetAmount": "10005206",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900039",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 39 (분류 43233501)",
+    "classificationCode": "43233501",
+    "regionCodes": [
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 9",
+    "budgetAmount": "10005343",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900040",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 40 (분류 43223001)",
+    "classificationCode": "43223001",
+    "regionCodes": [],
+    "agencyName": "벌크 테스트 기관 0",
+    "budgetAmount": "10005480",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900041",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 41 (분류 43211501)",
+    "classificationCode": "43211501",
+    "regionCodes": [
+      "11",
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 1",
+    "budgetAmount": "10005617",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900042",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 42 (분류 43211502)",
+    "classificationCode": "43211502",
+    "regionCodes": [
+      "26",
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 2",
+    "budgetAmount": "10005754",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900043",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 43 (분류 43211503)",
+    "classificationCode": "43211503",
+    "regionCodes": [
+      "11"
+    ],
+    "agencyName": "벌크 테스트 기관 3",
+    "budgetAmount": "10005891",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900044",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 44 (분류 43233501)",
+    "classificationCode": "43233501",
+    "regionCodes": [
+      "26"
+    ],
+    "agencyName": "벌크 테스트 기관 4",
+    "budgetAmount": "10006028",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900045",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 45 (분류 43223001)",
+    "classificationCode": "43223001",
+    "regionCodes": [
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 5",
+    "budgetAmount": "10006165",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900046",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 46 (분류 43211501)",
+    "classificationCode": "43211501",
+    "regionCodes": [
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 6",
+    "budgetAmount": "10006302",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900047",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 47 (분류 43211502)",
+    "classificationCode": "43211502",
+    "regionCodes": [],
+    "agencyName": "벌크 테스트 기관 7",
+    "budgetAmount": "10006439",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900048",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 48 (분류 43211503)",
+    "classificationCode": "43211503",
+    "regionCodes": [
+      "11",
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 8",
+    "budgetAmount": "10006576",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900049",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 49 (분류 43233501)",
+    "classificationCode": "43233501",
+    "regionCodes": [
+      "26",
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 9",
+    "budgetAmount": "10006713",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900050",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 50 (분류 43223001)",
+    "classificationCode": "43223001",
+    "regionCodes": [
+      "11"
+    ],
+    "agencyName": "벌크 테스트 기관 0",
+    "budgetAmount": "10006850",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900051",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 51 (분류 44121511)",
+    "classificationCode": "44121511",
+    "regionCodes": [
+      "11"
+    ],
+    "agencyName": "벌크 테스트 기관 1",
+    "budgetAmount": "10006987",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900052",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 52 (분류 44121512)",
+    "classificationCode": "44121512",
+    "regionCodes": [
+      "26"
+    ],
+    "agencyName": "벌크 테스트 기관 2",
+    "budgetAmount": "10007124",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900053",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 53 (분류 44103104)",
+    "classificationCode": "44103104",
+    "regionCodes": [
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 3",
+    "budgetAmount": "10007261",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900054",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 54 (분류 44122011)",
+    "classificationCode": "44122011",
+    "regionCodes": [
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 4",
+    "budgetAmount": "10007398",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900055",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 55 (분류 44101801)",
+    "classificationCode": "44101801",
+    "regionCodes": [],
+    "agencyName": "벌크 테스트 기관 5",
+    "budgetAmount": "10007535",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900056",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 56 (분류 44121511)",
+    "classificationCode": "44121511",
+    "regionCodes": [
+      "11",
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 6",
+    "budgetAmount": "10007672",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900057",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 57 (분류 44121512)",
+    "classificationCode": "44121512",
+    "regionCodes": [
+      "26",
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 7",
+    "budgetAmount": "10007809",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900058",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 58 (분류 44103104)",
+    "classificationCode": "44103104",
+    "regionCodes": [
+      "11"
+    ],
+    "agencyName": "벌크 테스트 기관 8",
+    "budgetAmount": "10007946",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900059",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 59 (분류 44122011)",
+    "classificationCode": "44122011",
+    "regionCodes": [
+      "26"
+    ],
+    "agencyName": "벌크 테스트 기관 9",
+    "budgetAmount": "10008083",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900060",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 60 (분류 44101801)",
+    "classificationCode": "44101801",
+    "regionCodes": [
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 0",
+    "budgetAmount": "10008220",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900061",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 61 (분류 44121511)",
+    "classificationCode": "44121511",
+    "regionCodes": [
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 1",
+    "budgetAmount": "10008357",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900062",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 62 (분류 44121512)",
+    "classificationCode": "44121512",
+    "regionCodes": [],
+    "agencyName": "벌크 테스트 기관 2",
+    "budgetAmount": "10008494",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900063",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 63 (분류 44103104)",
+    "classificationCode": "44103104",
+    "regionCodes": [
+      "11",
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 3",
+    "budgetAmount": "10008631",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900064",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 64 (분류 44122011)",
+    "classificationCode": "44122011",
+    "regionCodes": [
+      "26",
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 4",
+    "budgetAmount": "10008768",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900065",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 65 (분류 44101801)",
+    "classificationCode": "44101801",
+    "regionCodes": [
+      "11"
+    ],
+    "agencyName": "벌크 테스트 기관 5",
+    "budgetAmount": "10008905",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900066",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 66 (분류 44121511)",
+    "classificationCode": "44121511",
+    "regionCodes": [
+      "26"
+    ],
+    "agencyName": "벌크 테스트 기관 6",
+    "budgetAmount": "10009042",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900067",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 67 (분류 44121512)",
+    "classificationCode": "44121512",
+    "regionCodes": [
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 7",
+    "budgetAmount": "10009179",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900068",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 68 (분류 44103104)",
+    "classificationCode": "44103104",
+    "regionCodes": [
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 8",
+    "budgetAmount": "10009316",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900069",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 69 (분류 44122011)",
+    "classificationCode": "44122011",
+    "regionCodes": [],
+    "agencyName": "벌크 테스트 기관 9",
+    "budgetAmount": "10009453",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900070",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 70 (분류 44101801)",
+    "classificationCode": "44101801",
+    "regionCodes": [
+      "11",
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 0",
+    "budgetAmount": "10009590",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900071",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 71 (분류 44121511)",
+    "classificationCode": "44121511",
+    "regionCodes": [
+      "26",
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 1",
+    "budgetAmount": "10009727",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900072",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 72 (분류 44121512)",
+    "classificationCode": "44121512",
+    "regionCodes": [
+      "11"
+    ],
+    "agencyName": "벌크 테스트 기관 2",
+    "budgetAmount": "10009864",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900073",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 73 (분류 44103104)",
+    "classificationCode": "44103104",
+    "regionCodes": [
+      "26"
+    ],
+    "agencyName": "벌크 테스트 기관 3",
+    "budgetAmount": "10010001",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900074",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 74 (분류 44122011)",
+    "classificationCode": "44122011",
+    "regionCodes": [
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 4",
+    "budgetAmount": "10010138",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900075",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 75 (분류 44101801)",
+    "classificationCode": "44101801",
+    "regionCodes": [
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 5",
+    "budgetAmount": "10010275",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900076",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 76 (분류 44121511)",
+    "classificationCode": "44121511",
+    "regionCodes": [],
+    "agencyName": "벌크 테스트 기관 6",
+    "budgetAmount": "10010412",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900077",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 77 (분류 44121512)",
+    "classificationCode": "44121512",
+    "regionCodes": [
+      "11",
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 7",
+    "budgetAmount": "10010549",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900078",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 78 (분류 44103104)",
+    "classificationCode": "44103104",
+    "regionCodes": [
+      "26",
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 8",
+    "budgetAmount": "10010686",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900079",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 79 (분류 44122011)",
+    "classificationCode": "44122011",
+    "regionCodes": [
+      "11"
+    ],
+    "agencyName": "벌크 테스트 기관 9",
+    "budgetAmount": "10010823",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900080",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 80 (분류 44101801)",
+    "classificationCode": "44101801",
+    "regionCodes": [
+      "26"
+    ],
+    "agencyName": "벌크 테스트 기관 0",
+    "budgetAmount": "10010960",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900081",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 81 (분류 44121511)",
+    "classificationCode": "44121511",
+    "regionCodes": [
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 1",
+    "budgetAmount": "10011097",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900082",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 82 (분류 44121512)",
+    "classificationCode": "44121512",
+    "regionCodes": [
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 2",
+    "budgetAmount": "10011234",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900083",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 83 (분류 44103104)",
+    "classificationCode": "44103104",
+    "regionCodes": [],
+    "agencyName": "벌크 테스트 기관 3",
+    "budgetAmount": "10011371",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900084",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 84 (분류 44122011)",
+    "classificationCode": "44122011",
+    "regionCodes": [
+      "11",
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 4",
+    "budgetAmount": "10011508",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900085",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 85 (분류 44101801)",
+    "classificationCode": "44101801",
+    "regionCodes": [
+      "26",
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 5",
+    "budgetAmount": "10011645",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900086",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 86 (분류 44121511)",
+    "classificationCode": "44121511",
+    "regionCodes": [
+      "11"
+    ],
+    "agencyName": "벌크 테스트 기관 6",
+    "budgetAmount": "10011782",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900087",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 87 (분류 44121512)",
+    "classificationCode": "44121512",
+    "regionCodes": [
+      "26"
+    ],
+    "agencyName": "벌크 테스트 기관 7",
+    "budgetAmount": "10011919",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900088",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 88 (분류 44103104)",
+    "classificationCode": "44103104",
+    "regionCodes": [
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 8",
+    "budgetAmount": "10012056",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900089",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 89 (분류 44122011)",
+    "classificationCode": "44122011",
+    "regionCodes": [
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 9",
+    "budgetAmount": "10012193",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900090",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 90 (분류 44101801)",
+    "classificationCode": "44101801",
+    "regionCodes": [],
+    "agencyName": "벌크 테스트 기관 0",
+    "budgetAmount": "10012330",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900091",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 91 (분류 44121511)",
+    "classificationCode": "44121511",
+    "regionCodes": [
+      "11",
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 1",
+    "budgetAmount": "10012467",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900092",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 92 (분류 44121512)",
+    "classificationCode": "44121512",
+    "regionCodes": [
+      "26",
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 2",
+    "budgetAmount": "10012604",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900093",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 93 (분류 44103104)",
+    "classificationCode": "44103104",
+    "regionCodes": [
+      "11"
+    ],
+    "agencyName": "벌크 테스트 기관 3",
+    "budgetAmount": "10012741",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900094",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 94 (분류 44122011)",
+    "classificationCode": "44122011",
+    "regionCodes": [
+      "26"
+    ],
+    "agencyName": "벌크 테스트 기관 4",
+    "budgetAmount": "10012878",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900095",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 95 (분류 44101801)",
+    "classificationCode": "44101801",
+    "regionCodes": [
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 5",
+    "budgetAmount": "10013015",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900096",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 96 (분류 44121511)",
+    "classificationCode": "44121511",
+    "regionCodes": [
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 6",
+    "budgetAmount": "10013152",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900097",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 97 (분류 44121512)",
+    "classificationCode": "44121512",
+    "regionCodes": [],
+    "agencyName": "벌크 테스트 기관 7",
+    "budgetAmount": "10013289",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900098",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 98 (분류 44103104)",
+    "classificationCode": "44103104",
+    "regionCodes": [
+      "11",
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 8",
+    "budgetAmount": "10013426",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900099",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 99 (분류 44122011)",
+    "classificationCode": "44122011",
+    "regionCodes": [
+      "26",
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 9",
+    "budgetAmount": "10013563",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900100",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 100 (분류 44101801)",
+    "classificationCode": "44101801",
+    "regionCodes": [
+      "11"
+    ],
+    "agencyName": "벌크 테스트 기관 0",
+    "budgetAmount": "10013700",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900101",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 101 (분류 55101500)",
+    "classificationCode": "55101500",
+    "regionCodes": [
+      "11"
+    ],
+    "agencyName": "벌크 테스트 기관 1",
+    "budgetAmount": "10013837",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900102",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 102 (분류 55101501)",
+    "classificationCode": "55101501",
+    "regionCodes": [
+      "26"
+    ],
+    "agencyName": "벌크 테스트 기관 2",
+    "budgetAmount": "10013974",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900103",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 103 (분류 55121904)",
+    "classificationCode": "55121904",
+    "regionCodes": [
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 3",
+    "budgetAmount": "10014111",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900104",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 104 (분류 55111501)",
+    "classificationCode": "55111501",
+    "regionCodes": [
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 4",
+    "budgetAmount": "10014248",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900105",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 105 (분류 55101902)",
+    "classificationCode": "55101902",
+    "regionCodes": [],
+    "agencyName": "벌크 테스트 기관 5",
+    "budgetAmount": "10014385",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900106",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 106 (분류 55101500)",
+    "classificationCode": "55101500",
+    "regionCodes": [
+      "11",
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 6",
+    "budgetAmount": "10014522",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900107",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 107 (분류 55101501)",
+    "classificationCode": "55101501",
+    "regionCodes": [
+      "26",
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 7",
+    "budgetAmount": "10014659",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900108",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 108 (분류 55121904)",
+    "classificationCode": "55121904",
+    "regionCodes": [
+      "11"
+    ],
+    "agencyName": "벌크 테스트 기관 8",
+    "budgetAmount": "10014796",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900109",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 109 (분류 55111501)",
+    "classificationCode": "55111501",
+    "regionCodes": [
+      "26"
+    ],
+    "agencyName": "벌크 테스트 기관 9",
+    "budgetAmount": "10014933",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900110",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 110 (분류 55101902)",
+    "classificationCode": "55101902",
+    "regionCodes": [
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 0",
+    "budgetAmount": "10015070",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900111",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 111 (분류 55101500)",
+    "classificationCode": "55101500",
+    "regionCodes": [
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 1",
+    "budgetAmount": "10015207",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900112",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 112 (분류 55101501)",
+    "classificationCode": "55101501",
+    "regionCodes": [],
+    "agencyName": "벌크 테스트 기관 2",
+    "budgetAmount": "10015344",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900113",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 113 (분류 55121904)",
+    "classificationCode": "55121904",
+    "regionCodes": [
+      "11",
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 3",
+    "budgetAmount": "10015481",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900114",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 114 (분류 55111501)",
+    "classificationCode": "55111501",
+    "regionCodes": [
+      "26",
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 4",
+    "budgetAmount": "10015618",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900115",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 115 (분류 55101902)",
+    "classificationCode": "55101902",
+    "regionCodes": [
+      "11"
+    ],
+    "agencyName": "벌크 테스트 기관 5",
+    "budgetAmount": "10015755",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900116",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 116 (분류 55101500)",
+    "classificationCode": "55101500",
+    "regionCodes": [
+      "26"
+    ],
+    "agencyName": "벌크 테스트 기관 6",
+    "budgetAmount": "10015892",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900117",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 117 (분류 55101501)",
+    "classificationCode": "55101501",
+    "regionCodes": [
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 7",
+    "budgetAmount": "10016029",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900118",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 118 (분류 55121904)",
+    "classificationCode": "55121904",
+    "regionCodes": [
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 8",
+    "budgetAmount": "10016166",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900119",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 119 (분류 55111501)",
+    "classificationCode": "55111501",
+    "regionCodes": [],
+    "agencyName": "벌크 테스트 기관 9",
+    "budgetAmount": "10016303",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900120",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 120 (분류 55101902)",
+    "classificationCode": "55101902",
+    "regionCodes": [
+      "11",
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 0",
+    "budgetAmount": "10016440",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900121",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 121 (분류 55101500)",
+    "classificationCode": "55101500",
+    "regionCodes": [
+      "26",
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 1",
+    "budgetAmount": "10016577",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900122",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 122 (분류 55101501)",
+    "classificationCode": "55101501",
+    "regionCodes": [
+      "11"
+    ],
+    "agencyName": "벌크 테스트 기관 2",
+    "budgetAmount": "10016714",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900123",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 123 (분류 55121904)",
+    "classificationCode": "55121904",
+    "regionCodes": [
+      "26"
+    ],
+    "agencyName": "벌크 테스트 기관 3",
+    "budgetAmount": "10016851",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900124",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 124 (분류 55111501)",
+    "classificationCode": "55111501",
+    "regionCodes": [
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 4",
+    "budgetAmount": "10016988",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900125",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 125 (분류 55101902)",
+    "classificationCode": "55101902",
+    "regionCodes": [
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 5",
+    "budgetAmount": "10017125",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900126",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 126 (분류 55101500)",
+    "classificationCode": "55101500",
+    "regionCodes": [],
+    "agencyName": "벌크 테스트 기관 6",
+    "budgetAmount": "10017262",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900127",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 127 (분류 55101501)",
+    "classificationCode": "55101501",
+    "regionCodes": [
+      "11",
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 7",
+    "budgetAmount": "10017399",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900128",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 128 (분류 55121904)",
+    "classificationCode": "55121904",
+    "regionCodes": [
+      "26",
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 8",
+    "budgetAmount": "10017536",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900129",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 129 (분류 55111501)",
+    "classificationCode": "55111501",
+    "regionCodes": [
+      "11"
+    ],
+    "agencyName": "벌크 테스트 기관 9",
+    "budgetAmount": "10017673",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900130",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 130 (분류 55101902)",
+    "classificationCode": "55101902",
+    "regionCodes": [
+      "26"
+    ],
+    "agencyName": "벌크 테스트 기관 0",
+    "budgetAmount": "10017810",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900131",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 131 (분류 55101500)",
+    "classificationCode": "55101500",
+    "regionCodes": [
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 1",
+    "budgetAmount": "10017947",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900132",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 132 (분류 55101501)",
+    "classificationCode": "55101501",
+    "regionCodes": [
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 2",
+    "budgetAmount": "10018084",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900133",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 133 (분류 55121904)",
+    "classificationCode": "55121904",
+    "regionCodes": [],
+    "agencyName": "벌크 테스트 기관 3",
+    "budgetAmount": "10018221",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900134",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 134 (분류 55111501)",
+    "classificationCode": "55111501",
+    "regionCodes": [
+      "11",
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 4",
+    "budgetAmount": "10018358",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900135",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 135 (분류 55101902)",
+    "classificationCode": "55101902",
+    "regionCodes": [
+      "26",
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 5",
+    "budgetAmount": "10018495",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900136",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 136 (분류 55101500)",
+    "classificationCode": "55101500",
+    "regionCodes": [
+      "11"
+    ],
+    "agencyName": "벌크 테스트 기관 6",
+    "budgetAmount": "10018632",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900137",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 137 (분류 55101501)",
+    "classificationCode": "55101501",
+    "regionCodes": [
+      "26"
+    ],
+    "agencyName": "벌크 테스트 기관 7",
+    "budgetAmount": "10018769",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900138",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 138 (분류 55121904)",
+    "classificationCode": "55121904",
+    "regionCodes": [
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 8",
+    "budgetAmount": "10018906",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900139",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 139 (분류 55111501)",
+    "classificationCode": "55111501",
+    "regionCodes": [
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 9",
+    "budgetAmount": "10019043",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900140",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 140 (분류 55101902)",
+    "classificationCode": "55101902",
+    "regionCodes": [],
+    "agencyName": "벌크 테스트 기관 0",
+    "budgetAmount": "10019180",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900141",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 141 (분류 55101500)",
+    "classificationCode": "55101500",
+    "regionCodes": [
+      "11",
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 1",
+    "budgetAmount": "10019317",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900142",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 142 (분류 55101501)",
+    "classificationCode": "55101501",
+    "regionCodes": [
+      "26",
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 2",
+    "budgetAmount": "10019454",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900143",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 143 (분류 55121904)",
+    "classificationCode": "55121904",
+    "regionCodes": [
+      "11"
+    ],
+    "agencyName": "벌크 테스트 기관 3",
+    "budgetAmount": "10019591",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900144",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 144 (분류 55111501)",
+    "classificationCode": "55111501",
+    "regionCodes": [
+      "26"
+    ],
+    "agencyName": "벌크 테스트 기관 4",
+    "budgetAmount": "10019728",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900145",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 145 (분류 55101902)",
+    "classificationCode": "55101902",
+    "regionCodes": [
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 5",
+    "budgetAmount": "10019865",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900146",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 146 (분류 55101500)",
+    "classificationCode": "55101500",
+    "regionCodes": [
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 6",
+    "budgetAmount": "10020002",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900147",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 147 (분류 55101501)",
+    "classificationCode": "55101501",
+    "regionCodes": [],
+    "agencyName": "벌크 테스트 기관 7",
+    "budgetAmount": "10020139",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900148",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 148 (분류 55121904)",
+    "classificationCode": "55121904",
+    "regionCodes": [
+      "11",
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 8",
+    "budgetAmount": "10020276",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900149",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 149 (분류 55111501)",
+    "classificationCode": "55111501",
+    "regionCodes": [
+      "26",
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 9",
+    "budgetAmount": "10020413",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900150",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 150 (분류 55101902)",
+    "classificationCode": "55101902",
+    "regionCodes": [
+      "11"
+    ],
+    "agencyName": "벌크 테스트 기관 0",
+    "budgetAmount": "10020550",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900151",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 151 (분류 72101500)",
+    "classificationCode": "72101500",
+    "regionCodes": [
+      "11"
+    ],
+    "agencyName": "벌크 테스트 기관 1",
+    "budgetAmount": "10020687",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900152",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 152 (분류 72101501)",
+    "classificationCode": "72101501",
+    "regionCodes": [
+      "26"
+    ],
+    "agencyName": "벌크 테스트 기관 2",
+    "budgetAmount": "10020824",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900153",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 153 (분류 72102103)",
+    "classificationCode": "72102103",
+    "regionCodes": [
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 3",
+    "budgetAmount": "10020961",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900154",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 154 (분류 72141101)",
+    "classificationCode": "72141101",
+    "regionCodes": [
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 4",
+    "budgetAmount": "10021098",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900155",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 155 (분류 72151602)",
+    "classificationCode": "72151602",
+    "regionCodes": [],
+    "agencyName": "벌크 테스트 기관 5",
+    "budgetAmount": "10021235",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900156",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 156 (분류 72101500)",
+    "classificationCode": "72101500",
+    "regionCodes": [
+      "11",
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 6",
+    "budgetAmount": "10021372",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900157",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 157 (분류 72101501)",
+    "classificationCode": "72101501",
+    "regionCodes": [
+      "26",
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 7",
+    "budgetAmount": "10021509",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900158",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 158 (분류 72102103)",
+    "classificationCode": "72102103",
+    "regionCodes": [
+      "11"
+    ],
+    "agencyName": "벌크 테스트 기관 8",
+    "budgetAmount": "10021646",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900159",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 159 (분류 72141101)",
+    "classificationCode": "72141101",
+    "regionCodes": [
+      "26"
+    ],
+    "agencyName": "벌크 테스트 기관 9",
+    "budgetAmount": "10021783",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900160",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 160 (분류 72151602)",
+    "classificationCode": "72151602",
+    "regionCodes": [
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 0",
+    "budgetAmount": "10021920",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900161",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 161 (분류 72101500)",
+    "classificationCode": "72101500",
+    "regionCodes": [
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 1",
+    "budgetAmount": "10022057",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900162",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 162 (분류 72101501)",
+    "classificationCode": "72101501",
+    "regionCodes": [],
+    "agencyName": "벌크 테스트 기관 2",
+    "budgetAmount": "10022194",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900163",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 163 (분류 72102103)",
+    "classificationCode": "72102103",
+    "regionCodes": [
+      "11",
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 3",
+    "budgetAmount": "10022331",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900164",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 164 (분류 72141101)",
+    "classificationCode": "72141101",
+    "regionCodes": [
+      "26",
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 4",
+    "budgetAmount": "10022468",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900165",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 165 (분류 72151602)",
+    "classificationCode": "72151602",
+    "regionCodes": [
+      "11"
+    ],
+    "agencyName": "벌크 테스트 기관 5",
+    "budgetAmount": "10022605",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900166",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 166 (분류 72101500)",
+    "classificationCode": "72101500",
+    "regionCodes": [
+      "26"
+    ],
+    "agencyName": "벌크 테스트 기관 6",
+    "budgetAmount": "10022742",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900167",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 167 (분류 72101501)",
+    "classificationCode": "72101501",
+    "regionCodes": [
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 7",
+    "budgetAmount": "10022879",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900168",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 168 (분류 72102103)",
+    "classificationCode": "72102103",
+    "regionCodes": [
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 8",
+    "budgetAmount": "10023016",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900169",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 169 (분류 72141101)",
+    "classificationCode": "72141101",
+    "regionCodes": [],
+    "agencyName": "벌크 테스트 기관 9",
+    "budgetAmount": "10023153",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900170",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 170 (분류 72151602)",
+    "classificationCode": "72151602",
+    "regionCodes": [
+      "11",
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 0",
+    "budgetAmount": "10023290",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900171",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 171 (분류 72101500)",
+    "classificationCode": "72101500",
+    "regionCodes": [
+      "26",
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 1",
+    "budgetAmount": "10023427",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900172",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 172 (분류 72101501)",
+    "classificationCode": "72101501",
+    "regionCodes": [
+      "11"
+    ],
+    "agencyName": "벌크 테스트 기관 2",
+    "budgetAmount": "10023564",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900173",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 173 (분류 72102103)",
+    "classificationCode": "72102103",
+    "regionCodes": [
+      "26"
+    ],
+    "agencyName": "벌크 테스트 기관 3",
+    "budgetAmount": "10023701",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900174",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 174 (분류 72141101)",
+    "classificationCode": "72141101",
+    "regionCodes": [
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 4",
+    "budgetAmount": "10023838",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900175",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 175 (분류 72151602)",
+    "classificationCode": "72151602",
+    "regionCodes": [
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 5",
+    "budgetAmount": "10023975",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900176",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 176 (분류 72101500)",
+    "classificationCode": "72101500",
+    "regionCodes": [],
+    "agencyName": "벌크 테스트 기관 6",
+    "budgetAmount": "10024112",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900177",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 177 (분류 72101501)",
+    "classificationCode": "72101501",
+    "regionCodes": [
+      "11",
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 7",
+    "budgetAmount": "10024249",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900178",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 178 (분류 72102103)",
+    "classificationCode": "72102103",
+    "regionCodes": [
+      "26",
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 8",
+    "budgetAmount": "10024386",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900179",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 179 (분류 72141101)",
+    "classificationCode": "72141101",
+    "regionCodes": [
+      "11"
+    ],
+    "agencyName": "벌크 테스트 기관 9",
+    "budgetAmount": "10024523",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900180",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 180 (분류 72151602)",
+    "classificationCode": "72151602",
+    "regionCodes": [
+      "26"
+    ],
+    "agencyName": "벌크 테스트 기관 0",
+    "budgetAmount": "10024660",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900181",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 181 (분류 72101500)",
+    "classificationCode": "72101500",
+    "regionCodes": [
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 1",
+    "budgetAmount": "10024797",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900182",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 182 (분류 72101501)",
+    "classificationCode": "72101501",
+    "regionCodes": [
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 2",
+    "budgetAmount": "10024934",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900183",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 183 (분류 72102103)",
+    "classificationCode": "72102103",
+    "regionCodes": [],
+    "agencyName": "벌크 테스트 기관 3",
+    "budgetAmount": "10025071",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900184",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 184 (분류 72141101)",
+    "classificationCode": "72141101",
+    "regionCodes": [
+      "11",
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 4",
+    "budgetAmount": "10025208",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900185",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 185 (분류 72151602)",
+    "classificationCode": "72151602",
+    "regionCodes": [
+      "26",
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 5",
+    "budgetAmount": "10025345",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900186",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 186 (분류 72101500)",
+    "classificationCode": "72101500",
+    "regionCodes": [
+      "11"
+    ],
+    "agencyName": "벌크 테스트 기관 6",
+    "budgetAmount": "10025482",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900187",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 187 (분류 72101501)",
+    "classificationCode": "72101501",
+    "regionCodes": [
+      "26"
+    ],
+    "agencyName": "벌크 테스트 기관 7",
+    "budgetAmount": "10025619",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900188",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 188 (분류 72102103)",
+    "classificationCode": "72102103",
+    "regionCodes": [
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 8",
+    "budgetAmount": "10025756",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900189",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 189 (분류 72141101)",
+    "classificationCode": "72141101",
+    "regionCodes": [
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 9",
+    "budgetAmount": "10025893",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900190",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 190 (분류 72151602)",
+    "classificationCode": "72151602",
+    "regionCodes": [],
+    "agencyName": "벌크 테스트 기관 0",
+    "budgetAmount": "10026030",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900191",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 191 (분류 72101500)",
+    "classificationCode": "72101500",
+    "regionCodes": [
+      "11",
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 1",
+    "budgetAmount": "10026167",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900192",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 192 (분류 72101501)",
+    "classificationCode": "72101501",
+    "regionCodes": [
+      "26",
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 2",
+    "budgetAmount": "10026304",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900193",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 193 (분류 72102103)",
+    "classificationCode": "72102103",
+    "regionCodes": [
+      "11"
+    ],
+    "agencyName": "벌크 테스트 기관 3",
+    "budgetAmount": "10026441",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900194",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 194 (분류 72141101)",
+    "classificationCode": "72141101",
+    "regionCodes": [
+      "26"
+    ],
+    "agencyName": "벌크 테스트 기관 4",
+    "budgetAmount": "10026578",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900195",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 195 (분류 72151602)",
+    "classificationCode": "72151602",
+    "regionCodes": [
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 5",
+    "budgetAmount": "10026715",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900196",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 196 (분류 72101500)",
+    "classificationCode": "72101500",
+    "regionCodes": [
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 6",
+    "budgetAmount": "10026852",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900197",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 197 (분류 72101501)",
+    "classificationCode": "72101501",
+    "regionCodes": [],
+    "agencyName": "벌크 테스트 기관 7",
+    "budgetAmount": "10026989",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900198",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 198 (분류 72102103)",
+    "classificationCode": "72102103",
+    "regionCodes": [
+      "11",
+      "41"
+    ],
+    "agencyName": "벌크 테스트 기관 8",
+    "budgetAmount": "10027126",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900199",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 199 (분류 72141101)",
+    "classificationCode": "72141101",
+    "regionCodes": [
+      "26",
+      "48"
+    ],
+    "agencyName": "벌크 테스트 기관 9",
+    "budgetAmount": "10027263",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  },
+  {
+    "sourceBidNo": "20260900200",
+    "sourceRevisionNo": "0",
+    "isLatestRevision": true,
+    "title": "합성 공고 200 (분류 72151602)",
+    "classificationCode": "72151602",
+    "regionCodes": [
+      "11"
+    ],
+    "agencyName": "벌크 테스트 기관 0",
+    "budgetAmount": "10027400",
+    "bidOpenAt": "2026-09-01T09:00:00+09:00",
+    "bidCloseAt": "2026-09-30T18:00:00+09:00",
+    "rawPayload": {
+      "note": "EXPLAIN ANALYZE 실측 검증용 벌크 픽스처 (200건) — 02-05-PLAN.md Task 2",
+      "sourceService": "합성 데이터(시드)"
+    }
+  }
+]
