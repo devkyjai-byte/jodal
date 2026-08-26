@@ -5,6 +5,7 @@ import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { hashPassword } from './crypto/password.crypto';
+import { NTS_VERIFICATION_PORT } from './verification/nts-verification.port';
 
 /**
  * POST /auth/login — 02-03-PLAN.md Task 1 <behavior> 3가지 케이스를 검증한다.
@@ -39,6 +40,8 @@ describe('AuthController - POST /auth/login', () => {
       providers: [
         AuthService,
         { provide: PrismaService, useValue: prismaMock },
+        // login()은 진위확인을 호출하지 않는다 — signup() 전용 협력자이므로 빈 mock만 제공.
+        { provide: NTS_VERIFICATION_PORT, useValue: { verify: jest.fn() } },
       ],
     }).compile();
 

@@ -1,7 +1,9 @@
 import {
   BadRequestException,
   ConflictException,
+  Inject,
   Injectable,
+  Logger,
   UnauthorizedException,
 } from '@nestjs/common';
 import { Company, Prisma } from '@prisma/client';
@@ -15,6 +17,8 @@ import {
 import { hashPassword, verifyPassword } from './crypto/password.crypto';
 import { LoginDto } from './dto/login.dto';
 import { SignupDto } from './dto/signup.dto';
+import { NTS_VERIFICATION_PORT } from './verification/nts-verification.port';
+import type { NtsVerificationPort } from './verification/nts-verification.port';
 
 // T-02-18 위협 대응 — 이메일 미존재/비밀번호 불일치를 항상 동일한 401 문구로 응답한다
 // (사용자 열거 방지, 02-03-PLAN.md threat_model).
@@ -48,13 +52,19 @@ const JWT_EXPIRES_IN = '24h';
 
 @Injectable()
 export class AuthService {
-  constructor(private readonly prisma: PrismaService) {}
+  private readonly logger = new Logger(AuthService.name);
+
+  constructor(
+    private readonly prisma: PrismaService,
+    @Inject(NTS_VERIFICATION_PORT)
+    private readonly ntsVerification: NtsVerificationPort,
+  ) {}
 
   /**
    * 회원가입: 사업자등록번호 형식 검증 → 암호화+다이제스트 → 비밀번호 해시 → companies +
    * notification_settings 생성(Prisma 중첩 쓰기 — 관계형 DB에서 암묵적 단일 트랜잭션으로
    * 실행됨, https://www.prisma.io/docs/orm/prisma-client/queries/transactions#nested-writes)
-   * → JWT 발급. 로그인 엔드포인트(POST /auth/login)는 02-03 범위.
+   * → JWT 발급 → (201 응답 반환 직후) 국세청 진위확인을 non-blocking으로 트리거.
    */
   async signup(dto: SignupDto): Promise<SignupResult> {
     if (!dto.privacyConsent) {
@@ -104,6 +114,11 @@ export class AuthService {
 
     const accessToken = this.signToken(company.id);
 
+    // 국세청 진위확인 — 01-onboarding.md §엣지 케이스 "진위확인 API 지연·실패": 등록 자체는
+    // 막지 않는다. 아래 await 없이(non-blocking) 트리거하므로 signup()의 반환(→ 컨트롤러의
+    // 201 응답)에는 영향을 주지 않는다.
+    this.triggerVerification(company.id, dto.businessRegNo);
+
     return {
       accessToken,
       company: {
@@ -112,6 +127,33 @@ export class AuthService {
         contactEmail: company.contactEmail,
       },
     };
+  }
+
+  /**
+   * 국세청 진위확인 비동기 트리거 — 반드시 await 하지 않는다. 성공 시에만
+   * verification_status/verified_at을 갱신하고, 실패(네트워크 오류·응답 파싱 실패 등)해도
+   * verification_status는 변경하지 않은 채(pending 유지) 로그만 남긴다 — 정확한 API
+   * 엔드포인트·파라미터명이 미확정이라(RESEARCH.md Open Question 2) 어댑터가 던지는 모든
+   * 예외를 여기서 흡수해 unhandled rejection을 방지한다.
+   */
+  private triggerVerification(companyId: string, bizNo: string): void {
+    void this.ntsVerification
+      .verify(bizNo)
+      .then((result) =>
+        this.prisma.company.update({
+          where: { id: companyId },
+          data: {
+            verificationStatus: result,
+            verifiedAt: result === 'verified' ? new Date() : null,
+          },
+        }),
+      )
+      .catch((err: unknown) => {
+        const message = err instanceof Error ? err.message : 'unknown error';
+        this.logger.warn(
+          `NTS verification failed for company ${companyId}, verification_status unchanged: ${message}`,
+        );
+      });
   }
 
   /**

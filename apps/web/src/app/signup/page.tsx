@@ -1,7 +1,33 @@
 'use client';
 
 import { useState, type FormEvent } from 'react';
+import Link from 'next/link';
 import { ApiError, signup, storeAccessToken } from '../../lib/api-client';
+
+/**
+ * 사업자등록번호 임시 입력값을 세션 동안만 보존한다(탭을 닫으면 사라짐 — localStorage가
+ * 아니라 sessionStorage를 쓰는 이유). 02-03-PLAN.md의 "재방문 시 마스킹" 요구를, 이 플랜의
+ * 파일 범위(신규 백엔드 프로필 조회 엔드포인트 없음)에서 구현 가능한 형태로 좁힌 재량 결정 —
+ * 뒤 7자리는 세션 저장소에만 남고 화면에는 마스킹 문자열만 렌더링한다(§상호작용).
+ */
+const BIZ_NO_DRAFT_KEY = 'jodalmate_signup_biz_no_draft';
+
+function maskBusinessRegNo(bizNo: string): string {
+  return `${bizNo.slice(0, 3)}-**-*****`;
+}
+
+/**
+ * sessionStorage 초안 읽기 — useState의 lazy initializer로만 호출한다(마운트 시 1회).
+ * useEffect 안에서 setState를 직접 호출하지 않기 위한 의도적 선택
+ * (react-hooks/set-state-in-effect 린트 규칙 — 캐스케이딩 렌더 방지).
+ * 서버 프리렌더(window 없음)에서는 항상 빈 값을 반환하므로, 초안이 있는 재방문
+ * 사용자의 첫 클라이언트 렌더에서만 하이드레이션 후 값이 채워진다(허용 가능한 트레이드오프).
+ */
+function readBizNoDraft(): string | null {
+  if (typeof window === 'undefined') return null;
+  const draft = window.sessionStorage.getItem(BIZ_NO_DRAFT_KEY);
+  return draft && /^\d{10}$/.test(draft) ? draft : null;
+}
 
 /**
  * 01-onboarding.md 스텝 1 — 사업자등록번호·업체명·이메일·비밀번호·개인정보 동의.
@@ -9,16 +35,37 @@ import { ApiError, signup, storeAccessToken } from '../../lib/api-client';
  * 이 화면은 최초 제출 흐름(가입 → JWT 저장)만 완성한다(02-02-PLAN.md 지시).
  */
 export default function SignupPage() {
-  const [businessRegNo, setBusinessRegNo] = useState('');
+  const [businessRegNo, setBusinessRegNo] = useState(() => readBizNoDraft() ?? '');
   const [companyName, setCompanyName] = useState('');
   const [contactEmail, setContactEmail] = useState('');
   const [password, setPassword] = useState('');
   const [privacyConsent, setPrivacyConsent] = useState(false);
 
+  // 재방문(같은 탭에서 뒤로 왔다 다시 방문 등) 시 이전에 입력한 사업자등록번호를
+  // 마스킹된 상태로만 노출한다 — 평문 재노출 금지(§엣지 케이스).
+  const [isBizNoMasked, setIsBizNoMasked] = useState(() => readBizNoDraft() !== null);
+
   const [fieldError, setFieldError] = useState<string | null>(null);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [isDuplicateError, setIsDuplicateError] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [signupSucceeded, setSignupSucceeded] = useState(false);
+
+  function handleBusinessRegNoChange(value: string) {
+    const digitsOnly = value.replace(/\D/g, '').slice(0, 10);
+    setBusinessRegNo(digitsOnly);
+    if (digitsOnly.length === 10) {
+      window.sessionStorage.setItem(BIZ_NO_DRAFT_KEY, digitsOnly);
+    } else {
+      window.sessionStorage.removeItem(BIZ_NO_DRAFT_KEY);
+    }
+  }
+
+  function handleReenterBusinessRegNo() {
+    setIsBizNoMasked(false);
+    setBusinessRegNo('');
+    window.sessionStorage.removeItem(BIZ_NO_DRAFT_KEY);
+  }
 
   function validate(): string | null {
     if (!/^\d{10}$/.test(businessRegNo)) {
@@ -42,6 +89,7 @@ export default function SignupPage() {
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setSubmitError(null);
+    setIsDuplicateError(false);
 
     // 동의 미체크·형식 오류 시 인라인 오류만 표시하고 API 호출 자체를 막는다
     // (01-onboarding.md 엣지 케이스).
@@ -62,12 +110,13 @@ export default function SignupPage() {
         privacyConsent,
       });
       storeAccessToken(result.accessToken);
+      // 가입 완료 — 로컬에 남겨둔 사업자등록번호 초안은 더 이상 필요 없다.
+      window.sessionStorage.removeItem(BIZ_NO_DRAFT_KEY);
       setSignupSucceeded(true);
     } catch (err) {
       if (err instanceof ApiError && err.status === 409) {
-        setSubmitError(
-          '이미 등록된 사업자등록번호입니다. 로그인해주세요.',
-        );
+        setIsDuplicateError(true);
+        setSubmitError('이미 등록된 사업자등록번호입니다. 로그인하시겠어요?');
       } else if (err instanceof ApiError) {
         setSubmitError(err.message);
       } else {
@@ -104,18 +153,39 @@ export default function SignupPage() {
           <label htmlFor="businessRegNo" className="block text-sm font-medium">
             사업자등록번호
           </label>
-          <input
-            id="businessRegNo"
-            name="businessRegNo"
-            type="text"
-            inputMode="numeric"
-            autoComplete="off"
-            value={businessRegNo}
-            onChange={(e) => setBusinessRegNo(e.target.value.replace(/\D/g, ''))}
-            maxLength={10}
-            placeholder="1234567890 (하이픈 없이 10자리)"
-            className="w-full rounded border border-zinc-300 px-3 py-2 dark:border-zinc-700 dark:bg-black"
-          />
+          {isBizNoMasked ? (
+            <div className="flex items-center gap-2">
+              <input
+                id="businessRegNo"
+                name="businessRegNo"
+                type="text"
+                readOnly
+                value={maskBusinessRegNo(businessRegNo)}
+                aria-label="사업자등록번호 (마스킹됨)"
+                className="w-full rounded border border-zinc-300 bg-zinc-100 px-3 py-2 text-zinc-500 dark:border-zinc-700 dark:bg-zinc-900"
+              />
+              <button
+                type="button"
+                onClick={handleReenterBusinessRegNo}
+                className="shrink-0 whitespace-nowrap text-sm underline"
+              >
+                다시 입력
+              </button>
+            </div>
+          ) : (
+            <input
+              id="businessRegNo"
+              name="businessRegNo"
+              type="text"
+              inputMode="numeric"
+              autoComplete="off"
+              value={businessRegNo}
+              onChange={(e) => handleBusinessRegNoChange(e.target.value)}
+              maxLength={10}
+              placeholder="1234567890 (하이픈 없이 10자리)"
+              className="w-full rounded border border-zinc-300 px-3 py-2 dark:border-zinc-700 dark:bg-black"
+            />
+          )}
         </div>
 
         <div className="space-y-1">
@@ -181,6 +251,14 @@ export default function SignupPage() {
         {submitError && (
           <p role="alert" className="text-sm text-red-600">
             {submitError}
+            {isDuplicateError && (
+              <>
+                {' '}
+                <Link href="/login" className="underline">
+                  로그인하기
+                </Link>
+              </>
+            )}
           </p>
         )}
 
