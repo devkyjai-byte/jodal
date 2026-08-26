@@ -2,6 +2,7 @@ import {
   BadRequestException,
   ConflictException,
   Injectable,
+  UnauthorizedException,
 } from '@nestjs/common';
 import { Company, Prisma } from '@prisma/client';
 import jwt from 'jsonwebtoken';
@@ -11,8 +12,27 @@ import {
   encryptBusinessRegNo,
   isValidBusinessRegNoFormat,
 } from './crypto/business-reg-no.crypto';
-import { hashPassword } from './crypto/password.crypto';
+import { hashPassword, verifyPassword } from './crypto/password.crypto';
+import { LoginDto } from './dto/login.dto';
 import { SignupDto } from './dto/signup.dto';
+
+// T-02-18 위협 대응 — 이메일 미존재/비밀번호 불일치를 항상 동일한 401 문구로 응답한다
+// (사용자 열거 방지, 02-03-PLAN.md threat_model).
+const INVALID_CREDENTIALS_MESSAGE = '이메일 또는 비밀번호가 올바르지 않습니다.';
+
+/**
+ * 존재하지 않는 email로 로그인 시도해도 scrypt 비교를 항상 실행해 응답 시간 차이를
+ * 최소화하기 위한 더미 해시. 최초 호출 시 1회만 계산해 캐시한다(요청마다 재계산하면
+ * 매번 새 scrypt 비용이 들 뿐 타이밍 안전성에는 기여하지 않음 — 파라미터 N/r/p가
+ * 고정이라 salt/hash 값 자체는 타이밍에 영향을 주지 않는다).
+ */
+let dummyPasswordHashPromise: Promise<string> | null = null;
+function getDummyPasswordHash(): Promise<string> {
+  dummyPasswordHashPromise ??= hashPassword(
+    'dummy-password-for-timing-safety-x7q9',
+  );
+  return dummyPasswordHashPromise;
+}
 
 export interface SignupResult {
   accessToken: string;
@@ -80,6 +100,39 @@ export class AuthService {
         throw new ConflictException('이미 등록된 사업자등록번호입니다.');
       }
       throw err;
+    }
+
+    const accessToken = this.signToken(company.id);
+
+    return {
+      accessToken,
+      company: {
+        id: company.id,
+        companyName: company.companyName,
+        contactEmail: company.contactEmail,
+      },
+    };
+  }
+
+  /**
+   * 로그인: `companies.contact_email`로 조회 후 password.crypto.ts의 scrypt 비교로 검증한다.
+   * 이메일을 1차 로그인 식별자로 채택한 이유(02-03-PLAN.md 재량 결정) — 와이어프레임에
+   * 로그인 화면 필드가 명시되어 있지 않았고, contact_email이 이미 NOT NULL이며,
+   * 사업자등록번호를 로그인 폼에 다시 입력시키면 마스킹 규칙과 충돌하기 때문이다.
+   *
+   * T-02-18 대응: 이메일 미존재/비밀번호 불일치를 항상 동일한 401 문구로 응답하고,
+   * 이메일이 존재하지 않아도 더미 해시와 scrypt 비교를 수행해 응답 시간 차이를 줄인다.
+   */
+  async login(dto: LoginDto): Promise<SignupResult> {
+    const company = await this.prisma.company.findUnique({
+      where: { contactEmail: dto.email },
+    });
+
+    const storedHash = company?.passwordHash ?? (await getDummyPasswordHash());
+    const isValid = await verifyPassword(dto.password, storedHash);
+
+    if (!company || !isValid) {
+      throw new UnauthorizedException(INVALID_CREDENTIALS_MESSAGE);
     }
 
     const accessToken = this.signToken(company.id);

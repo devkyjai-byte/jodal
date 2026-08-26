@@ -69,12 +69,18 @@ describe('AuthController - POST /auth/login', () => {
     prismaMock.company.findUnique.mockResolvedValue(null);
 
     await expect(
-      controller.login({ email: 'nobody@example.com', password: 'whatever123' }),
+      controller.login({
+        email: 'nobody@example.com',
+        password: 'whatever123',
+      }),
     ).rejects.toMatchObject({
       response: { message: UNAUTHORIZED_MESSAGE },
     });
     await expect(
-      controller.login({ email: 'nobody@example.com', password: 'whatever123' }),
+      controller.login({
+        email: 'nobody@example.com',
+        password: 'whatever123',
+      }),
     ).rejects.toBeInstanceOf(UnauthorizedException);
   });
 
