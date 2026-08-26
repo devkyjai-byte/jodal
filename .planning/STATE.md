@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 current_phase: 02
 current_phase_name: MVP — 맞춤 매칭·알림
-status: planning
-stopped_at: Phase 01 verified complete (human_needed — API 신청/도메인 구매는 사용자 액션으로 대기); starting Phase 02 planning
-last_updated: "2026-08-26T09:10:00.000Z"
+status: executing
+stopped_at: Phase 02 planned (7 plans, 5 waves) and plan-checker PASS; starting Wave 1 execution (02-01 infra scaffold)
+last_updated: "2026-08-26T13:45:00.000Z"
 last_activity: 2026-08-26
-last_activity_desc: Phase 01 complete (4/4 plans), verified; Phase 02 planning starting
-state_head: 423d7aa8f2fd7cf47d0ec7eb7dc8b93612f7b1d6
+last_activity_desc: Phase 02 plan set revised to 7 plans after checker feedback, re-verified PASS; execution starting
+state_head: 329e078
 progress:
   total_phases: 6
   completed_phases: 1
-  total_plans: 4
+  total_plans: 11
   completed_plans: 4
   percent: 17
 ---
@@ -28,8 +28,8 @@ See: .planning/PROJECT.md (updated 2026-08-25)
 ## Current Position
 
 Phase: 01 (준비 (Prep)) — COMPLETE (verified, human_needed: API 신청·도메인 구매는 사용자 액션 대기)
-Phase: 02 (MVP — 맞춤 매칭·알림) — PLANNING
-Last activity: 2026-08-26 — Phase 01 verification passed; Phase 02 planning starting
+Phase: 02 (MVP — 맞춤 매칭·알림) — EXECUTING (Wave 1/5: 02-01)
+Last activity: 2026-08-26 — Phase 02 plan set (7 plans) verified PASS; execution starting
 
 Progress: [███░░░░░░░] 17%
 
@@ -71,7 +71,7 @@ None yet.
 ### Blockers/Concerns
 
 - **사용자 액션 대기 (Phase 1 human_needed 항목)**: (1) 공공데이터포털 나라장터 API 4종 활용 신청 미제출 — `docs/design/api-신청-체크리스트.md` 체크리스트 완성됨, 실제 제출은 사용자가 해야 함. (2) 도메인(jodalmate.co.kr 등) 미구매 — `docs/design/도메인-서비스명-체크리스트.md` 참고. Phase 2는 API 미승인 상태에서도 시드 데이터로 진행 가능하나, 실공고 수집(ING-01)은 승인 후 연동 필요.
-- NestJS vs FastAPI, Meilisearch vs OpenSearch — Phase 1에서 의도적으로 미결정, Phase 2 계획에서 확정 필요
+- NestJS(+Prisma 7.10.0 고정, RC 회피)+BullMQ+Redis로 확정 (02-RESEARCH.md). 검색엔진(Meilisearch/OpenSearch)은 02-06 실행 시 checkpoint:decision으로 최종 확정 예정.
 
 ## Deferred Items
 
