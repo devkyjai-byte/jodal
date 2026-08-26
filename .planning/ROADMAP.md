@@ -11,7 +11,7 @@
 - Integer phases (1, 2, 3): Planned milestone work
 - Decimal phases (2.1, 2.2): Urgent insertions (marked with INSERTED)
 
-- [ ] **Phase 1: 준비 (Prep)** - API 활용 신청, 스키마·와이어프레임·서비스명 확정
+- [x] **Phase 1: 준비 (Prep)** - API 활용 신청, 스키마·와이어프레임·서비스명 확정
 - [ ] **Phase 2: MVP — 맞춤 매칭·알림** - 공고 수집·정규화 + 업체 프로필 + 매칭 알림 + 검색 웹 UI
 - [ ] **Phase 3: 모바일 스토어 출시 (Mobile Launch)** - Capacitor 네이티브 푸시 + 스토어 심사 대응 + 온보딩
 - [ ] **Phase 4: 입찰 자격요건 자동 판별 (Eligibility)** - 참가자격 파싱 + 프로필 대조 + 3단계 판정
@@ -38,8 +38,8 @@ Plans:
 
 - [x] 01-01-PLAN.md — 나라장터 API 4종 활용신청 체크리스트 + 서비스명·도메인 확정 (SC-1, SC-4)
 - [x] 01-02-PLAN.md — 업종 ↔ 물품분류번호 매핑 설계 문서 (SC-2)
-- [ ] 01-03-PLAN.md — 핵심 DB 스키마 설계 문서 (SC-3, gap closure)
-- [ ] 01-04-PLAN.md — MVP 4화면 텍스트 와이어프레임 명세 (SC-3, gap closure)
+- [x] 01-03-PLAN.md — 핵심 DB 스키마 설계 문서 (SC-3, gap closure)
+- [x] 01-04-PLAN.md — MVP 4화면 텍스트 와이어프레임 명세 (SC-3, gap closure)
 
 ### Phase 2: MVP — 맞춤 매칭·알림
 
@@ -140,7 +140,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. 준비 (Prep) | 2/4 | In Progress|  |
+| 1. 준비 (Prep) | 4/4 | Complete (human actions pending: API 신청·도메인 구매) | 2026-08-26 |
 | 2. MVP — 맞춤 매칭·알림 | 0/TBD | Not started | - |
 | 3. 모바일 스토어 출시 (Mobile Launch) | 0/TBD | Not started | - |
 | 4. 입찰 자격요건 자동 판별 (Eligibility) | 0/TBD | Not started | - |
