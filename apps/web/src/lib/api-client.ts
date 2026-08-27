@@ -61,6 +61,17 @@ async function handleResponse<T>(res: Response): Promise<T> {
       typeof (body as { message?: unknown }).message === 'string'
         ? (body as { message: string }).message
         : `API request failed with status ${res.status}`;
+
+    // 만료/무효 JWT(401) 공통 처리(02-REVIEW.md WR-06) — 개별 페이지가 각자
+    // err.message를 그대로 렌더링하는 대신, 저장된 토큰을 지우고 /login으로 리다이렉트한다.
+    // 로그인/회원가입 자체의 401(잘못된 자격증명)은 페이지가 아직 토큰을 보유하지 않은
+    // 상태이므로 이 분기를 타지 않는다(clearAccessToken은 멱등이라도 리다이렉트는
+    // 원치 않는 흐름 — getAccessToken()이 있을 때만 리다이렉트한다).
+    if (res.status === 401 && typeof window !== 'undefined' && getAccessToken()) {
+      clearAccessToken();
+      window.location.href = '/login';
+    }
+
     throw new ApiError(message, res.status, body);
   }
 
@@ -117,6 +128,12 @@ export function storeAccessToken(token: string): void {
 export function getAccessToken(): string | null {
   if (typeof window === 'undefined') return null;
   return window.localStorage.getItem(ACCESS_TOKEN_STORAGE_KEY);
+}
+
+/** 401 공통 처리(WR-06) 및 로그아웃 흐름에서 저장된 JWT를 제거한다. */
+export function clearAccessToken(): void {
+  if (typeof window === 'undefined') return;
+  window.localStorage.removeItem(ACCESS_TOKEN_STORAGE_KEY);
 }
 
 // --- 온보딩 스텝 2 — 업종(분류코드) 다중 등록/조회/삭제 ---
