@@ -1,4 +1,4 @@
-import { Inject, Injectable, Logger } from '@nestjs/common';
+import { ForbiddenException, Inject, Injectable, Logger } from '@nestjs/common';
 import { BidAnnouncement, Match, Prisma } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
 import { MeilisearchService } from '../search/meilisearch.service';
@@ -134,6 +134,21 @@ function buildMatchReason(
   return `${label}(${prefix}) 업종 등록과 일치`;
 }
 
+/**
+ * 나라장터 원문 링크(03-detail.md §레이아웃 2, T-01-15 필수 요소).
+ * [ASSUMED] 정확한 딥링크 URL 포맷은 활용신청 승인 후 확인이 필요하다 — 일반적으로 알려진
+ * 나라장터 입찰공고 상세 조회 경로를 사용하되, g2b-announcement-source.adapter.ts의 API
+ * 엔드포인트와 마찬가지로 실제 서비스 승인 후 재검증 대상이다(WINDOWS.md 기록).
+ */
+function buildSourceUrl(sourceBidNo: string, sourceRevisionNo: string): string {
+  const url = new URL(
+    'https://www.g2b.go.kr:8101/ep/invitation/publish/bidInfoDtl.do',
+  );
+  url.searchParams.set('bidno', sourceBidNo);
+  url.searchParams.set('bidseq', sourceRevisionNo);
+  return url.toString();
+}
+
 export type FeedSort = 'score' | 'deadline' | 'latest';
 
 export interface FeedItemDto {
@@ -156,13 +171,37 @@ export interface FeedResponseDto {
   page: number;
 }
 
+export interface AnnouncementDetailResponseDto {
+  found: boolean;
+  id?: string;
+  title?: string;
+  sourceBidNo?: string;
+  sourceRevisionNo?: string;
+  isLatestRevision?: boolean;
+  agencyName?: string | null;
+  classificationCode?: string | null;
+  regionCodes?: string[];
+  budgetAmount?: string | null;
+  bidOpenAt?: string | null;
+  bidCloseAt?: string | null;
+  isExpired?: boolean;
+  hasParsingGaps?: boolean;
+  matchFound?: boolean;
+  matchReason?: string;
+  matchedPrefix?: string | null;
+  regionMatched?: boolean;
+  sourceUrl?: string;
+  /** 개정되어 최신 차수가 따로 있는 경우에만 값이 있다(03-detail.md §엣지 케이스). */
+  latestRevisionId?: string | null;
+}
+
 const FEED_PAGE_SIZE = 20;
 
 /**
  * ING-01~03 구현 — 활성 AnnouncementSourcePort(픽스처 또는 실제 나라장터 API)에서 받은
  * 원문을 정규화해 bid_announcements에 UPSERT한다. 02-RESEARCH.md Pattern 1(수집→매칭→발송)의
- * 첫 단계. 02-06부터는 GET /feed 조회(ING-04, CLIENT-01)도 이 서비스가 담당한다
- * (GET /announcements/:id 상세 조회는 02-06 Task 2가 getDetail()로 추가한다).
+ * 첫 단계. 02-06부터는 GET /feed·GET /announcements/:id 조회(ING-04, CLIENT-01)도 이
+ * 서비스가 담당한다.
  */
 @Injectable()
 export class AnnouncementsService {
@@ -410,6 +449,104 @@ export class AnnouncementsService {
     );
 
     return { items, hasMore, page };
+  }
+
+  /**
+   * GET /announcements/:id — CLIENT-01 상세 화면. `raw_payload` 전체는 절대 반환하지 않고
+   * 정규화된 필드만 반환한다(03-detail.md §데이터 소스).
+   *
+   * `match_id`가 쿼리에 있으면(이메일 알림 경로) 그 매칭의 소유권을 검증해 다른 업체
+   * 소유면 403을 던진다(T-01-16, 03-detail.md §엣지 케이스 "다른 업체의 매칭 식별자로
+   * 접근 시도"). 공고 자체가 DB에 없으면(취소·삭제) 404 대신 `found: false`를 담은 200을
+   * 반환한다 — 프론트가 별도 에러 경계 없이 안내 문구를 인라인 렌더링할 수 있게 하기 위함
+   * (03-detail.md §엣지 케이스 "취소·삭제된 공고").
+   */
+  async getDetail(
+    companyId: string,
+    announcementId: string,
+    matchIdParam?: string,
+  ): Promise<AnnouncementDetailResponseDto> {
+    if (matchIdParam) {
+      const matchByParam = await this.prisma.match.findUnique({
+        where: { id: matchIdParam },
+      });
+      if (!matchByParam || matchByParam.companyId !== companyId) {
+        throw new ForbiddenException(
+          '본인 업체의 매칭 정보로만 상세를 조회할 수 있습니다.',
+        );
+      }
+    }
+
+    const announcement = await this.prisma.bidAnnouncement.findUnique({
+      where: { id: announcementId },
+    });
+    if (!announcement) {
+      return { found: false };
+    }
+
+    const [match, company] = await Promise.all([
+      this.prisma.match.findUnique({
+        where: { companyId_announcementId: { companyId, announcementId } },
+      }),
+      this.prisma.company.findUniqueOrThrow({
+        where: { id: companyId },
+        include: { classificationCodes: true },
+      }),
+    ]);
+
+    const companyCodes = company.classificationCodes.map(
+      (c) => c.classificationCode,
+    );
+    const matchedPrefix = findBestMatchingPrefix(
+      companyCodes,
+      announcement.classificationCode,
+    );
+    const regionMatched =
+      announcement.regionCodes.length === 0 ||
+      company.regionCodes.some((r) => announcement.regionCodes.includes(r));
+
+    let latestRevisionId: string | null = null;
+    if (!announcement.isLatestRevision) {
+      const latest = await this.prisma.bidAnnouncement.findFirst({
+        where: {
+          sourceBidNo: announcement.sourceBidNo,
+          isLatestRevision: true,
+        },
+      });
+      latestRevisionId = latest?.id ?? null;
+    }
+
+    return {
+      found: true,
+      id: announcement.id,
+      title: announcement.title,
+      sourceBidNo: announcement.sourceBidNo,
+      sourceRevisionNo: announcement.sourceRevisionNo,
+      isLatestRevision: announcement.isLatestRevision,
+      agencyName: announcement.agencyName,
+      classificationCode: announcement.classificationCode,
+      regionCodes: announcement.regionCodes,
+      budgetAmount: announcement.budgetAmount?.toString() ?? null,
+      bidOpenAt: announcement.bidOpenAt?.toISOString() ?? null,
+      bidCloseAt: announcement.bidCloseAt?.toISOString() ?? null,
+      isExpired: isAnnouncementExpired(announcement, new Date()),
+      hasParsingGaps:
+        announcement.classificationCode === null ||
+        announcement.agencyName === null ||
+        announcement.budgetAmount === null,
+      matchFound: !!match,
+      matchReason: buildMatchReason(
+        companyCodes,
+        announcement.classificationCode,
+      ),
+      matchedPrefix,
+      regionMatched,
+      sourceUrl: buildSourceUrl(
+        announcement.sourceBidNo,
+        announcement.sourceRevisionNo,
+      ),
+      latestRevisionId,
+    };
   }
 }
 

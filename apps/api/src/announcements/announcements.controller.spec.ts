@@ -1,3 +1,4 @@
+import { ForbiddenException } from '@nestjs/common';
 import type { Request } from 'express';
 import type { PrismaService } from '../prisma/prisma.service';
 import type { JwtPayload } from '../auth/jwt.strategy';
@@ -376,6 +377,39 @@ describe('AnnouncementsController', () => {
     });
   });
 
-  // GET /announcements/:id 테스트는 02-06 Task 2가 추가한다(announcements.service.ts의
-  // getDetail()/컨트롤러 라우트와 함께 커밋).
+  describe('GET /announcements/:id', () => {
+    it('정상 조회 시 raw_payload 없이 정규화된 필드와 매칭 근거를 반환한다', async () => {
+      const { controller } = makeController();
+      const result = await controller.getDetail(req('company-a'), 'ann-1');
+
+      expect(result.found).toBe(true);
+      expect(result).not.toHaveProperty('rawPayload');
+      expect(result.matchFound).toBe(true);
+      expect(result.matchedPrefix).toBe('43');
+      expect(result.regionMatched).toBe(true);
+    });
+
+    it('다른 업체 소유의 match_id로 상세 조회 시 403(ForbiddenException)이 발생한다', async () => {
+      const { controller } = makeController();
+
+      await expect(
+        controller.getDetail(req('company-a'), 'ann-2', 'match-b2'),
+      ).rejects.toBeInstanceOf(ForbiddenException);
+    });
+
+    it('존재하지 않는(취소·삭제된) 공고는 404 대신 found:false를 반환한다', async () => {
+      const { controller } = makeController();
+      const result = await controller.getDetail(req('company-a'), 'no-such-id');
+
+      expect(result).toEqual({ found: false });
+    });
+
+    it('개정된 공고(ann-5)는 latestRevisionId로 최신 차수(ann-6)를 가리킨다', async () => {
+      const { controller } = makeController();
+      const result = await controller.getDetail(req('company-a'), 'ann-5');
+
+      expect(result.isLatestRevision).toBe(false);
+      expect(result.latestRevisionId).toBe('ann-6');
+    });
+  });
 });
