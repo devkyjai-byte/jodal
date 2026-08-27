@@ -330,7 +330,16 @@ export default function NotificationSettingsContent() {
             onChange={() => handleFrequencyChange('daily_digest')}
           />
           일간 요약
+          <span className="rounded bg-amber-100 px-1.5 py-0.5 text-xs font-medium text-amber-800 dark:bg-amber-950 dark:text-amber-300">
+            준비 중
+          </span>
         </label>
+        {settings.digestFrequency === 'daily_digest' && (
+          <p role="alert" className="text-xs text-amber-700 dark:text-amber-400">
+            일간 요약 발송 기능은 아직 준비 중입니다 — 선택 시 이메일 알림을 받지 못할 수
+            있어요. 지금은 &quot;즉시&quot;를 권장합니다.
+          </p>
+        )}
       </section>
 
       {/* 방해금지 시간대 */}
