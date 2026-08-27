@@ -245,6 +245,20 @@ function buildFixtures() {
       bidCloseAt: future(15),
       fetchedAt: past(2),
     },
+    {
+      id: 'ann-7',
+      sourceBidNo: 'B7',
+      sourceRevisionNo: '0',
+      isLatestRevision: true,
+      title: '이번 주 마감 임박 공고',
+      classificationCode: '43211501',
+      regionCodes: ['서울특별시'],
+      agencyName: '서울시청',
+      budgetAmount: 2000000,
+      bidOpenAt: past(1),
+      bidCloseAt: future(3),
+      fetchedAt: past(1),
+    },
   ];
 
   const matches: FakeMatch[] = [
@@ -276,6 +290,13 @@ function buildFixtures() {
       score: 70,
       matchedAt: past(1),
     },
+    {
+      id: 'match-a7',
+      companyId: 'company-a',
+      announcementId: 'ann-7',
+      score: 65,
+      matchedAt: past(1),
+    },
   ];
 
   return { companies, announcements, matches };
@@ -300,7 +321,11 @@ describe('AnnouncementsController', () => {
       const { controller } = makeController();
       const result = await controller.getFeed(req('company-a'), {});
 
-      expect(result.items.map((i) => i.id)).toEqual(['ann-1', 'ann-4']);
+      expect(result.items.map((i) => i.id)).toEqual([
+        'ann-1',
+        'ann-7',
+        'ann-4',
+      ]);
     });
 
     it('GET /feed 응답 JSON 어디에도 score/원점수 숫자 필드가 없다', async () => {
@@ -320,7 +345,7 @@ describe('AnnouncementsController', () => {
         region: ['서울특별시'],
       });
 
-      expect(result.items.map((i) => i.id)).toEqual(['ann-1']);
+      expect(result.items.map((i) => i.id)).toEqual(['ann-1', 'ann-7']);
     });
 
     it('includeExpired=true면 마감된 공고(ann-3)도 포함되고 isExpired=true로 표시된다', async () => {
@@ -331,11 +356,43 @@ describe('AnnouncementsController', () => {
 
       expect(result.items.map((i) => i.id)).toEqual([
         'ann-1',
+        'ann-7',
         'ann-3',
         'ann-4',
       ]);
       const expiredItem = result.items.find((i) => i.id === 'ann-3')!;
       expect(expiredItem.isExpired).toBe(true);
+    });
+
+    it('classification=44 필터 시 회사의 공고(모두 43211501)가 결과에서 전부 빠진다', async () => {
+      const { controller } = makeController();
+      const result = await controller.getFeed(req('company-a'), {
+        classification: ['44'],
+      });
+
+      expect(result.items).toEqual([]);
+    });
+
+    it('classification=43 필터 시 43로 시작하는 공고만 유지된다', async () => {
+      const { controller } = makeController();
+      const result = await controller.getFeed(req('company-a'), {
+        classification: ['43'],
+      });
+
+      expect(result.items.map((i) => i.id)).toEqual([
+        'ann-1',
+        'ann-7',
+        'ann-4',
+      ]);
+    });
+
+    it('deadline=this_week 필터 시 7일 이내 마감 공고(ann-7)만 남는다', async () => {
+      const { controller } = makeController();
+      const result = await controller.getFeed(req('company-a'), {
+        deadline: 'this_week',
+      });
+
+      expect(result.items.map((i) => i.id)).toEqual(['ann-7']);
     });
 
     it('keyword가 있으면 Meilisearch 후보 id로 먼저 좁힌 뒤 matches와 교집합을 취한다', async () => {
