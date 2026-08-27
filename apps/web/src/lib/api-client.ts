@@ -242,3 +242,137 @@ export function deleteCertification(id: string): Promise<void> {
     method: 'DELETE',
   });
 }
+
+// --- 공고 피드 (ING-04, CLIENT-01, 02-06) ---
+
+export interface FeedItem {
+  id: string;
+  title: string;
+  agencyName: string | null;
+  classificationCode: string | null;
+  regionCodes: string[];
+  budgetAmount: string | null;
+  bidCloseAt: string | null;
+  isExpired: boolean;
+  /** 5단계 정성 등급만 존재한다 — 원점수 필드는 이 타입에 아예 없다(Legal 제약). */
+  qualitativeTier: string;
+  matchReason: string;
+}
+
+export interface FeedResponse {
+  items: FeedItem[];
+  hasMore: boolean;
+  page: number;
+}
+
+export interface FeedQuery {
+  keyword?: string;
+  classification?: string[];
+  region?: string[];
+  deadline?: 'this_week' | 'this_month';
+  sort?: 'score' | 'deadline' | 'latest';
+  includeExpired?: boolean;
+  page?: number;
+}
+
+export interface FeedFetchResult {
+  data: FeedResponse;
+  /** apps/web/public/sw.js가 오프라인 폴백으로 캐시 응답을 반환했는지(02-feed.md §엣지 케이스). */
+  isFromCache: boolean;
+}
+
+function buildFeedQueryString(query: FeedQuery): string {
+  const params = new URLSearchParams();
+  if (query.keyword) params.set('keyword', query.keyword);
+  for (const c of query.classification ?? []) params.append('classification', c);
+  for (const r of query.region ?? []) params.append('region', r);
+  if (query.deadline) params.set('deadline', query.deadline);
+  if (query.sort) params.set('sort', query.sort);
+  if (query.includeExpired) params.set('includeExpired', 'true');
+  if (query.page) params.set('page', String(query.page));
+  const qs = params.toString();
+  return qs ? `?${qs}` : '';
+}
+
+/**
+ * getFeed()는 응답 헤더(오프라인 캐시 여부, sw.js가 붙이는 x-jodalmate-cache)를 함께
+ * 반환해야 하므로 authorizedRequest()의 body-only 반환 대신 fetch를 직접 다룬다.
+ */
+export async function getFeed(query: FeedQuery): Promise<FeedFetchResult> {
+  const token = getAccessToken();
+  const res = await fetch(`${API_BASE_URL}/feed${buildFeedQueryString(query)}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    },
+  });
+  const data = await handleResponse<FeedResponse>(res);
+  return { data, isFromCache: res.headers.get('x-jodalmate-cache') === 'hit' };
+}
+
+// --- 공고 상세 (CLIENT-01, 02-06) ---
+
+export interface AnnouncementDetail {
+  found: boolean;
+  id?: string;
+  title?: string;
+  sourceBidNo?: string;
+  sourceRevisionNo?: string;
+  isLatestRevision?: boolean;
+  agencyName?: string | null;
+  classificationCode?: string | null;
+  regionCodes?: string[];
+  budgetAmount?: string | null;
+  bidOpenAt?: string | null;
+  bidCloseAt?: string | null;
+  isExpired?: boolean;
+  hasParsingGaps?: boolean;
+  matchFound?: boolean;
+  matchReason?: string;
+  matchedPrefix?: string | null;
+  regionMatched?: boolean;
+  sourceUrl?: string;
+  latestRevisionId?: string | null;
+}
+
+/**
+ * match_id가 주어지면(이메일 알림 진입 경로) 쿼리에 그대로 실어 보낸다 — 소유권 검증은
+ * 서버(announcements.service.ts#getDetail)가 담당하며, 불일치 시 ApiError(403)를 던진다.
+ */
+export function getAnnouncementDetail(
+  id: string,
+  matchId?: string,
+): Promise<AnnouncementDetail> {
+  const qs = matchId ? `?match_id=${encodeURIComponent(matchId)}` : '';
+  return authorizedRequest<AnnouncementDetail>(`/announcements/${id}${qs}`);
+}
+
+// --- "이 공고 저장" 로컬 저장(03-detail.md §상호작용) ---
+// db-schema-design.md가 저장 테이블 설계를 Phase 2로 위임했고 03-detail.md도 저장 대상을
+// 확정하지 않았으므로, 서버 테이블 없이 로컬스토리지 토글로 이번 Phase 범위를 충족한다.
+
+const SAVED_ANNOUNCEMENTS_STORAGE_KEY = 'jodalmate_saved_announcements';
+
+function readSavedAnnouncementIds(): string[] {
+  if (typeof window === 'undefined') return [];
+  try {
+    const raw = window.localStorage.getItem(SAVED_ANNOUNCEMENTS_STORAGE_KEY);
+    return raw ? (JSON.parse(raw) as string[]) : [];
+  } catch {
+    return [];
+  }
+}
+
+export function isAnnouncementSaved(id: string): boolean {
+  return readSavedAnnouncementIds().includes(id);
+}
+
+/** 저장 상태를 토글하고 토글 후의 새 상태(저장됨 여부)를 반환한다. */
+export function toggleAnnouncementSaved(id: string): boolean {
+  if (typeof window === 'undefined') return false;
+  const current = readSavedAnnouncementIds();
+  const isSaved = current.includes(id);
+  const next = isSaved ? current.filter((x) => x !== id) : [...current, id];
+  window.localStorage.setItem(SAVED_ANNOUNCEMENTS_STORAGE_KEY, JSON.stringify(next));
+  return !isSaved;
+}

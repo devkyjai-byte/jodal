@@ -1,16 +1,31 @@
+import { Suspense } from 'react';
+import FeedContent from './FeedContent';
+
 /**
- * 임시 placeholder — 02-06이 실제 공고 피드 화면을 구현하기 전까지, 온보딩 완료 후
- * "완료" 클릭이 404 없이 도달할 수 있도록 최소 라우트만 존재한다(02-04-PLAN.md task 2
- * acceptance_criteria).
+ * 02-feed.md 전체 구현 — 온보딩 완료 직후 자동 이동, 로그인 후 기본 진입 화면.
+ * useSearchParams()를 쓰는 실제 로직은 FeedContent(클라이언트 컴포넌트)에 있다 —
+ * Next.js 공식 문서(use-search-params.md §Prerendering)가 권장하는 대로 Suspense
+ * 경계로 감싸 prerender 시 빌드 에러를 피한다.
  */
-export default function FeedPlaceholderPage() {
+export default function FeedPage() {
   return (
-    <div className="flex flex-1 items-center justify-center px-6 py-16">
-      <div className="max-w-sm text-center">
-        <h1 className="text-2xl font-semibold">공고 피드 준비 중</h1>
-        <p className="mt-3 text-zinc-600 dark:text-zinc-400">
-          온보딩이 완료되었습니다. 맞춤 공고 피드 화면은 곧 제공됩니다.
-        </p>
+    <Suspense fallback={<FeedPageSkeleton />}>
+      <FeedContent />
+    </Suspense>
+  );
+}
+
+function FeedPageSkeleton() {
+  return (
+    <div className="mx-auto w-full max-w-2xl px-4 py-6">
+      <div className="h-7 w-32 animate-pulse rounded bg-zinc-200 dark:bg-zinc-800" />
+      <div className="mt-6 space-y-3">
+        {Array.from({ length: 3 }).map((_, i) => (
+          <div
+            key={i}
+            className="h-28 animate-pulse rounded border border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900"
+          />
+        ))}
       </div>
     </div>
   );

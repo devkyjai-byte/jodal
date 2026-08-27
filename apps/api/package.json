@@ -37,6 +37,7 @@
     "class-validator": "^0.15.1",
     "ioredis": "^6.0.0",
     "jsonwebtoken": "^9.0.3",
+    "meilisearch": "^0.60.0",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
     "pg": "^8.23.0",
@@ -84,6 +85,9 @@
     "testRegex": ".*\\.spec\\.ts$",
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "moduleNameMapper": {
+      "^meilisearch$": "<rootDir>/test-utils/meilisearch.mock.ts"
     },
     "collectCoverageFrom": [
       "**/*.(t|j)s"

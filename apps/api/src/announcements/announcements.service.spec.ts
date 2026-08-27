@@ -119,11 +119,27 @@ function makeSourcePort(raws: RawAnnouncement[]): AnnouncementSourcePort {
   return { fetchLatest: () => Promise.resolve(raws) };
 }
 
+/**
+ * MeilisearchService의 최소 페이크 — 02-06이 pollAndUpsert()의 upsertOne() 직후 색인 호출을
+ * 추가하면서 AnnouncementsService 생성자에 3번째 인자로 추가됐다. 이 스펙은 색인 자체가
+ * 아니라 정규화·개정 병합 로직을 검증하므로 실제 Meilisearch 호출 없이 no-op으로 흡수한다.
+ */
+function makeFakeSearchService() {
+  return {
+    indexAnnouncement: jest.fn().mockResolvedValue(undefined),
+    searchAnnouncementIds: jest.fn().mockResolvedValue([]),
+  } as unknown as import('../search/meilisearch.service').MeilisearchService;
+}
+
 describe('AnnouncementsService', () => {
   it('ANNOUNCEMENT_SOURCE=fixture(기본값)로 pollAndUpsert() 실행 시 픽스처의 공고가 모두 bid_announcements에 적재된다', async () => {
     const { prisma, rows } = makeFakePrisma();
     const adapter = new FixtureAnnouncementSourceAdapter(); // 기본값: announcements.sample.json (5건)
-    const service = new AnnouncementsService(prisma, adapter);
+    const service = new AnnouncementsService(
+      prisma,
+      adapter,
+      makeFakeSearchService(),
+    );
 
     const { upsertedIds } = await service.pollAndUpsert();
 
@@ -134,7 +150,11 @@ describe('AnnouncementsService', () => {
   it('classification_code가 없는(null) 원문도 예외 없이 적재된다', async () => {
     const { prisma, rows } = makeFakePrisma();
     const adapter = new FixtureAnnouncementSourceAdapter();
-    const service = new AnnouncementsService(prisma, adapter);
+    const service = new AnnouncementsService(
+      prisma,
+      adapter,
+      makeFakeSearchService(),
+    );
 
     await expect(service.pollAndUpsert()).resolves.toBeDefined();
 
@@ -165,6 +185,7 @@ describe('AnnouncementsService', () => {
     const firstPoll = new AnnouncementsService(
       prisma,
       makeSourcePort([toRaw(rev0)]),
+      makeFakeSearchService(),
     );
     await firstPoll.pollAndUpsert();
 
@@ -176,6 +197,7 @@ describe('AnnouncementsService', () => {
     const secondPoll = new AnnouncementsService(
       prisma,
       makeSourcePort([toRaw(rev1)]),
+      makeFakeSearchService(),
     );
     await secondPoll.pollAndUpsert();
 

@@ -31,6 +31,26 @@ services:
       timeout: 5s
       retries: 10
 
+  # ING-04 검색엔진 — 02-06 checkpoint:decision 확정값(meilisearch, RESEARCH.md 권장안).
+  # 단일 바이너리·설정 없이 즉시 구동 가능해 1인 운영 부담이 OpenSearch보다 낮다는 근거로 선택됨.
+  meilisearch:
+    image: getmeili/meilisearch:v1.10
+    container_name: jodalmate-meilisearch
+    restart: unless-stopped
+    environment:
+      MEILI_MASTER_KEY: ${MEILI_MASTER_KEY:-jodalmate_dev_master_key}
+      MEILI_ENV: development
+    ports:
+      - "7700:7700"
+    volumes:
+      - jodalmate_meili_data:/meili_data
+    healthcheck:
+      test: ["CMD-SHELL", "wget --spider -q http://localhost:7700/health || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
 volumes:
   jodalmate_postgres_data:
   jodalmate_redis_data:
+  jodalmate_meili_data:
