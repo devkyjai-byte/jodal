@@ -1,8 +1,9 @@
-// 조달메이트 서비스 워커 — 02-01 스캐폴딩 + 02-06 GET /feed 오프라인 캐싱.
+// 조달메이트 서비스 워커 — 02-01 스캐폴딩 + 02-06 GET /feed 오프라인 캐싱 + 02-07 웹 푸시 수신.
 //
 // - 02-06: GET /feed 요청에 네트워크 우선 + 실패 시 캐시 폴백 전략을 적용한다
 //   (02-feed.md §엣지 케이스 "네트워크 오류·오프라인").
-// - 02-07이 push 이벤트 핸들러(웹 푸시 수신, MATCH-03)를 추가할 예정이다.
+// - 02-07: push 이벤트(웹 푸시 수신, MATCH-03) + notificationclick(공고 상세 이동)을 추가한다
+//   (02-RESEARCH.md §Architecture Patterns Pattern 2).
 //
 // self.skipWaiting()으로 새 버전이 등록되는 즉시 활성화되게 한다.
 
@@ -56,4 +57,59 @@ self.addEventListener('fetch', (event) => {
   if (event.request.method === 'GET' && url.pathname === '/feed') {
     event.respondWith(handleFeedRequest(event.request));
   }
+});
+
+/**
+ * 웹 푸시 수신(MATCH-03) — notify.processor.ts(web-push.service.ts)가 보낸 JSON payload
+ * ({ title, announcementId })를 그대로 showNotification()에 반영한다. payload가 없거나
+ * JSON 파싱에 실패해도 서비스 워커 자체가 죽지 않도록 안전하게 폴백한다.
+ */
+self.addEventListener('push', (event) => {
+  let payload = { title: '조달메이트에 새 매칭 공고가 있습니다', announcementId: null };
+  if (event.data) {
+    try {
+      payload = { ...payload, ...event.data.json() };
+    } catch {
+      // JSON이 아니면 원문 텍스트를 제목으로 사용 — 발송측 오류로 알림 자체가 사라지지 않게 함.
+      const text = event.data.text();
+      if (text) payload.title = text;
+    }
+  }
+
+  event.waitUntil(
+    self.registration.showNotification(payload.title, {
+      body: '탭하여 공고 상세를 확인하세요.',
+      data: { announcementId: payload.announcementId },
+      // manifest.json이 이미 임시 아이콘으로 쓰고 있는 /next.svg를 재사용한다 — 실제 앱
+      // 아이콘(PNG 192/512)은 02-01부터 이어지는 기존 갭(WINDOWS.md)이며 이 플랜 범위 밖.
+      icon: '/next.svg',
+      badge: '/next.svg',
+    }),
+  );
+});
+
+/**
+ * 알림 클릭 시 공고 상세로 이동(announcementId가 있을 때만). 이미 열려 있는 탭이 있으면
+ * 그 탭을 포커스하고, 없으면 새 탭을 연다.
+ */
+self.addEventListener('notificationclick', (event) => {
+  event.notification.close();
+  const announcementId = event.notification.data && event.notification.data.announcementId;
+  const targetUrl = announcementId ? `/announcements/${announcementId}` : '/feed';
+
+  event.waitUntil(
+    self.clients
+      .matchAll({ type: 'window', includeUncontrolled: true })
+      .then((clientList) => {
+        for (const client of clientList) {
+          if (client.url.includes(targetUrl) && 'focus' in client) {
+            return client.focus();
+          }
+        }
+        if (self.clients.openWindow) {
+          return self.clients.openWindow(targetUrl);
+        }
+        return undefined;
+      }),
+  );
 });

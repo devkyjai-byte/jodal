@@ -376,3 +376,48 @@ export function toggleAnnouncementSaved(id: string): boolean {
   window.localStorage.setItem(SAVED_ANNOUNCEMENTS_STORAGE_KEY, JSON.stringify(next));
   return !isSaved;
 }
+
+// --- 웹 푸시 구독(MATCH-03, 02-07) ---
+
+export interface PushSubscriptionPayload {
+  endpoint: string;
+  p256dh: string;
+  auth: string;
+}
+
+export function subscribePush(
+  payload: PushSubscriptionPayload,
+): Promise<{ id: string }> {
+  return authorizedRequest<{ id: string }>('/push-subscriptions', {
+    method: 'POST',
+    body: JSON.stringify(payload),
+  });
+}
+
+export function unsubscribePush(id: string): Promise<void> {
+  return authorizedRequest<void>(`/push-subscriptions/${id}`, {
+    method: 'DELETE',
+  });
+}
+
+/**
+ * 서버는 endpoint 기준으로만 UPSERT하므로(push_subscriptions.endpoint UNIQUE), 프론트가
+ * DELETE에 필요한 id를 직접 들고 있어야 한다 — subscribePush() 응답의 id를 로컬에 저장해
+ * 재사용한다(isAnnouncementSaved()와 동일한 로컬스토리지 토글 관례).
+ */
+const PUSH_SUBSCRIPTION_ID_STORAGE_KEY = 'jodalmate_push_subscription_id';
+
+export function storePushSubscriptionId(id: string): void {
+  if (typeof window === 'undefined') return;
+  window.localStorage.setItem(PUSH_SUBSCRIPTION_ID_STORAGE_KEY, id);
+}
+
+export function getStoredPushSubscriptionId(): string | null {
+  if (typeof window === 'undefined') return null;
+  return window.localStorage.getItem(PUSH_SUBSCRIPTION_ID_STORAGE_KEY);
+}
+
+export function clearStoredPushSubscriptionId(): void {
+  if (typeof window === 'undefined') return;
+  window.localStorage.removeItem(PUSH_SUBSCRIPTION_ID_STORAGE_KEY);
+}

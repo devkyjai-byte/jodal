@@ -3,6 +3,7 @@ import { Logger } from '@nestjs/common';
 import { Job, Queue } from 'bullmq';
 import { PrismaService } from '../prisma/prisma.service';
 import { NotificationsService } from './notifications.service';
+import { WebPushService, isPushSubscriptionGone } from './web-push.service';
 
 const MINUTES_PER_DAY = 24 * 60;
 
@@ -10,8 +11,16 @@ interface DispatchNotificationsJobData {
   matchIds: string[];
 }
 
+export interface DispatchablePushSubscription {
+  id: string;
+  endpoint: string;
+  p256dh: string;
+  auth: string;
+}
+
 export interface DispatchableMatch {
   id: string;
+  announcementId: string;
   announcement: { title: string };
   notificationLogs: { channel: string }[];
   company: {
@@ -24,12 +33,13 @@ export interface DispatchableMatch {
       quietHoursStart: Date | null;
       quietHoursEnd: Date | null;
     } | null;
+    pushSubscriptions: DispatchablePushSubscription[];
   };
 }
 
 /**
- * matchIds를 받아 이메일(이 태스크, MATCH-02) + 웹 푸시(02-07 Task 2가 추가, MATCH-03)
- * 채널로 실제 발송하는 BullMQ 컨슈머. match.processor.ts(02-05)가 enqueue한
+ * matchIds를 받아 이메일(MATCH-02, 02-07 Task1) + 웹 푸시(MATCH-03, 이 태스크) 채널로
+ * 실제 발송하는 BullMQ 컨슈머. match.processor.ts(02-05)가 enqueue한
  * 'dispatch-notifications' 잡을 소비한다 — 02-RESEARCH.md Pattern 1(수집→매칭→발송
  * 3단계 파이프라인)의 마지막 단계.
  */
@@ -41,6 +51,7 @@ export class NotifyProcessor extends WorkerHost {
     private readonly prisma: PrismaService,
     private readonly notificationsService: NotificationsService,
     @InjectQueue('notify') private readonly notifyQueue: Queue,
+    private readonly webPushService: WebPushService,
   ) {
     super();
   }
@@ -53,7 +64,9 @@ export class NotifyProcessor extends WorkerHost {
       where: { id: { in: matchIds } },
       include: {
         announcement: true,
-        company: { include: { notificationSettings: true } },
+        company: {
+          include: { notificationSettings: true, pushSubscriptions: true },
+        },
         notificationLogs: true,
       },
     });
@@ -91,7 +104,7 @@ export class NotifyProcessor extends WorkerHost {
     }
 
     await this.dispatchEmail(match, settings);
-    // 웹 푸시(push_enabled) 채널은 02-07 Task 2(web-push.service.ts)에서 이 메서드 아래에 추가한다.
+    await this.dispatchPush(match, settings);
   }
 
   private async dispatchEmail(
@@ -119,6 +132,66 @@ export class NotifyProcessor extends WorkerHost {
     }
 
     await this.notificationsService.sendEmailForMatch(match, match.company);
+  }
+
+  /**
+   * push_enabled인 업체의 모든 push_subscriptions(여러 기기)에 발송한다. 채널당 로그는
+   * 1건뿐이므로(UNIQUE(match_id, channel)) 기기별이 아니라 매칭 1건당 1행으로 결과를
+   * 요약한다 — 하나라도 성공하면 'sent', 전부 실패하면 'failed'(02-07-PLAN.md behavior).
+   * 410(Gone) 응답을 받은 구독은 즉시 삭제한다(만료 정리).
+   */
+  private async dispatchPush(
+    match: DispatchableMatch,
+    settings: NonNullable<DispatchableMatch['company']['notificationSettings']>,
+  ): Promise<void> {
+    if (!settings.pushEnabled) return;
+
+    const hasPushLog = match.notificationLogs.some(
+      (log) => log.channel === 'push',
+    );
+    if (hasPushLog) return;
+
+    const subscriptions = match.company.pushSubscriptions;
+    if (subscriptions.length === 0) return; // 구독 자체가 없으면 시도하지 않으므로 로그도 남기지 않는다
+
+    let anySucceeded = false;
+    let lastErrorMessage: string | null = null;
+
+    for (const subscription of subscriptions) {
+      try {
+        await this.webPushService.sendNotification(subscription, {
+          title: `새로운 매칭 공고: ${match.announcement.title}`,
+          announcementId: match.announcementId,
+        });
+        anySucceeded = true;
+      } catch (err) {
+        if (isPushSubscriptionGone(err)) {
+          await this.prisma.pushSubscription
+            .delete({ where: { id: subscription.id } })
+            .catch(() => undefined); // 이미 삭제됐을 수 있음 — 멱등하게 무시
+          this.logger.log(
+            `구독 만료(410) — push_subscriptions 삭제: ${subscription.id}`,
+          );
+        }
+        lastErrorMessage = err instanceof Error ? err.message : 'unknown error';
+      }
+    }
+
+    await this.prisma.notificationLog.upsert({
+      where: { matchId_channel: { matchId: match.id, channel: 'push' } },
+      create: {
+        matchId: match.id,
+        channel: 'push',
+        status: anySucceeded ? 'sent' : 'failed',
+        sentAt: anySucceeded ? new Date() : undefined,
+        errorMessage: anySucceeded ? null : lastErrorMessage,
+      },
+      update: {
+        status: anySucceeded ? 'sent' : 'failed',
+        sentAt: anySucceeded ? new Date() : undefined,
+        errorMessage: anySucceeded ? null : lastErrorMessage,
+      },
+    });
   }
 }
 

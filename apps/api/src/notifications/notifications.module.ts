@@ -3,6 +3,8 @@ import { ConfigService } from '@nestjs/config';
 import { ConsoleEmailAdapter } from './adapters/console-email.adapter';
 import { ResendEmailAdapter } from './adapters/resend-email.adapter';
 import { NotificationsService } from './notifications.service';
+import { PushSubscriptionsController } from './push-subscriptions.controller';
+import { WebPushService } from './web-push.service';
 import { EMAIL_SENDER_PORT, EmailSenderPort } from './ports/email-sender.port';
 
 /**
@@ -27,14 +29,16 @@ export function selectEmailAdapter(
 }
 
 @Module({
+  controllers: [PushSubscriptionsController],
   providers: [
     NotificationsService,
+    WebPushService,
     {
       provide: EMAIL_SENDER_PORT,
       useFactory: selectEmailAdapter,
       inject: [ConfigService],
     },
   ],
-  exports: [NotificationsService],
+  exports: [NotificationsService, WebPushService],
 })
 export class NotificationsModule {}

@@ -12,6 +12,7 @@ import {
 } from './notify.processor';
 import { NotificationsService } from './notifications.service';
 import { selectEmailAdapter } from './notifications.module';
+import type { WebPushService } from './web-push.service';
 
 interface FakeNotificationLogRow {
   matchId: string;
@@ -21,9 +22,17 @@ interface FakeNotificationLogRow {
   errorMessage: string | null;
 }
 
+interface FakePushSubscriptionRow {
+  id: string;
+}
+
 /** matching.service.spec.ts와 동일한 사유(DB 없는 실행 환경) — 인메모리 페이크 Prisma. */
-function makeFakePrisma(initialLogs: FakeNotificationLogRow[] = []) {
+function makeFakePrisma(
+  initialLogs: FakeNotificationLogRow[] = [],
+  initialSubscriptions: FakePushSubscriptionRow[] = [],
+) {
   const logs: FakeNotificationLogRow[] = [...initialLogs];
+  const subscriptions: FakePushSubscriptionRow[] = [...initialSubscriptions];
 
   const prisma = {
     notificationLog: {
@@ -58,9 +67,16 @@ function makeFakePrisma(initialLogs: FakeNotificationLogRow[] = []) {
         return Promise.resolve(row);
       },
     },
+    pushSubscription: {
+      delete: ({ where }: { where: { id: string } }) => {
+        const idx = subscriptions.findIndex((s) => s.id === where.id);
+        if (idx >= 0) subscriptions.splice(idx, 1);
+        return Promise.resolve({ id: where.id });
+      },
+    },
   } as unknown as PrismaService;
 
-  return { prisma, logs };
+  return { prisma, logs, subscriptions };
 }
 
 function makeEmailSenderStub() {
@@ -77,11 +93,24 @@ function makeQueueStub(): { queue: Queue; add: jest.Mock } {
   return { queue: { add } as unknown as Queue, add };
 }
 
+/** 동일한 unbound-method 사유로 sendNotification도 별도 jest.Mock 참조로 반환한다. */
+function makeWebPushStub(): {
+  webPushService: WebPushService;
+  sendNotification: jest.Mock;
+} {
+  const sendNotification = jest.fn().mockResolvedValue(undefined);
+  return {
+    webPushService: { sendNotification } as unknown as WebPushService,
+    sendNotification,
+  };
+}
+
 function makeMatch(
   overrides: Partial<DispatchableMatch> = {},
 ): DispatchableMatch {
   return {
     id: 'match-1',
+    announcementId: 'ann-1',
     announcement: { title: '테스트 공고' },
     notificationLogs: [],
     company: {
@@ -94,6 +123,7 @@ function makeMatch(
         quietHoursStart: null,
         quietHoursEnd: null,
       },
+      pushSubscriptions: [],
     },
     ...overrides,
   };
@@ -109,10 +139,12 @@ describe('NotifyProcessor — 이메일 발송 멱등성', () => {
     const { prisma, logs } = makeFakePrisma();
     const notificationsService = new NotificationsService(prisma, emailSender);
     const { queue: notifyQueue } = makeQueueStub();
+    const { webPushService } = makeWebPushStub();
     const processor = new NotifyProcessor(
       prisma,
       notificationsService,
       notifyQueue,
+      webPushService,
     );
 
     const match = makeMatch();
@@ -170,10 +202,12 @@ describe('NotifyProcessor — 방해금지 시간대', () => {
     const { prisma, logs } = makeFakePrisma();
     const notificationsService = new NotificationsService(prisma, emailSender);
     const { queue: notifyQueue, add: notifyQueueAdd } = makeQueueStub();
+    const { webPushService } = makeWebPushStub();
     const processor = new NotifyProcessor(
       prisma,
       notificationsService,
       notifyQueue,
+      webPushService,
     );
 
     // 현재 시각을 UTC 23:00으로 고정 — 방해금지 22:00~07:00(자정 넘김) 구간 안.
@@ -191,6 +225,7 @@ describe('NotifyProcessor — 방해금지 시간대', () => {
           quietHoursStart: new Date(Date.UTC(1970, 0, 1, 22, 0, 0)),
           quietHoursEnd: new Date(Date.UTC(1970, 0, 1, 7, 0, 0)),
         },
+        pushSubscriptions: [],
       },
     });
     (prisma as unknown as { match: { findMany: unknown } }).match = {
@@ -217,10 +252,12 @@ describe('NotifyProcessor — 방해금지 시간대', () => {
     const { prisma } = makeFakePrisma();
     const notificationsService = new NotificationsService(prisma, emailSender);
     const { queue: notifyQueue, add: notifyQueueAdd } = makeQueueStub();
+    const { webPushService } = makeWebPushStub();
     const processor = new NotifyProcessor(
       prisma,
       notificationsService,
       notifyQueue,
+      webPushService,
     );
 
     const fixedNow = new Date(Date.UTC(2026, 0, 1, 12, 0, 0)); // 정오 — 방해금지 밖
@@ -237,6 +274,7 @@ describe('NotifyProcessor — 방해금지 시간대', () => {
           quietHoursStart: new Date(Date.UTC(1970, 0, 1, 22, 0, 0)),
           quietHoursEnd: new Date(Date.UTC(1970, 0, 1, 7, 0, 0)),
         },
+        pushSubscriptions: [],
       },
     });
     (prisma as unknown as { match: { findMany: unknown } }).match = {
@@ -258,10 +296,12 @@ describe('NotifyProcessor — 발송 조건', () => {
     const { prisma } = makeFakePrisma();
     const notificationsService = new NotificationsService(prisma, emailSender);
     const { queue: notifyQueue } = makeQueueStub();
+    const { webPushService } = makeWebPushStub();
     const processor = new NotifyProcessor(
       prisma,
       notificationsService,
       notifyQueue,
+      webPushService,
     );
 
     const match = makeMatch({
@@ -275,6 +315,7 @@ describe('NotifyProcessor — 발송 조건', () => {
           quietHoursStart: null,
           quietHoursEnd: null,
         },
+        pushSubscriptions: [],
       },
     });
     (prisma as unknown as { match: { findMany: unknown } }).match = {
@@ -291,10 +332,12 @@ describe('NotifyProcessor — 발송 조건', () => {
     const { prisma, logs } = makeFakePrisma();
     const notificationsService = new NotificationsService(prisma, emailSender);
     const { queue: notifyQueue } = makeQueueStub();
+    const { webPushService } = makeWebPushStub();
     const processor = new NotifyProcessor(
       prisma,
       notificationsService,
       notifyQueue,
+      webPushService,
     );
 
     const match = makeMatch({
@@ -308,6 +351,7 @@ describe('NotifyProcessor — 발송 조건', () => {
           quietHoursStart: null,
           quietHoursEnd: null,
         },
+        pushSubscriptions: [],
       },
     });
     (prisma as unknown as { match: { findMany: unknown } }).match = {
@@ -326,6 +370,174 @@ describe('NotifyProcessor — 발송 조건', () => {
         errorMessage: null,
       },
     ]);
+  });
+});
+
+describe('NotifyProcessor — 웹 푸시(MATCH-03)', () => {
+  it('push_enabled + 구독 1건이면 sendNotification을 호출하고 push 로그를 sent로 남긴다', async () => {
+    const emailSender = makeEmailSenderStub();
+    const { prisma, logs } = makeFakePrisma();
+    const notificationsService = new NotificationsService(prisma, emailSender);
+    const { queue: notifyQueue } = makeQueueStub();
+    const { webPushService, sendNotification } = makeWebPushStub();
+    const processor = new NotifyProcessor(
+      prisma,
+      notificationsService,
+      notifyQueue,
+      webPushService,
+    );
+
+    const match = makeMatch({
+      company: {
+        companyName: '테스트업체',
+        contactEmail: 'test@example.com',
+        notificationSettings: {
+          emailEnabled: false,
+          pushEnabled: true,
+          digestFrequency: 'immediate',
+          quietHoursStart: null,
+          quietHoursEnd: null,
+        },
+        pushSubscriptions: [
+          {
+            id: 'sub-1',
+            endpoint: 'https://push.example.com/1',
+            p256dh: 'p1',
+            auth: 'a1',
+          },
+        ],
+      },
+    });
+    (prisma as unknown as { match: { findMany: unknown } }).match = {
+      findMany: jest.fn().mockResolvedValue([match]),
+    };
+
+    await processor.process(makeJob([match.id]));
+
+    expect(sendNotification).toHaveBeenCalledTimes(1);
+    expect(sendNotification).toHaveBeenCalledWith(
+      match.company.pushSubscriptions[0],
+      {
+        title: `새로운 매칭 공고: ${match.announcement.title}`,
+        announcementId: match.announcementId,
+      },
+    );
+    const pushLogs = logs.filter((l) => l.channel === 'push');
+    expect(pushLogs).toHaveLength(1);
+    expect(pushLogs[0].status).toBe('sent');
+  });
+
+  it('동일 matchId 재처리 시 push 로그가 이미 있으면 재발송하지 않는다', async () => {
+    const emailSender = makeEmailSenderStub();
+    const { prisma } = makeFakePrisma();
+    const notificationsService = new NotificationsService(prisma, emailSender);
+    const { queue: notifyQueue } = makeQueueStub();
+    const { webPushService, sendNotification } = makeWebPushStub();
+    const processor = new NotifyProcessor(
+      prisma,
+      notificationsService,
+      notifyQueue,
+      webPushService,
+    );
+
+    const match = makeMatch({
+      notificationLogs: [{ channel: 'push' }],
+      company: {
+        companyName: '테스트업체',
+        contactEmail: 'test@example.com',
+        notificationSettings: {
+          emailEnabled: false,
+          pushEnabled: true,
+          digestFrequency: 'immediate',
+          quietHoursStart: null,
+          quietHoursEnd: null,
+        },
+        pushSubscriptions: [
+          {
+            id: 'sub-1',
+            endpoint: 'https://push.example.com/1',
+            p256dh: 'p1',
+            auth: 'a1',
+          },
+        ],
+      },
+    });
+    (prisma as unknown as { match: { findMany: unknown } }).match = {
+      findMany: jest.fn().mockResolvedValue([match]),
+    };
+
+    await processor.process(makeJob([match.id]));
+
+    expect(sendNotification).not.toHaveBeenCalled();
+  });
+
+  it('sendNotification이 410을 던지면 해당 구독이 삭제되고 push 로그는 failed로 남는다(다른 구독 없을 때)', async () => {
+    const emailSender = makeEmailSenderStub();
+    const { prisma, logs, subscriptions } = makeFakePrisma(
+      [],
+      [{ id: 'sub-gone' }],
+    );
+    const notificationsService = new NotificationsService(prisma, emailSender);
+    const { queue: notifyQueue } = makeQueueStub();
+    // web-push의 실제 WebPushError를 흉내내려면 isPushSubscriptionGone()의 instanceof
+    // 체크를 통과해야 하므로, 목(mock)이 아니라 실제 WebPushError 인스턴스를 던진다.
+    const { WebPushError } = jest.requireActual<{
+      WebPushError: new (
+        message: string,
+        statusCode: number,
+        headers: Record<string, string>,
+        body: string,
+        endpoint: string,
+      ) => Error;
+    }>('web-push');
+    const goneError = new WebPushError(
+      'Gone',
+      410,
+      {},
+      '',
+      'https://push.example.com/1',
+    );
+
+    const sendNotification = jest.fn().mockRejectedValue(goneError);
+    const webPushService = { sendNotification } as unknown as WebPushService;
+    const processor = new NotifyProcessor(
+      prisma,
+      notificationsService,
+      notifyQueue,
+      webPushService,
+    );
+
+    const match = makeMatch({
+      company: {
+        companyName: '테스트업체',
+        contactEmail: 'test@example.com',
+        notificationSettings: {
+          emailEnabled: false,
+          pushEnabled: true,
+          digestFrequency: 'immediate',
+          quietHoursStart: null,
+          quietHoursEnd: null,
+        },
+        pushSubscriptions: [
+          {
+            id: 'sub-gone',
+            endpoint: 'https://push.example.com/1',
+            p256dh: 'p1',
+            auth: 'a1',
+          },
+        ],
+      },
+    });
+    (prisma as unknown as { match: { findMany: unknown } }).match = {
+      findMany: jest.fn().mockResolvedValue([match]),
+    };
+
+    await processor.process(makeJob([match.id]));
+
+    expect(subscriptions).toHaveLength(0); // 삭제됨
+    const pushLogs = logs.filter((l) => l.channel === 'push');
+    expect(pushLogs).toHaveLength(1);
+    expect(pushLogs[0].status).toBe('failed');
   });
 });
 

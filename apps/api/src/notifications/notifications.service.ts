@@ -1,5 +1,13 @@
-import { Inject, Injectable, Logger } from '@nestjs/common';
+import {
+  ForbiddenException,
+  Inject,
+  Injectable,
+  Logger,
+  NotFoundException,
+} from '@nestjs/common';
+import { PushSubscription } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
+import { CreatePushSubscriptionDto } from './dto/create-push-subscription.dto';
 import { EMAIL_SENDER_PORT } from './ports/email-sender.port';
 import type { EmailSenderPort } from './ports/email-sender.port';
 
@@ -113,5 +121,46 @@ export class NotificationsService {
     for (const match of eligibleMatches) {
       await this.sendEmailForMatch(match, company);
     }
+  }
+
+  // --- 웹 푸시 구독 관리(MATCH-03, 02-07 Task2) ---
+
+  /**
+   * POST /push-subscriptions — 동일 endpoint 재구독 시 UPSERT(UNIQUE 제약,
+   * 02-RESEARCH.md §Common Pitfalls Pitfall 1). 다른 업체가 같은 브라우저에서
+   * 재구독하면 companyId가 새 소유자로 갱신된다(기기 기준 재구독은 의도된 동작).
+   */
+  upsertPushSubscription(
+    companyId: string,
+    dto: CreatePushSubscriptionDto,
+  ): Promise<PushSubscription> {
+    return this.prisma.pushSubscription.upsert({
+      where: { endpoint: dto.endpoint },
+      create: {
+        companyId,
+        endpoint: dto.endpoint,
+        p256dh: dto.p256dh,
+        auth: dto.auth,
+      },
+      update: {
+        companyId,
+        p256dh: dto.p256dh,
+        auth: dto.auth,
+      },
+    });
+  }
+
+  /** DELETE /push-subscriptions/:id — 소유권 검증 후 삭제(T-02-15). */
+  async deletePushSubscription(companyId: string, id: string): Promise<void> {
+    const row = await this.prisma.pushSubscription.findUnique({
+      where: { id },
+    });
+    if (!row) {
+      throw new NotFoundException('구독을 찾을 수 없습니다.');
+    }
+    if (row.companyId !== companyId) {
+      throw new ForbiddenException('본인 업체의 구독만 삭제할 수 있습니다.');
+    }
+    await this.prisma.pushSubscription.delete({ where: { id } });
   }
 }
