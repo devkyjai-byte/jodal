@@ -1,26 +1,32 @@
 ---
 phase: 02-mvp
 verified: 2026-08-27T04:54:46Z
-status: human_needed
+status: passed
 score: 16/16 must-haves verified
 behavior_unverified: 0
 overrides_applied: 0
 human_verification:
+
   - test: "회원가입→온보딩 5스텝→피드→상세→알림설정을 실제 브라우저로 클릭해 끝까지 완주한다"
     expected: "콘솔 오류 없이 각 화면이 렌더링되고 /feed에 도달한다"
     why_human: "시각적 레이아웃·클릭 흐름은 코드 검증만으로는 확인 불가. API 계층은 이번 검증에서 실제 Docker(Postgres/Redis/Meilisearch)로 라이브 확인됨."
+
   - test: "공고 상세 화면에서 나라장터 원문 링크가 스크롤 없이(above-the-fold) 보이는지 확인"
     expected: "헤더 바로 아래 원문 링크 버튼이 뷰포트 안에 고정 노출된다"
     why_human: "레이아웃 배치는 시각적 확인이 필요하다(DetailContent.tsx 코드 리뷰로 구조는 확인됨)"
+
   - test: "브라우저에서 네트워크를 끊고 /feed를 재방문해 오프라인 캐시 폴백과 배지가 표시되는지 확인"
     expected: "마지막으로 불러온 피드가 캐시에서 표시되고 '오프라인' 배지가 노출된다"
     why_human: "Service Worker Cache Storage 동작은 실제 브라우저 런타임에서만 관찰 가능(WR-04 fix로 companyId 네임스페이스가 적용된 sw.js는 코드 레벨로 확인함)"
+
   - test: "웹 푸시 구독 버튼 클릭 → 브라우저 권한 요청 → 구독 생성 → 신규 매칭 시 실제 브라우저 알림 수신"
     expected: "권한 허용 시 POST /push-subscriptions 호출, 신규 매칭 발생 시 브라우저 알림 표시, 클릭 시 상세로 이동"
     why_human: "Notification.requestPermission/pushManager.subscribe/실제 push 수신은 브라우저 API로만 검증 가능(서버 측 로직은 notify.processor.spec.ts 16건으로 라이브 이전 단계까지 확인됨)"
+
   - test: "알림 설정 화면에서 이메일·푸시를 모두 끄면 확인 다이얼로그가 뜨고, 확인 후 경고 배너가 지속 노출되는지 확인"
     expected: "확인 없이는 PATCH가 전송되지 않고, 확인 후 '모든 알림이 꺼져 있습니다' 배너가 노출된다"
     why_human: "다이얼로그·배너의 실제 렌더링은 브라우저 상호작용 확인 필요(confirmOpen 상태 흐름은 코드 리뷰로 확인됨)"
+
   - test: "사업자등록번호를 입력해 가입 페이지를 나갔다가 재방문 시 앞 3자리만 마스킹되어 표시되는지 확인"
     expected: "123-**-***** 형태로 마스킹된 읽기전용 필드가 표시된다"
     why_human: "sessionStorage 재방문 시나리오는 실제 브라우저 탭 재방문으로만 관찰 가능(maskBusinessRegNo 로직은 코드 리뷰로 확인됨)"
@@ -46,22 +52,28 @@ the SUMMARY narrative at face value, this verification:
 1. Started real `postgres:16`, `redis:7`, `getmeili/meilisearch:v1.10` containers via
    `docker compose up -d` (project name `jodalmate`, since the default project name derived
    from the path failed due to the space/Korean characters in `C:/web/claude-code -test/조달청`).
+
 2. Applied all 4 Prisma migrations with `npx prisma migrate deploy` against the real DB —
    **succeeded cleanly, 0 errors.**
+
 3. Ran `npm run db:seed` — **succeeded, 5 fixture announcements loaded.**
 4. Ran `apps/api/test/schema.e2e-spec.ts` against the real DB — **3/3 passed** (9-table
    existence, seed count ≥ 5, no plaintext `business_reg_no` column).
+
 5. Ran the full unit suite once (`npm run test --workspace=apps/api`) — **75/75 passed,
    13/13 suites.**
+
 6. Built both workspaces (`npm run build --workspace=apps/api`, `npm run build
    --workspace=apps/web`) — **both passed cleanly**, including Next.js static generation for
    all 8 routes.
+
 7. Built `dist/` and **booted the actual NestJS server** (`node dist/src/main.js`) against the
    live Postgres/Redis/Meilisearch containers, then drove it with real `curl` HTTP requests to
    independently re-verify the core signup→classification→match→notify→search→detail loop
    end-to-end — see Behavioral Spot-Checks below. This is materially stronger evidence than any
    previous SUMMARY had available, since it exercises real Prisma writes, real BullMQ-adjacent
    JWT/DB code paths, and real Meilisearch indexing/search, not mocks.
+
 8. Cleaned up afterward: killed the test server process, ran `docker compose -p jodalmate down`,
    removed the temporary `apps/api/.env` and two scratch test files
    (`tests/fixtures/verify-region-patch.json`, `tests/fixtures/verify-trigger-ingest.ts`) created
