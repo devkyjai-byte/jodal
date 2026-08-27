@@ -44,7 +44,9 @@ and outside the current plan's task boundaries.
 ## From live G2B verification (post-phase, 2026-08-27)
 
 **2. 나라장터 API 승인 완료 — 실제 연동 라이브 검증함, `classificationCode`는 이 엔드포인트에
-   존재하지 않음이 확인됨.**
+   존재하지 않음이 확인됨. Status: 영향 완화 완료(커밋 f849d07) — 근본 원인(API가 분류코드를
+   안 줌)은 그대로지만, 사용자 요청에 따라 classificationCode가 NULL인 공고를 매칭에서
+   배제하지 않고 전체 업체에게 노출하도록 변경(업종코드 무관 전체 공고 노출).**
 - **Discovered during:** Phase 02 UAT 이후, 사용자가 승인받은 실제 `NARAJANGTEO_API_KEY`로
   라이브 검증(커밋 8c870be — 필수 파라미터 3개 누락, 에러 응답 형태 불일치, 원문 링크 패턴
   오류를 모두 발견·수정, 실제 공고 100건 수집 확인).
