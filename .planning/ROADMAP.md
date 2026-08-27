@@ -12,7 +12,7 @@
 - Decimal phases (2.1, 2.2): Urgent insertions (marked with INSERTED)
 
 - [x] **Phase 1: 준비 (Prep)** - API 활용 신청, 스키마·와이어프레임·서비스명 확정
-- [ ] **Phase 2: MVP — 맞춤 매칭·알림** - 공고 수집·정규화 + 업체 프로필 + 매칭 알림 + 검색 웹 UI
+- [x] **Phase 2: MVP — 맞춤 매칭·알림** - 공고 수집·정규화 + 업체 프로필 + 매칭 알림 + 검색 웹 UI (completed 2026-08-27)
 - [ ] **Phase 3: 모바일 스토어 출시 (Mobile Launch)** - Capacitor 네이티브 푸시 + 스토어 심사 대응 + 온보딩
 - [ ] **Phase 4: 입찰 자격요건 자동 판별 (Eligibility)** - 참가자격 파싱 + 프로필 대조 + 3단계 판정
 - [ ] **Phase 5: 낙찰가·경쟁 분석 (Bid Analysis)** - 낙찰 데이터 누적 + 낙찰률 분포·경쟁 강도 통계
@@ -147,7 +147,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. 준비 (Prep) | 4/4 | Complete (human actions pending: API 신청·도메인 구매) | 2026-08-26 |
-| 2. MVP — 맞춤 매칭·알림 | 7/7 | In Progress|  |
+| 2. MVP — 맞춤 매칭·알림 | 7/7 | Complete    | 2026-08-27 |
 | 3. 모바일 스토어 출시 (Mobile Launch) | 0/TBD | Not started | - |
 | 4. 입찰 자격요건 자동 판별 (Eligibility) | 0/TBD | Not started | - |
 | 5. 낙찰가·경쟁 분석 (Bid Analysis) | 0/TBD | Not started | - |

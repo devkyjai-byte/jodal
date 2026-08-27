@@ -19,11 +19,10 @@
 
 ### Validated
 
-(None yet — ship to validate)
+- ✓ 맞춤 공고 매칭·알림 — 업종코드·지역·실적·인증 기반 스코어링, 신규 공고 자동 알림 — Phase 02 (프로필 등록·매칭·이메일/웹푸시 발송·검색 피드까지 end-to-end 동작 확인, UAT 6/6 통과)
 
 ### Active
 
-- [ ] 맞춤 공고 매칭·알림 — 업종코드·지역·실적·인증 기반 스코어링, 신규 공고 자동 알림 (MVP 핵심)
 - [ ] 웹+모바일 동시 출시 — Next.js PWA를 Capacitor로 감싸 iOS/Android 스토어 등록
 - [ ] 입찰 자격요건 자동 판별 — 참가자격 조항 파싱 후 참가가능/확인필요/불가 판정
 - [ ] 낙찰가·경쟁 분석 — 예정가격 대비 낙찰률 분포, 유사 공고 경쟁 강도 통계
@@ -55,9 +54,12 @@
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| MVP 범위를 "맞춤 매칭·알림" 1개 기능으로 한정 | 1인 개발+3~4개월로 4개 기능 전부 완성은 비현실적, 미완성 상태로 지치는 것을 방지 | — Pending |
-| 웹+모바일은 Next.js PWA를 Capacitor로 래핑하는 단일 코드베이스 전략 | 코드베이스 하나로 "동시 출시" 목표를 달성하면서 개발량은 늘리지 않음 | — Pending |
-| 인프라는 국내 리전(NCP/AWS 서울) 우선 고려 | 공공데이터 연동 시 국내 리전이 유리 | — Pending |
+| MVP 범위를 "맞춤 매칭·알림" 1개 기능으로 한정 | 1인 개발+3~4개월로 4개 기능 전부 완성은 비현실적, 미완성 상태로 지치는 것을 방지 | ✓ Phase 02에서 실제로 3~4개월 내 완성 가능함을 검증 |
+| 웹+모바일은 Next.js PWA를 Capacitor로 래핑하는 단일 코드베이스 전략 | 코드베이스 하나로 "동시 출시" 목표를 달성하면서 개발량은 늘리지 않음 | — Pending (Phase 3에서 Capacitor 래핑 시 검증) |
+| 인프라는 국내 리전(NCP/AWS 서울) 우선 고려 | 공공데이터 연동 시 국내 리전이 유리 | — Pending (배포 phase에서 확정) |
+| 검색엔진은 Meilisearch (Phase 02) | 단일 바이너리·설정 불필요·1인 운영 부담 최소, RESEARCH.md 권장안 | ✓ 색인·검색·피드 필터까지 정상 동작 확인 |
+| 사업자등록번호는 AES-256-GCM 암호화 + HMAC-SHA256 다이제스트(단순 SHA-256 금지) | 평문 저장 금지(개인정보보호법), 역산 가능한 단순 해시 위험 회피 | ✓ 구현·라이브 검증 완료 |
+| company/announcement의 region_codes는 전체 시/도명 문자열로 통일(숫자 코드 아님) | Phase 02 code review에서 두 테이블이 다른 표기를 쓰던 결함(CR-01) 발견 후 통일 | ✓ 수정 후 매칭 점수 실측 확인(60→85점) |
 
 ## Evolution
 
@@ -77,4 +79,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-08-25 after initialization*
+*Last updated: 2026-08-27 after Phase 02*
