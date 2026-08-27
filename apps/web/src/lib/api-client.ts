@@ -421,3 +421,54 @@ export function clearStoredPushSubscriptionId(): void {
   if (typeof window === 'undefined') return;
   window.localStorage.removeItem(PUSH_SUBSCRIPTION_ID_STORAGE_KEY);
 }
+
+// --- 알림 설정 화면(CLIENT-01, 02-07 Task3) ---
+
+export interface NotificationSettings {
+  emailEnabled: boolean;
+  pushEnabled: boolean;
+  minScoreThreshold: number;
+  digestFrequency: 'immediate' | 'daily_digest';
+  quietHoursStart: string | null; // "HH:MM"
+  quietHoursEnd: string | null;
+  deadlineReminderEnabled: boolean;
+  deadlineReminderDays: number;
+  bounceWarning: boolean;
+}
+
+export type UpdateNotificationSettingsPayload = Partial<
+  Omit<NotificationSettings, 'bounceWarning'>
+>;
+
+export function getNotificationSettings(): Promise<NotificationSettings> {
+  return authorizedRequest<NotificationSettings>('/notification-settings');
+}
+
+export function updateNotificationSettings(
+  payload: UpdateNotificationSettingsPayload,
+): Promise<NotificationSettings> {
+  return authorizedRequest<NotificationSettings>('/notification-settings', {
+    method: 'PATCH',
+    body: JSON.stringify(payload),
+  });
+}
+
+export function previewNotificationCount(
+  threshold: number,
+): Promise<{ count: number }> {
+  return authorizedRequest<{ count: number }>(
+    `/notification-settings/preview?threshold=${encodeURIComponent(threshold)}`,
+  );
+}
+
+export interface NotificationLogItem {
+  id: string;
+  channel: string;
+  status: string;
+  sentAt: string | null;
+  announcementTitle: string;
+}
+
+export function getNotificationLogs(): Promise<NotificationLogItem[]> {
+  return authorizedRequest<NotificationLogItem[]>('/notification-logs');
+}

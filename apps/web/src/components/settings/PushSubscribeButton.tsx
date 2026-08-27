@@ -14,6 +14,13 @@ interface PushSubscribeButtonProps {
   checked: boolean;
   /** 구독/해지 성공 시 상위가 push_enabled를 PATCH하도록 호출한다. */
   onChange: (nextEnabled: boolean) => void;
+  /**
+   * 실제 토글 동작(권한 요청·구독/해지) 전에 호출된다. false를 반환하면 아무 것도 하지
+   * 않고 종료한다 — 02-07 Task3(알림 설정 화면)가 "이메일·푸시를 모두 끄려는 시도는 확인
+   * 다이얼로그 없이는 반영되지 않는다"(04-notification-settings.md §상호작용)를 구현하는
+   * 지점. 지정하지 않으면 항상 진행한다.
+   */
+  onBeforeToggle?: () => boolean | Promise<boolean>;
 }
 
 const VAPID_PUBLIC_KEY = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY;
@@ -47,6 +54,7 @@ function urlBase64ToUint8Array(base64String: string): Uint8Array<ArrayBuffer> {
 export default function PushSubscribeButton({
   checked,
   onChange,
+  onBeforeToggle,
 }: PushSubscribeButtonProps) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -123,7 +131,11 @@ export default function PushSubscribeButton({
     }
   }
 
-  function handleToggle() {
+  async function handleToggle() {
+    if (onBeforeToggle) {
+      const proceed = await onBeforeToggle();
+      if (!proceed) return;
+    }
     void (checked ? handleUnsubscribe() : handleSubscribe());
   }
 
@@ -134,7 +146,7 @@ export default function PushSubscribeButton({
         role="switch"
         aria-checked={checked}
         disabled={busy}
-        onClick={handleToggle}
+        onClick={() => void handleToggle()}
         className={`relative h-6 w-11 rounded-full transition-colors ${
           checked ? 'bg-foreground' : 'bg-zinc-300 dark:bg-zinc-700'
         } disabled:opacity-50`}
