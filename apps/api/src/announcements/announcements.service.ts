@@ -1,11 +1,17 @@
 import { Inject, Injectable, Logger } from '@nestjs/common';
-import { Prisma } from '@prisma/client';
+import { BidAnnouncement, Match, Prisma } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
+import { MeilisearchService } from '../search/meilisearch.service';
+import {
+  QualitativeTier,
+  toQualitativeTier,
+} from '../matching/matching.service';
 import {
   ANNOUNCEMENT_SOURCE_PORT,
   type AnnouncementSourcePort,
   type RawAnnouncement,
 } from './ports/announcement-source.port';
+import type { SearchQueryDto } from './dto/search-query.dto';
 
 interface NormalizedAnnouncement {
   sourceBidNo: string;
@@ -81,9 +87,82 @@ function normalizeDate(raw: string | null | undefined): Date | null {
 }
 
 /**
+ * 대분류(2자리) 물품분류코드 → 한글 업종명. apps/web/src/lib/classification-tree.data.ts
+ * (docs/design/업종-물품분류-매핑.md §목표 업종 매핑표)와 동일한 원본을 따르되, API가
+ * 프론트엔드 워크스페이스 파일을 직접 import할 수 없어 이 파일에 최소 복제본을 둔다.
+ * "시설관리"는 물품분류번호가 아직 미확정(confirmed: false)이라 여기 포함하지 않는다.
+ */
+const CLASSIFICATION_LABELS: Record<string, string> = {
+  '43': '정보통신·소프트웨어개발',
+  '44': '사무용품',
+  '55': '인쇄·출판',
+};
+
+/**
+ * 업체가 등록한 prefix 목록 중 공고 classification_code와 가장 길게(자릿수 기준) 일치하는
+ * prefix를 찾는다. matching.service.ts의 scoreMatch() bestMatchLength 계산과 동일한 규칙을
+ * 쓰되, 점수가 아니라 실제 매칭 근거 문구(02-feed.md "정보통신(43) 업종 등록과 일치")를
+ * 만들기 위해 어떤 prefix가 일치했는지를 반환한다.
+ */
+function findBestMatchingPrefix(
+  companyCodes: string[],
+  announcementCode: string | null,
+): string | null {
+  if (!announcementCode) return null;
+  let best: string | null = null;
+  for (const code of companyCodes) {
+    if (
+      announcementCode.startsWith(code) &&
+      (!best || code.length > best.length)
+    ) {
+      best = code;
+    }
+  }
+  return best;
+}
+
+/** 02-feed.md §레이아웃 3 "매칭 근거 한 줄" 문구 생성. */
+function buildMatchReason(
+  companyCodes: string[],
+  announcementCode: string | null,
+): string {
+  const prefix = findBestMatchingPrefix(companyCodes, announcementCode);
+  if (!prefix) {
+    return '등록하신 프로필과 매칭되었습니다.';
+  }
+  const label = CLASSIFICATION_LABELS[prefix] ?? `업종코드 ${prefix}`;
+  return `${label}(${prefix}) 업종 등록과 일치`;
+}
+
+export type FeedSort = 'score' | 'deadline' | 'latest';
+
+export interface FeedItemDto {
+  id: string;
+  title: string;
+  agencyName: string | null;
+  classificationCode: string | null;
+  regionCodes: string[];
+  budgetAmount: string | null;
+  bidCloseAt: string | null;
+  isExpired: boolean;
+  /** 5단계 정성 등급만 노출한다 — 원점수는 이 DTO에 필드 자체가 존재하지 않는다(T-02-13). */
+  qualitativeTier: QualitativeTier;
+  matchReason: string;
+}
+
+export interface FeedResponseDto {
+  items: FeedItemDto[];
+  hasMore: boolean;
+  page: number;
+}
+
+const FEED_PAGE_SIZE = 20;
+
+/**
  * ING-01~03 구현 — 활성 AnnouncementSourcePort(픽스처 또는 실제 나라장터 API)에서 받은
  * 원문을 정규화해 bid_announcements에 UPSERT한다. 02-RESEARCH.md Pattern 1(수집→매칭→발송)의
- * 첫 단계.
+ * 첫 단계. 02-06부터는 GET /feed 조회(ING-04, CLIENT-01)도 이 서비스가 담당한다
+ * (GET /announcements/:id 상세 조회는 02-06 Task 2가 getDetail()로 추가한다).
  */
 @Injectable()
 export class AnnouncementsService {
@@ -93,6 +172,7 @@ export class AnnouncementsService {
     private readonly prisma: PrismaService,
     @Inject(ANNOUNCEMENT_SOURCE_PORT)
     private readonly source: AnnouncementSourcePort,
+    private readonly searchService: MeilisearchService,
   ) {}
 
   /**
@@ -165,6 +245,7 @@ export class AnnouncementsService {
           rawPayload: normalized.rawPayload,
         },
       });
+      await this.indexForSearch(updated);
       return updated.id;
     }
 
@@ -205,6 +286,202 @@ export class AnnouncementsService {
         rawPayload: normalized.rawPayload,
       },
     });
+    await this.indexForSearch(created);
     return created.id;
   }
+
+  /**
+   * upsert 직후 Meilisearch 색인을 동기 호출한다(02-06-PLAN.md key_links — "upsert 직후
+   * indexAnnouncement(record) 호출"). MeilisearchService 자체가 실패를 흡수하므로 이 호출이
+   * pollAndUpsert()의 상위 try/catch로 예외를 전파하지는 않지만, 방어적으로 한 번 더 감싼다.
+   */
+  private async indexForSearch(row: BidAnnouncement): Promise<void> {
+    try {
+      await this.searchService.indexAnnouncement({
+        id: row.id,
+        title: row.title,
+        agencyName: row.agencyName,
+        classificationCode: row.classificationCode,
+        regionCodes: row.regionCodes,
+        bidCloseAt: row.bidCloseAt
+          ? Math.floor(row.bidCloseAt.getTime() / 1000)
+          : null,
+      });
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'unknown error';
+      this.logger.error(`Meilisearch 색인 호출 실패(id=${row.id}): ${message}`);
+    }
+  }
+
+  /**
+   * GET /feed — ING-04(키워드·업종·지역·마감일 검색·필터링) + CLIENT-01 피드 화면.
+   *
+   * `matches.company_id = 로그인 업체`로 항상 스코프한다(db-schema-design.md §스파인 조인
+   * SQL, T-01-12) — idx_matches_company_id_matched_at 인덱스가 이 조회 패턴을 위해 이미
+   * 존재한다. keyword가 있으면 Meilisearch 후보 id 집합을 먼저 얻고, classification/region/
+   * deadline/includeExpired는 애플리케이션 레벨에서 in-memory로 교집합을 취한다 — 업체당
+   * 매칭 건수가 MVP 규모에서 크지 않고(prefix 매칭 후보로 이미 좁혀진 상태), 이 방식이
+   * region_codes 배열 컬럼에 대한 복잡한 SQL 연산자 조합보다 테스트·유지보수가 쉽다
+   * (db-schema-design.md §Phase 2 인계 사항 7 — GIN 인덱스 보류 판단과 같은 취지).
+   *
+   * 응답 DTO(FeedItemDto)에는 score 필드가 아예 없다 — qualitativeTier만 직렬화한다
+   * (T-02-13, Legal 제약).
+   */
+  async getFeed(
+    companyId: string,
+    query: SearchQueryDto,
+  ): Promise<FeedResponseDto> {
+    const now = new Date();
+    const page = query.page ?? 1;
+    const sort: FeedSort = query.sort ?? 'score';
+
+    let keywordIds: Set<string> | null = null;
+    if (query.keyword && query.keyword.trim() !== '') {
+      const ids = await this.searchService.searchAnnouncementIds(
+        query.keyword.trim(),
+      );
+      keywordIds = new Set(ids);
+      if (keywordIds.size === 0) {
+        return { items: [], hasMore: false, page };
+      }
+    }
+
+    const matches = await this.prisma.match.findMany({
+      where: { companyId },
+      include: { announcement: true },
+      orderBy: { matchedAt: 'desc' },
+    });
+
+    const deadlineWindow = buildDeadlineWindow(now, query.deadline);
+    const includeExpired = query.includeExpired ?? false;
+
+    const filtered = matches.filter(({ announcement }) => {
+      if (keywordIds && !keywordIds.has(announcement.id)) return false;
+
+      if (query.classification && query.classification.length > 0) {
+        const hit = query.classification.some(
+          (prefix) =>
+            announcement.classificationCode?.startsWith(prefix) ?? false,
+        );
+        if (!hit) return false;
+      }
+
+      if (query.region && query.region.length > 0) {
+        const hit = query.region.some((r) =>
+          announcement.regionCodes.includes(r),
+        );
+        if (!hit) return false;
+      }
+
+      const isExpired = isAnnouncementExpired(announcement, now);
+      if (isExpired && !includeExpired) return false;
+
+      if (deadlineWindow && announcement.bidCloseAt) {
+        if (
+          announcement.bidCloseAt < deadlineWindow.from ||
+          announcement.bidCloseAt > deadlineWindow.to
+        ) {
+          return false;
+        }
+      } else if (deadlineWindow && !announcement.bidCloseAt) {
+        // 마감일 정보 자체가 없는 공고는 "이번 주/이번 달" 범위 필터와 결합할 수 없어 제외한다.
+        return false;
+      }
+
+      return true;
+    });
+
+    const sorted = sortFeedMatches(filtered, sort);
+    const start = (page - 1) * FEED_PAGE_SIZE;
+    const pageSlice = sorted.slice(start, start + FEED_PAGE_SIZE + 1);
+    const hasMore = pageSlice.length > FEED_PAGE_SIZE;
+    const pageItems = pageSlice.slice(0, FEED_PAGE_SIZE);
+
+    const company = await this.prisma.company.findUniqueOrThrow({
+      where: { id: companyId },
+      include: { classificationCodes: true },
+    });
+    const companyCodes = company.classificationCodes.map(
+      (c) => c.classificationCode,
+    );
+
+    const items: FeedItemDto[] = pageItems.map((match) =>
+      buildFeedItem(match, companyCodes, now),
+    );
+
+    return { items, hasMore, page };
+  }
+}
+
+function isAnnouncementExpired(
+  announcement: Pick<BidAnnouncement, 'bidCloseAt'>,
+  now: Date,
+): boolean {
+  return announcement.bidCloseAt !== null && announcement.bidCloseAt < now;
+}
+
+interface DeadlineWindow {
+  from: Date;
+  to: Date;
+}
+
+/**
+ * "이번 주"는 오늘부터 +7일, "이번 달"은 오늘부터 +30일 윈도로 근사한다(캘린더 월 경계
+ * 대신 일수 기반 — 02-feed.md가 정확한 캘린더 규칙을 명시하지 않아 단순한 규칙을 택함).
+ */
+function buildDeadlineWindow(
+  now: Date,
+  deadline: 'this_week' | 'this_month' | undefined,
+): DeadlineWindow | null {
+  if (!deadline) return null;
+  const to = new Date(now);
+  to.setDate(to.getDate() + (deadline === 'this_week' ? 7 : 30));
+  return { from: now, to };
+}
+
+function sortFeedMatches(
+  matches: (Match & { announcement: BidAnnouncement })[],
+  sort: FeedSort,
+): (Match & { announcement: BidAnnouncement })[] {
+  const copy = [...matches];
+  switch (sort) {
+    case 'deadline':
+      return copy.sort((a, b) => {
+        const aTime = a.announcement.bidCloseAt?.getTime() ?? Infinity;
+        const bTime = b.announcement.bidCloseAt?.getTime() ?? Infinity;
+        return aTime - bTime;
+      });
+    case 'latest':
+      return copy.sort(
+        (a, b) =>
+          b.announcement.fetchedAt.getTime() -
+          a.announcement.fetchedAt.getTime(),
+      );
+    case 'score':
+    default:
+      return copy.sort((a, b) => Number(b.score) - Number(a.score));
+  }
+}
+
+function buildFeedItem(
+  match: Match & { announcement: BidAnnouncement },
+  companyCodes: string[],
+  now: Date,
+): FeedItemDto {
+  const { announcement } = match;
+  return {
+    id: announcement.id,
+    title: announcement.title,
+    agencyName: announcement.agencyName,
+    classificationCode: announcement.classificationCode,
+    regionCodes: announcement.regionCodes,
+    budgetAmount: announcement.budgetAmount?.toString() ?? null,
+    bidCloseAt: announcement.bidCloseAt?.toISOString() ?? null,
+    isExpired: isAnnouncementExpired(announcement, now),
+    qualitativeTier: toQualitativeTier(Number(match.score)),
+    matchReason: buildMatchReason(
+      companyCodes,
+      announcement.classificationCode,
+    ),
+  };
 }

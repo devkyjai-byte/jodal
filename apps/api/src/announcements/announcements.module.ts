@@ -1,5 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
+import { SearchModule } from '../search/search.module';
+import { AnnouncementsController } from './announcements.controller';
 import { AnnouncementsService } from './announcements.service';
 import {
   ANNOUNCEMENT_SOURCE_PORT,
@@ -26,6 +28,8 @@ export function selectAnnouncementSource(
 }
 
 @Module({
+  imports: [SearchModule],
+  controllers: [AnnouncementsController],
   providers: [
     AnnouncementsService,
     {
