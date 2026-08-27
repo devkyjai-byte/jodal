@@ -280,6 +280,23 @@ describe('AnnouncementsService', () => {
       expect(results).toEqual([]);
     });
 
+    it('생성자에 URL 인코딩된 서비스키(data.go.kr "Encoding" 형태)를 넘겨도 실제 요청에는 디코딩된 값이 실린다 — 인코딩된 채로 넘기면 URLSearchParams가 이중 인코딩해 HTTP 403 인증 실패가 났음(라이브 검증 2026-08-27로 발견)', async () => {
+      const mockFetch = jest.fn().mockResolvedValue({
+        ok: true,
+        json: () =>
+          Promise.resolve({ response: { header: { resultCode: '00' } } }),
+      });
+      global.fetch = mockFetch;
+
+      const decoded = 'abc+def/ghi==';
+      const encoded = encodeURIComponent(decoded); // 'abc%2Bdef%2Fghi%3D%3D'
+      const adapter = new G2BAnnouncementSourceAdapter(encoded);
+      await adapter.fetchLatest();
+
+      const calledUrl = new URL(String(mockFetch.mock.calls[0][0]));
+      expect(calledUrl.searchParams.get('serviceKey')).toBe(decoded);
+    });
+
     it('요청에 필수 파라미터(inqryDiv/inqryBgnDt/inqryEndDt)를 포함한다 — 라이브 검증(2026-08-27)으로 확인된 필수값, 누락 시 나라장터가 조용히 빈 결과로 보이는 에러를 반환한다', async () => {
       const mockFetch = jest.fn().mockResolvedValue({
         ok: true,

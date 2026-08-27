@@ -93,8 +93,25 @@ function formatKstDateTime(date: Date): string {
  */
 export class G2BAnnouncementSourceAdapter implements AnnouncementSourcePort {
   private readonly logger = new Logger(G2BAnnouncementSourceAdapter.name);
+  private readonly apiKey: string;
 
-  constructor(private readonly apiKey: string) {}
+  /**
+   * data.go.kr는 서비스키를 "Encoding"/"Decoding" 두 형태로 나눠 제공한다. 운영자가
+   * .env에 Encoding 형태(`%2B`, `%3D` 등 URL 인코딩된 문자열)를 그대로 붙여넣는 것이
+   * 흔한 실수다 — 라이브 검증(2026-08-27) 중 실제로 이 상태에서 HTTP 403(인증 실패)을
+   * 받았다: `URLSearchParams.set()`이 이미 인코딩된 문자열을 다시 인코딩해(`%2B`→`%252B`)
+   * 서버가 원래 키와 다른 값으로 인식했기 때문. 여기서 한 번 미리 디코딩해두면 Encoding/
+   * Decoding 어느 형태로 넣어도 동일하게 동작한다(디코딩 결과에 `%`가 남지 않는 순수
+   * Decoding 형태를 다시 디코딩해도 멱등하게 원래 값 그대로 반환됨).
+   */
+  constructor(rawApiKey: string) {
+    try {
+      this.apiKey = rawApiKey ? decodeURIComponent(rawApiKey) : rawApiKey;
+    } catch {
+      // 디코딩 불가능한(이미 순수 Decoding 형태이면서 우연히 %가 들어간) 값이면 원본 그대로.
+      this.apiKey = rawApiKey;
+    }
+  }
 
   async fetchLatest(): Promise<RawAnnouncement[]> {
     if (!this.apiKey) {
