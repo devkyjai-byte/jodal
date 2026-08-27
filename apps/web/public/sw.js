@@ -18,22 +18,54 @@ self.addEventListener('activate', (event) => {
 });
 
 /**
+ * Authorization 헤더의 JWT payload에서 companyId를 꺼낸다 — 서명 검증은 하지 않는다(실제
+ * 인증/인가는 항상 서버가 담당하며, 여기서는 오직 Cache Storage 네임스페이스 분리 용도로만
+ * 쓴다). 파싱에 실패하면 null을 반환해 "익명" 네임스페이스로 폴백한다.
+ */
+function getCompanyIdFromRequest(request) {
+  const authHeader = request.headers.get('Authorization');
+  if (!authHeader || !authHeader.startsWith('Bearer ')) return null;
+  const token = authHeader.slice('Bearer '.length);
+  const parts = token.split('.');
+  if (parts.length !== 3) return null;
+  try {
+    let base64 = parts[1].replace(/-/g, '+').replace(/_/g, '/');
+    while (base64.length % 4) base64 += '=';
+    const payload = JSON.parse(atob(base64));
+    return typeof payload.companyId === 'string' ? payload.companyId : null;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * 업체별로 별도 Cache Storage 이름을 써서, 같은 브라우저 프로필을 여러 업체가 공유하는
+ * 기기(로그아웃 후 다른 업체로 재로그인)에서 company A의 캐시된 /feed 응답이 company B에게
+ * 서빙되지 않게 한다(02-REVIEW.md WR-04).
+ */
+function feedCacheNameForRequest(request) {
+  const companyId = getCompanyIdFromRequest(request);
+  return companyId ? `${FEED_CACHE_NAME}-${companyId}` : `${FEED_CACHE_NAME}-anon`;
+}
+
+/**
  * GET /feed 네트워크 우선 + 캐시 폴백. apps/web/src/lib/api-client.ts#getFeed()가 이 SW를
  * 거친 응답을 받으므로, 캐시에서 서빙할 때는 `x-jodalmate-cache: hit` 헤더를 추가해
  * 프론트가 "오프라인 상태 — 마지막 업데이트 기준" 배지를 표시할 수 있게 한다
  * (apps/web/src/app/feed/FeedContent.tsx의 isFromCache 판단 기준).
  */
 async function handleFeedRequest(request) {
+  const cacheName = feedCacheNameForRequest(request);
   try {
     const networkResponse = await fetch(request);
     if (networkResponse && networkResponse.ok) {
-      const cache = await caches.open(FEED_CACHE_NAME);
+      const cache = await caches.open(cacheName);
       // 쿼리스트링(필터·정렬)별로 별도 캐시 엔트리를 둔다 — request 자체를 키로 쓴다.
       await cache.put(request, networkResponse.clone());
     }
     return networkResponse;
   } catch (networkError) {
-    const cache = await caches.open(FEED_CACHE_NAME);
+    const cache = await caches.open(cacheName);
     const cached = await cache.match(request);
     if (!cached) {
       // 캐시조차 없으면 원래의 네트워크 실패를 그대로 다시 던진다 — 페이지의 fetch()
