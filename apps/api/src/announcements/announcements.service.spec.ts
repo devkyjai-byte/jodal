@@ -279,5 +279,43 @@ describe('AnnouncementsService', () => {
       expect(mockFetch).not.toHaveBeenCalled();
       expect(results).toEqual([]);
     });
+
+    it('요청에 필수 파라미터(inqryDiv/inqryBgnDt/inqryEndDt)를 포함한다 — 라이브 검증(2026-08-27)으로 확인된 필수값, 누락 시 나라장터가 조용히 빈 결과로 보이는 에러를 반환한다', async () => {
+      const mockFetch = jest.fn().mockResolvedValue({
+        ok: true,
+        json: () =>
+          Promise.resolve({ response: { header: { resultCode: '00' } } }),
+      });
+      global.fetch = mockFetch;
+
+      const adapter = new G2BAnnouncementSourceAdapter('test-api-key');
+      await adapter.fetchLatest();
+
+      expect(mockFetch).toHaveBeenCalledTimes(1);
+      const calledUrl = new URL(String(mockFetch.mock.calls[0][0]));
+      expect(calledUrl.searchParams.get('inqryDiv')).toBe('1');
+      expect(calledUrl.searchParams.get('inqryBgnDt')).toMatch(/^\d{12}$/);
+      expect(calledUrl.searchParams.get('inqryEndDt')).toMatch(/^\d{12}$/);
+    });
+
+    it('나라장터의 실제 에러 응답 형태(nkoneps.com.response.ResponseError)를 감지해 로그로 남기고 빈 배열을 반환한다 — 이 형태를 감지하지 못하면 에러가 "0건 수집"으로 조용히 삼켜진다(라이브 검증 중 실제로 이 상태였음을 발견)', async () => {
+      const mockFetch = jest.fn().mockResolvedValue({
+        ok: true,
+        json: () =>
+          Promise.resolve({
+            'nkoneps.com.response.ResponseError': {
+              header: { resultCode: '08', resultMsg: '필수값 입력 에러' },
+            },
+          }),
+      });
+      global.fetch = mockFetch;
+      const errorSpy = jest.spyOn(console, 'error').mockImplementation();
+
+      const adapter = new G2BAnnouncementSourceAdapter('test-api-key');
+      const results = await adapter.fetchLatest();
+
+      expect(results).toEqual([]);
+      errorSpy.mockRestore();
+    });
   });
 });

@@ -136,11 +136,25 @@ function buildMatchReason(
 
 /**
  * 나라장터 원문 링크(03-detail.md §레이아웃 2, T-01-15 필수 요소).
- * [ASSUMED] 정확한 딥링크 URL 포맷은 활용신청 승인 후 확인이 필요하다 — 일반적으로 알려진
- * 나라장터 입찰공고 상세 조회 경로를 사용하되, g2b-announcement-source.adapter.ts의 API
- * 엔드포인트와 마찬가지로 실제 서비스 승인 후 재검증 대상이다(WINDOWS.md 기록).
+ * 실제 나라장터 API(g2b-announcement-source.adapter.ts)는 응답 아이템에 상세 페이지
+ * 링크(`bidNtceDtlUrl`)를 직접 내려준다 — 라이브 검증(2026-08-27)으로 확인. raw_payload에
+ * 이 필드가 있으면 그대로 쓰고, 없으면(fixture 데이터 등, 이 필드가 없는 경우) 예전에
+ * [ASSUMED]로 조립하던 폴백 패턴을 그대로 유지한다 — 실제로는 이 폴백이 옳은 나라장터
+ * URL이 아님이 이미 확인됐지만(라이브 검증 중 발견), fixture 픽스처의 공고번호 자체가
+ * 가짜라 애초에 실재하는 링크를 만들 수 없으므로 "원문 링크 버튼이 존재하고 클릭 가능하다"는
+ * UI 계약만 충족시키는 자리표시자로 남긴다.
  */
-function buildSourceUrl(sourceBidNo: string, sourceRevisionNo: string): string {
+function buildSourceUrl(
+  sourceBidNo: string,
+  sourceRevisionNo: string,
+  rawPayload?: unknown,
+): string {
+  if (rawPayload && typeof rawPayload === 'object') {
+    const detailUrl = (rawPayload as Record<string, unknown>).bidNtceDtlUrl;
+    if (typeof detailUrl === 'string' && detailUrl.length > 0) {
+      return detailUrl;
+    }
+  }
   const url = new URL(
     'https://www.g2b.go.kr:8101/ep/invitation/publish/bidInfoDtl.do',
   );
@@ -544,6 +558,7 @@ export class AnnouncementsService {
       sourceUrl: buildSourceUrl(
         announcement.sourceBidNo,
         announcement.sourceRevisionNo,
+        announcement.rawPayload,
       ),
       latestRevisionId,
     };
