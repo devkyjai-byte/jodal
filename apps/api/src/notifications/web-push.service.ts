@@ -1,6 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import * as webpush from 'web-push';
+import { assertPushEndpointResolvesSafe } from './ssrf-guard';
 
 export interface PushSubscriptionKeys {
   endpoint: string;
@@ -61,11 +62,18 @@ export class WebPushService {
   /**
    * 구독 1건에 실제 발송한다. 410(Gone)을 포함해 실패는 그대로 throw한다 — 구독 삭제
    * 여부(410인지 판단) 및 notification_logs 기록은 호출자(notify.processor.ts)의 책임이다.
+   *
+   * T-02-21(SSRF) 최종 방어선: 발송 직전 `assertPushEndpointResolvesSafe`로 endpoint
+   * 호스트를 실제 DNS 조회해 사설/예약 IP로 귀결되지 않는지 재검사한다. DTO 검증(리터럴
+   * IP만 검사)과 발송 시점(도메인이 그 사이 사설 IP로 재바인딩됐을 수 있음) 사이의 창을
+   * 막는다 — 여기서 던진 에러는 일반 발송 실패와 동일하게 처리된다(구독 삭제하지 않음,
+   * notification_logs에 실패로만 기록).
    */
   async sendNotification(
     subscription: PushSubscriptionKeys,
     payload: PushPayload,
   ): Promise<void> {
+    await assertPushEndpointResolvesSafe(subscription.endpoint);
     await webpush.sendNotification(
       {
         endpoint: subscription.endpoint,
