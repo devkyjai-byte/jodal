@@ -1,10 +1,10 @@
 ---
 schema_version: 1
-open_count: 13
+open_count: 17
 waived_count: 0
 fixed_count: 0
-total_count: 13
-last_updated: 2026-08-27T00:20:13.015Z
+total_count: 17
+last_updated: 2026-08-27T01:04:30.943Z
 ---
 
 # Broken Windows Ledger
@@ -28,6 +28,10 @@ last_updated: 2026-08-27T00:20:13.015Z
 | 11 | 02 | deviation | apps/api/src/matching/matching.service.ts |  | companies.region_codes(전체 시도명, 예: 서울특별시)와 bid_announcements.region_codes(숫자코드, 예: 11)가 서로 다른 값 형식을 쓴다는 사실을 02-06에서 발견했다 - 02-04/02-01/02-05 소관이라 이번 플랜에서 고치지 않고 deferred-items.md에 기록했다. G2B 실연동 전 반드시 매핑 테이블이 필요하다. | open |  | 2026-08-27T00:19:59.299Z |  |
 | 12 | 02 | unrun-verify | apps/api/src/announcements/announcements.service.ts |  | buildSourceUrl()의 나라장터 원문 딥링크 URL 포맷([ASSUMED] g2b.go.kr:8101/ep/invitation/publish/bidInfoDtl.do?bidno&bidseq)이 공식 문서로 검증되지 않았다 - g2b-announcement-source.adapter.ts의 API 필드명 미확정 상태(02-RESEARCH.md Open Question 2)와 동일한 성격의 갭. 활용신청 승인 후 실제 링크로 재검증 필요. | open |  | 2026-08-27T00:20:05.169Z |  |
 | 13 | 02 | unrun-verify | apps/web/public/sw.js |  | GET /feed 오프라인 캐시 폴백(네트워크 우선 + 캐시 폴백, x-jodalmate-cache 헤더)을 실제 서비스워커 런타임에서 검증하지 못했다 - 이 실행 환경에 브라우저/DB가 없어 로그인 후 실제 피드 요청을 발생시켜 오프라인 시나리오를 재현할 수 없었다. 코드는 Cache Storage API 표준 패턴을 그대로 구현했으나 런타임 검증은 남아있다. | open |  | 2026-08-27T00:20:13.015Z |  |
+| 14 | 02 | unrun-verify | apps/api/src/notifications/notify.processor.ts |  | Docker/PostgreSQL/Redis 불가(WINDOWS.md #1/#3과 동일 갭) - notify.processor.ts의 이메일/푸시 발송, 방해금지 재예약, 410 구독 삭제 로직을 실제 DB/Redis/BullMQ 워커로 end-to-end 검증하지 못했다. 인메모리 페이크 Prisma 단위테스트(16개)와 build/lint는 전부 통과. | open |  | 2026-08-27T01:04:11.853Z |  |
+| 15 | 02 | unrun-verify | apps/web/src/app/settings/notifications/NotificationSettingsContent.tsx |  | 브라우저 실기(Notification.requestPermission, pushManager.subscribe, 확인 다이얼로그, 낙관적 업데이트 롤백, 임계값 슬라이더 실시간 미리보기)를 실제 브라우저에서 검증하지 못했다 - 이 실행 환경에 Docker/PostgreSQL/실행 중인 API 서버가 없어(WINDOWS.md #1/#3/#5와 동일 갭) 로그인 후 실 데이터로 화면을 띄워볼 수 없었다. next build/eslint는 전부 통과, 8개 설정 항목과 실제 컬럼의 1:1 대응은 코드 리뷰로 확인. | open |  | 2026-08-27T01:04:18.513Z |  |
+| 16 | 02 | unrun-verify | apps/web/public/sw.js |  | 웹 푸시 수신(push 이벤트, showNotification)과 notificationclick 탭 이동/포커스를 실제 서비스워커 런타임에서 검증하지 못했다 - WINDOWS.md #13(GET /feed 오프라인 캐시)과 동일한 갭. 코드는 표준 Push API/Notification API 패턴을 그대로 구현했다. | open |  | 2026-08-27T01:04:23.542Z |  |
+| 17 | 02 | deviation | apps/api/src/notifications/web-push.service.ts |  | Task2(tdd=true, 웹 푸시 구독·발송)를 RED(실패 테스트 커밋)/GREEN(구현 커밋) 분리 없이 테스트+구현을 단일 커밋(0ab993d)으로 완료했다 - execute-plan.md의 TDD 실행 프로토콜을 엄격히 따르지 않은 절차상 편차. 최종 테스트 커버리지(16개 notify.processor 테스트 포함)는 갖춰져 있고 전부 통과하나, RED 단계(실패를 먼저 확인)를 별도 커밋으로 남기지 않았다. | open |  | 2026-08-27T01:04:30.943Z |  |
 
 ````json
 [
@@ -185,6 +189,54 @@ last_updated: 2026-08-27T00:20:13.015Z
     "status": "open",
     "reason": "",
     "recorded_at": "2026-08-27T00:20:13.015Z",
+    "resolved_at": null
+  },
+  {
+    "id": 14,
+    "kind": "unrun-verify",
+    "phase": "02",
+    "file": "apps/api/src/notifications/notify.processor.ts",
+    "line": null,
+    "description": "Docker/PostgreSQL/Redis 불가(WINDOWS.md #1/#3과 동일 갭) - notify.processor.ts의 이메일/푸시 발송, 방해금지 재예약, 410 구독 삭제 로직을 실제 DB/Redis/BullMQ 워커로 end-to-end 검증하지 못했다. 인메모리 페이크 Prisma 단위테스트(16개)와 build/lint는 전부 통과.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-08-27T01:04:11.853Z",
+    "resolved_at": null
+  },
+  {
+    "id": 15,
+    "kind": "unrun-verify",
+    "phase": "02",
+    "file": "apps/web/src/app/settings/notifications/NotificationSettingsContent.tsx",
+    "line": null,
+    "description": "브라우저 실기(Notification.requestPermission, pushManager.subscribe, 확인 다이얼로그, 낙관적 업데이트 롤백, 임계값 슬라이더 실시간 미리보기)를 실제 브라우저에서 검증하지 못했다 - 이 실행 환경에 Docker/PostgreSQL/실행 중인 API 서버가 없어(WINDOWS.md #1/#3/#5와 동일 갭) 로그인 후 실 데이터로 화면을 띄워볼 수 없었다. next build/eslint는 전부 통과, 8개 설정 항목과 실제 컬럼의 1:1 대응은 코드 리뷰로 확인.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-08-27T01:04:18.513Z",
+    "resolved_at": null
+  },
+  {
+    "id": 16,
+    "kind": "unrun-verify",
+    "phase": "02",
+    "file": "apps/web/public/sw.js",
+    "line": null,
+    "description": "웹 푸시 수신(push 이벤트, showNotification)과 notificationclick 탭 이동/포커스를 실제 서비스워커 런타임에서 검증하지 못했다 - WINDOWS.md #13(GET /feed 오프라인 캐시)과 동일한 갭. 코드는 표준 Push API/Notification API 패턴을 그대로 구현했다.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-08-27T01:04:23.542Z",
+    "resolved_at": null
+  },
+  {
+    "id": 17,
+    "kind": "deviation",
+    "phase": "02",
+    "file": "apps/api/src/notifications/web-push.service.ts",
+    "line": null,
+    "description": "Task2(tdd=true, 웹 푸시 구독·발송)를 RED(실패 테스트 커밋)/GREEN(구현 커밋) 분리 없이 테스트+구현을 단일 커밋(0ab993d)으로 완료했다 - execute-plan.md의 TDD 실행 프로토콜을 엄격히 따르지 않은 절차상 편차. 최종 테스트 커버리지(16개 notify.processor 테스트 포함)는 갖춰져 있고 전부 통과하나, RED 단계(실패를 먼저 확인)를 별도 커밋으로 남기지 않았다.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-08-27T01:04:30.943Z",
     "resolved_at": null
   }
 ]

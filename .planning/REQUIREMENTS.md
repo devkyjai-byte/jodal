@@ -25,8 +25,8 @@
 ### 맞춤 매칭·알림 (Match) — MVP 핵심
 
 - [x] **MATCH-01**: 시스템은 업체 프로필과 신규 공고를 자동으로 스코어링해 매칭한다
-- [ ] **MATCH-02**: 사용자는 적합도 높은 신규 공고를 이메일로 알림받는다
-- [ ] **MATCH-03**: 사용자는 적합도 높은 신규 공고를 푸시 알림으로 받는다
+- [x] **MATCH-02**: 사용자는 적합도 높은 신규 공고를 이메일로 알림받는다
+- [x] **MATCH-03**: 사용자는 적합도 높은 신규 공고를 푸시 알림으로 받는다
 
 ### 웹·모바일 클라이언트 (Client)
 
@@ -89,8 +89,8 @@ Phase 5 시점 이후 "검토 가능"으로만 언급된, 아직 커밋되지 �
 | ING-03 | Phase 1 | Complete |
 | ING-04 | Phase 1 | Complete |
 | MATCH-01 | Phase 1 | Complete |
-| MATCH-02 | Phase 1 | Pending |
-| MATCH-03 | Phase 1 | Pending |
+| MATCH-02 | Phase 1 | Complete |
+| MATCH-03 | Phase 1 | Complete |
 | CLIENT-01 | Phase 1 | Complete |
 | CLIENT-02 | Phase 2 | Pending |
 | CLIENT-03 | Phase 2 | Pending |
