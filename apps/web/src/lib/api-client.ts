@@ -117,7 +117,16 @@ export function login(payload: LoginPayload): Promise<LoginResponse> {
   });
 }
 
-/** 회원가입/로그인 성공 후 JWT를 로컬에 저장한다. 02-03이 로그인 흐름에서도 재사용한다. */
+/**
+ * 회원가입/로그인 성공 후 JWT를 로컬에 저장한다. 02-03이 로그인 흐름에서도 재사용한다.
+ *
+ * T-02-19 (02-REVIEW.md WR-02) — 의식적으로 받아들인 MVP 트레이드오프: JWT를
+ * `window.localStorage`에 저장하므로 스크립트로 읽을 수 있어, XSS가 발생하면 토큰이
+ * 그대로 탈취될 수 있다(httpOnly 쿠키와 달리). 1인 개발 MVP 범위에서는 CSRF 방어까지
+ * 필요한 httpOnly 쿠키 전환 대신 이 트레이드오프를 유지한다. 프로덕션 강화 시 우선순위:
+ * (1) httpOnly + SameSite 쿠키 기반 인증(+ CSRF 토큰)으로 전환, 또는 (2) 최소한 엄격한
+ * CSP를 적용해 XSS 표면을 줄인다.
+ */
 const ACCESS_TOKEN_STORAGE_KEY = 'jodalmate_access_token';
 
 export function storeAccessToken(token: string): void {
