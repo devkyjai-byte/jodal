@@ -43,15 +43,16 @@ export class FixtureAnnouncementSourceAdapter implements AnnouncementSourcePort 
   ) {}
 
   fetchLatest(): Promise<RawAnnouncement[]> {
-    const path = join(
-      __dirname,
-      '..',
-      '..',
-      '..',
-      'tests',
-      'fixtures',
-      this.fixtureFileName,
-    );
+    // process.cwd() (항상 apps/api — npm scripts와 `node dist/main.js` 모두 여기서
+    // 실행됨), __dirname이 아니라 이 값을 기준으로 삼는다. ts-jest는 src/ 아래에서
+    // 이 파일을 직접 실행하므로 __dirname 기준 3단계 상위(../../..)가 우연히
+    // apps/api와 일치해 테스트는 항상 통과했지만, 실제 컴파일 빌드는 dist/src/...
+    // 구조로 한 단계 더 깊어져(__dirname이 dist/src/announcements/adapters) 동일한
+    // 3단계로는 dist/까지만 올라가 `dist/tests/fixtures/...`를 찾다가 실패했다 —
+    // `npm run build && npm run start:prod`(ANNOUNCEMENT_SOURCE=fixture가 기본값인
+    // 이 프로젝트의 현재 실제 배포 상태)에서 매 폴링마다 조용히 0건을 반환하는
+    // 회귀였다(UAT 중 실제 cron 틱을 관찰하다 발견).
+    const path = join(process.cwd(), 'tests', 'fixtures', this.fixtureFileName);
 
     let records: FixtureRecord[];
     try {
