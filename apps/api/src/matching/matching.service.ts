@@ -108,11 +108,19 @@ export class MatchingService {
 
     // Prisma의 `startsWith`는 바인드 파라미터로 완성된 리터럴 패턴('prefix%')을 전달한다 —
     // 컬럼 대 컬럼 조인이 아니므로 varchar_pattern_ops 인덱스 레인지 스캔을 탈 수 있다.
+    // classificationCode가 NULL인 공고(실제 나라장터 API — getBidPblancListInfoServc는
+    // 물품분류번호를 제공하지 않음이 라이브 검증으로 확인됨, deferred-items.md 참고)도
+    // 후보에 포함한다 — findCandidateCompanyIds()(팬아웃 재매칭 경로)는 이미 이렇게
+    // 동작하고 있었는데, 이 동기 재계산 경로만 빠뜨려 "신규 공고가 들어올 때는 보이지만
+    // 새로 가입해 재계산할 때는 안 보이는" 순서 의존적 비대칭이 있었다.
     const announcements = await this.prisma.bidAnnouncement.findMany({
       where: {
-        OR: prefixes.map((prefix) => ({
-          classificationCode: { startsWith: prefix },
-        })),
+        OR: [
+          ...prefixes.map((prefix) => ({
+            classificationCode: { startsWith: prefix },
+          })),
+          { classificationCode: null },
+        ],
       },
     });
 

@@ -41,10 +41,31 @@ function makeFakePrisma(fixtures: {
 
   const prisma = {
     bidAnnouncement: {
-      findMany: ({ where }: { where: { id: { in: string[] } } }) =>
-        Promise.resolve(
-          fixtures.announcements.filter((a) => where.id.in.includes(a.id)),
-        ),
+      findMany: ({
+        where,
+      }: {
+        where:
+          | { id: { in: string[] } }
+          | { OR: Array<{ classificationCode: unknown }> };
+      }) => {
+        if ('id' in where) {
+          return Promise.resolve(
+            fixtures.announcements.filter((a) => where.id.in.includes(a.id)),
+          );
+        }
+        // scoreAndUpsert()의 OR절 형태 — startsWith 프리픽스 매치 또는 classificationCode
+        // null 공고를 후보로 포함한다(이 테스트가 검증하는 정확한 지점).
+        return Promise.resolve(
+          fixtures.announcements.filter((a) =>
+            where.OR.some((clause) => {
+              const cc = clause.classificationCode;
+              if (cc === null) return a.classificationCode === null;
+              const startsWith = (cc as { startsWith: string }).startsWith;
+              return a.classificationCode?.startsWith(startsWith) ?? false;
+            }),
+          ),
+        );
+      },
     },
     companyClassificationCode: {
       findMany: ({
@@ -234,6 +255,44 @@ describe('MatchingService.scoreAndUpsertForAnnouncements (팬아웃 재매칭)',
     const service = new MatchingService(prisma, makeStubNotificationsService());
     const result = await service.scoreAndUpsertForAnnouncements([]);
     expect(result).toEqual({ matchIds: [] });
+  });
+});
+
+/**
+ * 회귀 테스트 — classificationCode가 NULL인 공고(실제 나라장터 getBidPblancListInfoServc는
+ * 물품분류번호를 제공하지 않음, deferred-items.md 참고)가 scoreAndUpsert()(업체 프로필
+ * 등록/수정 시 동기 재계산 경로)의 후보에서도 fanout 경로(scoreAndUpsertForAnnouncements)와
+ * 동일하게 포함되는지 검증한다. 이 fix 이전에는 fanout 경로만 NULL을 후보로 남겼고, 이
+ * 동기 경로는 `startsWith` OR절만 써서 NULL 공고를 전부 걸러냈다 — "신규 공고가 들어올 때는
+ * 보이지만 새로 가입해서 재계산할 때는 안 보이는" 순서 의존적 비대칭이었다.
+ */
+describe('MatchingService.scoreAndUpsert — classificationCode NULL 공고 후보 포함', () => {
+  it('회사가 분류코드를 등록해도 classificationCode가 NULL인 공고가 후보에서 빠지지 않는다', async () => {
+    const { prisma, matchRows } = makeFakePrisma({
+      announcements: [
+        { id: 'ann-null', classificationCode: null, regionCodes: [] },
+        { id: 'ann-43', classificationCode: '43211501', regionCodes: [] },
+        { id: 'ann-unrelated', classificationCode: '99', regionCodes: [] },
+      ],
+      companies: [
+        {
+          id: 'company-1',
+          regionCodes: [],
+          classificationCodes: [{ classificationCode: '43' }],
+          performances: [],
+          certifications: [],
+        },
+      ],
+      companyClassificationCodeRows: [],
+    });
+
+    const service = new MatchingService(prisma, makeStubNotificationsService());
+    await service.scoreAndUpsert('company-1');
+
+    const matchedAnnouncementIds = matchRows.map((m) => m.announcementId);
+    expect(matchedAnnouncementIds).toContain('ann-null');
+    expect(matchedAnnouncementIds).toContain('ann-43');
+    expect(matchedAnnouncementIds).not.toContain('ann-unrelated');
   });
 });
 
