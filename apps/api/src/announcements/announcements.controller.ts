@@ -1,4 +1,12 @@
-import { Controller, Get, Param, Query, Req, UseGuards } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Param,
+  ParseUUIDPipe,
+  Query,
+  Req,
+  UseGuards,
+} from '@nestjs/common';
 import type { Request } from 'express';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import type { JwtPayload } from '../auth/jwt.strategy';
@@ -38,8 +46,8 @@ export class AnnouncementsController {
   @Get('announcements/:id')
   getDetail(
     @Req() req: AuthenticatedRequest,
-    @Param('id') id: string,
-    @Query('match_id') matchId?: string,
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Query('match_id', new ParseUUIDPipe({ optional: true })) matchId?: string,
   ): Promise<AnnouncementDetailResponseDto> {
     return this.announcementsService.getDetail(req.user.companyId, id, matchId);
   }

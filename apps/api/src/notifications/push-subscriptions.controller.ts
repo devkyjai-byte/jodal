@@ -5,6 +5,7 @@ import {
   HttpCode,
   HttpStatus,
   Param,
+  ParseUUIDPipe,
   Post,
   Req,
   UseGuards,
@@ -46,7 +47,7 @@ export class PushSubscriptionsController {
   @HttpCode(HttpStatus.NO_CONTENT)
   async unsubscribe(
     @Req() req: AuthenticatedRequest,
-    @Param('id') id: string,
+    @Param('id', new ParseUUIDPipe()) id: string,
   ): Promise<void> {
     await this.notificationsService.deletePushSubscription(
       req.user.companyId,

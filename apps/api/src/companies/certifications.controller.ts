@@ -6,6 +6,7 @@ import {
   HttpCode,
   HttpStatus,
   Param,
+  ParseUUIDPipe,
   Post,
   Req,
   UseGuards,
@@ -74,7 +75,7 @@ export class CertificationsController {
   @HttpCode(HttpStatus.NO_CONTENT)
   async remove(
     @Req() req: AuthenticatedRequest,
-    @Param('id') id: string,
+    @Param('id', new ParseUUIDPipe()) id: string,
   ): Promise<void> {
     await this.companiesService.deleteCertification(req.user.companyId, id);
   }
