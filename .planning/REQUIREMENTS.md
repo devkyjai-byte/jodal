@@ -20,17 +20,17 @@
 - [x] **ING-01**: 시스템은 나라장터 입찰공고를 배치로 자동 수집한다 (일 4~6회 폴링)
 - [x] **ING-02**: 시스템은 수집한 공고문에서 품목·지역·참가자격 조건을 파싱해 정규화한다
 - [x] **ING-03**: 시스템은 중복 공고와 개정 공고를 하나로 병합한다
-- [ ] **ING-04**: 사용자는 공고를 키워드·업종·지역·마감일로 검색·필터링할 수 있다
+- [x] **ING-04**: 사용자는 공고를 키워드·업종·지역·마감일로 검색·필터링할 수 있다
 
 ### 맞춤 매칭·알림 (Match) — MVP 핵심
 
-- [ ] **MATCH-01**: 시스템은 업체 프로필과 신규 공고를 자동으로 스코어링해 매칭한다
+- [x] **MATCH-01**: 시스템은 업체 프로필과 신규 공고를 자동으로 스코어링해 매칭한다
 - [ ] **MATCH-02**: 사용자는 적합도 높은 신규 공고를 이메일로 알림받는다
 - [ ] **MATCH-03**: 사용자는 적합도 높은 신규 공고를 푸시 알림으로 받는다
 
 ### 웹·모바일 클라이언트 (Client)
 
-- [ ] **CLIENT-01**: 사용자는 웹 브라우저에서 반응형 UI(Next.js PWA)로 서비스를 이용할 수 있다
+- [x] **CLIENT-01**: 사용자는 웹 브라우저에서 반응형 UI(Next.js PWA)로 서비스를 이용할 수 있다
 - [ ] **CLIENT-02**: 사용자는 iOS App Store에서 앱을 설치해 이용할 수 있다 (Capacitor 래핑)
 - [ ] **CLIENT-03**: 사용자는 Google Play에서 앱을 설치해 이용할 수 있다 (Capacitor 래핑)
 - [ ] **CLIENT-04**: 사용자는 모바일 앱에서 네이티브 푸시 알림(FCM/APNs)을 받는다
@@ -87,11 +87,11 @@ Phase 5 시점 이후 "검토 가능"으로만 언급된, 아직 커밋되지 �
 | ING-01 | Phase 1 | Complete |
 | ING-02 | Phase 1 | Complete |
 | ING-03 | Phase 1 | Complete |
-| ING-04 | Phase 1 | Pending |
-| MATCH-01 | Phase 1 | Pending |
+| ING-04 | Phase 1 | Complete |
+| MATCH-01 | Phase 1 | Complete |
 | MATCH-02 | Phase 1 | Pending |
 | MATCH-03 | Phase 1 | Pending |
-| CLIENT-01 | Phase 1 | Pending |
+| CLIENT-01 | Phase 1 | Complete |
 | CLIENT-02 | Phase 2 | Pending |
 | CLIENT-03 | Phase 2 | Pending |
 | CLIENT-04 | Phase 2 | Pending |
