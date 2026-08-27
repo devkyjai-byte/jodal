@@ -70,7 +70,8 @@ None yet.
 
 ### Blockers/Concerns
 
-- **사용자 액션 대기 (Phase 1 human_needed 항목)**: (1) 공공데이터포털 나라장터 API 4종 활용 신청 미제출 — `docs/design/api-신청-체크리스트.md` 체크리스트 완성됨, 실제 제출은 사용자가 해야 함. (2) 도메인(jodalmate.co.kr 등) 미구매 — `docs/design/도메인-서비스명-체크리스트.md` 참고. Phase 2는 API 미승인 상태에서도 시드 데이터로 진행 가능했으나, 실공고 수집(ING-01)은 승인 후 연동 필요 — `ANNOUNCEMENT_SOURCE=g2b` 전환 시 재검증 필요(현재 `region_codes: []` 하드코딩 상태, T-02-21급 재점검 권장).
+- **나라장터 입찰공고정보서비스 API 승인 완료(2026-08-27)** — 사용자가 실제 서비스키를 받아 라이브 검증함. 필수 파라미터 누락·에러 응답 미감지·원문 링크 오류 3건을 발견·수정(커밋 8c870be), 실제 공고 100건 수집 확인. **단, `classificationCode`(물품분류번호)가 이 API 응답에 아예 없음이 확인됨** — `ANNOUNCEMENT_SOURCE=g2b`로 전환해도 업종 기반 매칭(MVP 핵심 가치)이 지금 상태로는 동작하지 않음. 별도 API 연동 또는 텍스트 기반 추정이 필요 — `.planning/phases/02-mvp/deferred-items.md` 항목 2 참고, 다음 세션에서 우선 논의 필요.
+- 도메인(jodalmate.co.kr 등) 미구매 — `docs/design/도메인-서비스명-체크리스트.md` 참고.
 
 ## Deferred Items
 
