@@ -6,7 +6,7 @@
     "title": "합성 공고 1 (분류 43211501)",
     "classificationCode": "43211501",
     "regionCodes": [
-      "11"
+      "서울특별시"
     ],
     "agencyName": "벌크 테스트 기관 1",
     "budgetAmount": "10000137",
@@ -24,7 +24,7 @@
     "title": "합성 공고 2 (분류 43211502)",
     "classificationCode": "43211502",
     "regionCodes": [
-      "26"
+      "부산광역시"
     ],
     "agencyName": "벌크 테스트 기관 2",
     "budgetAmount": "10000274",
@@ -42,7 +42,7 @@
     "title": "합성 공고 3 (분류 43211503)",
     "classificationCode": "43211503",
     "regionCodes": [
-      "41"
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 3",
     "budgetAmount": "10000411",
@@ -60,7 +60,7 @@
     "title": "합성 공고 4 (분류 43233501)",
     "classificationCode": "43233501",
     "regionCodes": [
-      "48"
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 4",
     "budgetAmount": "10000548",
@@ -94,8 +94,8 @@
     "title": "합성 공고 6 (분류 43211501)",
     "classificationCode": "43211501",
     "regionCodes": [
-      "11",
-      "41"
+      "서울특별시",
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 6",
     "budgetAmount": "10000822",
@@ -113,8 +113,8 @@
     "title": "합성 공고 7 (분류 43211502)",
     "classificationCode": "43211502",
     "regionCodes": [
-      "26",
-      "48"
+      "부산광역시",
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 7",
     "budgetAmount": "10000959",
@@ -132,7 +132,7 @@
     "title": "합성 공고 8 (분류 43211503)",
     "classificationCode": "43211503",
     "regionCodes": [
-      "11"
+      "서울특별시"
     ],
     "agencyName": "벌크 테스트 기관 8",
     "budgetAmount": "10001096",
@@ -150,7 +150,7 @@
     "title": "합성 공고 9 (분류 43233501)",
     "classificationCode": "43233501",
     "regionCodes": [
-      "26"
+      "부산광역시"
     ],
     "agencyName": "벌크 테스트 기관 9",
     "budgetAmount": "10001233",
@@ -168,7 +168,7 @@
     "title": "합성 공고 10 (분류 43223001)",
     "classificationCode": "43223001",
     "regionCodes": [
-      "41"
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 0",
     "budgetAmount": "10001370",
@@ -186,7 +186,7 @@
     "title": "합성 공고 11 (분류 43211501)",
     "classificationCode": "43211501",
     "regionCodes": [
-      "48"
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 1",
     "budgetAmount": "10001507",
@@ -220,8 +220,8 @@
     "title": "합성 공고 13 (분류 43211503)",
     "classificationCode": "43211503",
     "regionCodes": [
-      "11",
-      "41"
+      "서울특별시",
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 3",
     "budgetAmount": "10001781",
@@ -239,8 +239,8 @@
     "title": "합성 공고 14 (분류 43233501)",
     "classificationCode": "43233501",
     "regionCodes": [
-      "26",
-      "48"
+      "부산광역시",
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 4",
     "budgetAmount": "10001918",
@@ -258,7 +258,7 @@
     "title": "합성 공고 15 (분류 43223001)",
     "classificationCode": "43223001",
     "regionCodes": [
-      "11"
+      "서울특별시"
     ],
     "agencyName": "벌크 테스트 기관 5",
     "budgetAmount": "10002055",
@@ -276,7 +276,7 @@
     "title": "합성 공고 16 (분류 43211501)",
     "classificationCode": "43211501",
     "regionCodes": [
-      "26"
+      "부산광역시"
     ],
     "agencyName": "벌크 테스트 기관 6",
     "budgetAmount": "10002192",
@@ -294,7 +294,7 @@
     "title": "합성 공고 17 (분류 43211502)",
     "classificationCode": "43211502",
     "regionCodes": [
-      "41"
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 7",
     "budgetAmount": "10002329",
@@ -312,7 +312,7 @@
     "title": "합성 공고 18 (분류 43211503)",
     "classificationCode": "43211503",
     "regionCodes": [
-      "48"
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 8",
     "budgetAmount": "10002466",
@@ -346,8 +346,8 @@
     "title": "합성 공고 20 (분류 43223001)",
     "classificationCode": "43223001",
     "regionCodes": [
-      "11",
-      "41"
+      "서울특별시",
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 0",
     "budgetAmount": "10002740",
@@ -365,8 +365,8 @@
     "title": "합성 공고 21 (분류 43211501)",
     "classificationCode": "43211501",
     "regionCodes": [
-      "26",
-      "48"
+      "부산광역시",
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 1",
     "budgetAmount": "10002877",
@@ -384,7 +384,7 @@
     "title": "합성 공고 22 (분류 43211502)",
     "classificationCode": "43211502",
     "regionCodes": [
-      "11"
+      "서울특별시"
     ],
     "agencyName": "벌크 테스트 기관 2",
     "budgetAmount": "10003014",
@@ -402,7 +402,7 @@
     "title": "합성 공고 23 (분류 43211503)",
     "classificationCode": "43211503",
     "regionCodes": [
-      "26"
+      "부산광역시"
     ],
     "agencyName": "벌크 테스트 기관 3",
     "budgetAmount": "10003151",
@@ -420,7 +420,7 @@
     "title": "합성 공고 24 (분류 43233501)",
     "classificationCode": "43233501",
     "regionCodes": [
-      "41"
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 4",
     "budgetAmount": "10003288",
@@ -438,7 +438,7 @@
     "title": "합성 공고 25 (분류 43223001)",
     "classificationCode": "43223001",
     "regionCodes": [
-      "48"
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 5",
     "budgetAmount": "10003425",
@@ -472,8 +472,8 @@
     "title": "합성 공고 27 (분류 43211502)",
     "classificationCode": "43211502",
     "regionCodes": [
-      "11",
-      "41"
+      "서울특별시",
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 7",
     "budgetAmount": "10003699",
@@ -491,8 +491,8 @@
     "title": "합성 공고 28 (분류 43211503)",
     "classificationCode": "43211503",
     "regionCodes": [
-      "26",
-      "48"
+      "부산광역시",
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 8",
     "budgetAmount": "10003836",
@@ -510,7 +510,7 @@
     "title": "합성 공고 29 (분류 43233501)",
     "classificationCode": "43233501",
     "regionCodes": [
-      "11"
+      "서울특별시"
     ],
     "agencyName": "벌크 테스트 기관 9",
     "budgetAmount": "10003973",
@@ -528,7 +528,7 @@
     "title": "합성 공고 30 (분류 43223001)",
     "classificationCode": "43223001",
     "regionCodes": [
-      "26"
+      "부산광역시"
     ],
     "agencyName": "벌크 테스트 기관 0",
     "budgetAmount": "10004110",
@@ -546,7 +546,7 @@
     "title": "합성 공고 31 (분류 43211501)",
     "classificationCode": "43211501",
     "regionCodes": [
-      "41"
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 1",
     "budgetAmount": "10004247",
@@ -564,7 +564,7 @@
     "title": "합성 공고 32 (분류 43211502)",
     "classificationCode": "43211502",
     "regionCodes": [
-      "48"
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 2",
     "budgetAmount": "10004384",
@@ -598,8 +598,8 @@
     "title": "합성 공고 34 (분류 43233501)",
     "classificationCode": "43233501",
     "regionCodes": [
-      "11",
-      "41"
+      "서울특별시",
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 4",
     "budgetAmount": "10004658",
@@ -617,8 +617,8 @@
     "title": "합성 공고 35 (분류 43223001)",
     "classificationCode": "43223001",
     "regionCodes": [
-      "26",
-      "48"
+      "부산광역시",
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 5",
     "budgetAmount": "10004795",
@@ -636,7 +636,7 @@
     "title": "합성 공고 36 (분류 43211501)",
     "classificationCode": "43211501",
     "regionCodes": [
-      "11"
+      "서울특별시"
     ],
     "agencyName": "벌크 테스트 기관 6",
     "budgetAmount": "10004932",
@@ -654,7 +654,7 @@
     "title": "합성 공고 37 (분류 43211502)",
     "classificationCode": "43211502",
     "regionCodes": [
-      "26"
+      "부산광역시"
     ],
     "agencyName": "벌크 테스트 기관 7",
     "budgetAmount": "10005069",
@@ -672,7 +672,7 @@
     "title": "합성 공고 38 (분류 43211503)",
     "classificationCode": "43211503",
     "regionCodes": [
-      "41"
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 8",
     "budgetAmount": "10005206",
@@ -690,7 +690,7 @@
     "title": "합성 공고 39 (분류 43233501)",
     "classificationCode": "43233501",
     "regionCodes": [
-      "48"
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 9",
     "budgetAmount": "10005343",
@@ -724,8 +724,8 @@
     "title": "합성 공고 41 (분류 43211501)",
     "classificationCode": "43211501",
     "regionCodes": [
-      "11",
-      "41"
+      "서울특별시",
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 1",
     "budgetAmount": "10005617",
@@ -743,8 +743,8 @@
     "title": "합성 공고 42 (분류 43211502)",
     "classificationCode": "43211502",
     "regionCodes": [
-      "26",
-      "48"
+      "부산광역시",
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 2",
     "budgetAmount": "10005754",
@@ -762,7 +762,7 @@
     "title": "합성 공고 43 (분류 43211503)",
     "classificationCode": "43211503",
     "regionCodes": [
-      "11"
+      "서울특별시"
     ],
     "agencyName": "벌크 테스트 기관 3",
     "budgetAmount": "10005891",
@@ -780,7 +780,7 @@
     "title": "합성 공고 44 (분류 43233501)",
     "classificationCode": "43233501",
     "regionCodes": [
-      "26"
+      "부산광역시"
     ],
     "agencyName": "벌크 테스트 기관 4",
     "budgetAmount": "10006028",
@@ -798,7 +798,7 @@
     "title": "합성 공고 45 (분류 43223001)",
     "classificationCode": "43223001",
     "regionCodes": [
-      "41"
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 5",
     "budgetAmount": "10006165",
@@ -816,7 +816,7 @@
     "title": "합성 공고 46 (분류 43211501)",
     "classificationCode": "43211501",
     "regionCodes": [
-      "48"
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 6",
     "budgetAmount": "10006302",
@@ -850,8 +850,8 @@
     "title": "합성 공고 48 (분류 43211503)",
     "classificationCode": "43211503",
     "regionCodes": [
-      "11",
-      "41"
+      "서울특별시",
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 8",
     "budgetAmount": "10006576",
@@ -869,8 +869,8 @@
     "title": "합성 공고 49 (분류 43233501)",
     "classificationCode": "43233501",
     "regionCodes": [
-      "26",
-      "48"
+      "부산광역시",
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 9",
     "budgetAmount": "10006713",
@@ -888,7 +888,7 @@
     "title": "합성 공고 50 (분류 43223001)",
     "classificationCode": "43223001",
     "regionCodes": [
-      "11"
+      "서울특별시"
     ],
     "agencyName": "벌크 테스트 기관 0",
     "budgetAmount": "10006850",
@@ -906,7 +906,7 @@
     "title": "합성 공고 51 (분류 44121511)",
     "classificationCode": "44121511",
     "regionCodes": [
-      "11"
+      "서울특별시"
     ],
     "agencyName": "벌크 테스트 기관 1",
     "budgetAmount": "10006987",
@@ -924,7 +924,7 @@
     "title": "합성 공고 52 (분류 44121512)",
     "classificationCode": "44121512",
     "regionCodes": [
-      "26"
+      "부산광역시"
     ],
     "agencyName": "벌크 테스트 기관 2",
     "budgetAmount": "10007124",
@@ -942,7 +942,7 @@
     "title": "합성 공고 53 (분류 44103104)",
     "classificationCode": "44103104",
     "regionCodes": [
-      "41"
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 3",
     "budgetAmount": "10007261",
@@ -960,7 +960,7 @@
     "title": "합성 공고 54 (분류 44122011)",
     "classificationCode": "44122011",
     "regionCodes": [
-      "48"
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 4",
     "budgetAmount": "10007398",
@@ -994,8 +994,8 @@
     "title": "합성 공고 56 (분류 44121511)",
     "classificationCode": "44121511",
     "regionCodes": [
-      "11",
-      "41"
+      "서울특별시",
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 6",
     "budgetAmount": "10007672",
@@ -1013,8 +1013,8 @@
     "title": "합성 공고 57 (분류 44121512)",
     "classificationCode": "44121512",
     "regionCodes": [
-      "26",
-      "48"
+      "부산광역시",
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 7",
     "budgetAmount": "10007809",
@@ -1032,7 +1032,7 @@
     "title": "합성 공고 58 (분류 44103104)",
     "classificationCode": "44103104",
     "regionCodes": [
-      "11"
+      "서울특별시"
     ],
     "agencyName": "벌크 테스트 기관 8",
     "budgetAmount": "10007946",
@@ -1050,7 +1050,7 @@
     "title": "합성 공고 59 (분류 44122011)",
     "classificationCode": "44122011",
     "regionCodes": [
-      "26"
+      "부산광역시"
     ],
     "agencyName": "벌크 테스트 기관 9",
     "budgetAmount": "10008083",
@@ -1068,7 +1068,7 @@
     "title": "합성 공고 60 (분류 44101801)",
     "classificationCode": "44101801",
     "regionCodes": [
-      "41"
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 0",
     "budgetAmount": "10008220",
@@ -1086,7 +1086,7 @@
     "title": "합성 공고 61 (분류 44121511)",
     "classificationCode": "44121511",
     "regionCodes": [
-      "48"
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 1",
     "budgetAmount": "10008357",
@@ -1120,8 +1120,8 @@
     "title": "합성 공고 63 (분류 44103104)",
     "classificationCode": "44103104",
     "regionCodes": [
-      "11",
-      "41"
+      "서울특별시",
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 3",
     "budgetAmount": "10008631",
@@ -1139,8 +1139,8 @@
     "title": "합성 공고 64 (분류 44122011)",
     "classificationCode": "44122011",
     "regionCodes": [
-      "26",
-      "48"
+      "부산광역시",
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 4",
     "budgetAmount": "10008768",
@@ -1158,7 +1158,7 @@
     "title": "합성 공고 65 (분류 44101801)",
     "classificationCode": "44101801",
     "regionCodes": [
-      "11"
+      "서울특별시"
     ],
     "agencyName": "벌크 테스트 기관 5",
     "budgetAmount": "10008905",
@@ -1176,7 +1176,7 @@
     "title": "합성 공고 66 (분류 44121511)",
     "classificationCode": "44121511",
     "regionCodes": [
-      "26"
+      "부산광역시"
     ],
     "agencyName": "벌크 테스트 기관 6",
     "budgetAmount": "10009042",
@@ -1194,7 +1194,7 @@
     "title": "합성 공고 67 (분류 44121512)",
     "classificationCode": "44121512",
     "regionCodes": [
-      "41"
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 7",
     "budgetAmount": "10009179",
@@ -1212,7 +1212,7 @@
     "title": "합성 공고 68 (분류 44103104)",
     "classificationCode": "44103104",
     "regionCodes": [
-      "48"
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 8",
     "budgetAmount": "10009316",
@@ -1246,8 +1246,8 @@
     "title": "합성 공고 70 (분류 44101801)",
     "classificationCode": "44101801",
     "regionCodes": [
-      "11",
-      "41"
+      "서울특별시",
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 0",
     "budgetAmount": "10009590",
@@ -1265,8 +1265,8 @@
     "title": "합성 공고 71 (분류 44121511)",
     "classificationCode": "44121511",
     "regionCodes": [
-      "26",
-      "48"
+      "부산광역시",
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 1",
     "budgetAmount": "10009727",
@@ -1284,7 +1284,7 @@
     "title": "합성 공고 72 (분류 44121512)",
     "classificationCode": "44121512",
     "regionCodes": [
-      "11"
+      "서울특별시"
     ],
     "agencyName": "벌크 테스트 기관 2",
     "budgetAmount": "10009864",
@@ -1302,7 +1302,7 @@
     "title": "합성 공고 73 (분류 44103104)",
     "classificationCode": "44103104",
     "regionCodes": [
-      "26"
+      "부산광역시"
     ],
     "agencyName": "벌크 테스트 기관 3",
     "budgetAmount": "10010001",
@@ -1320,7 +1320,7 @@
     "title": "합성 공고 74 (분류 44122011)",
     "classificationCode": "44122011",
     "regionCodes": [
-      "41"
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 4",
     "budgetAmount": "10010138",
@@ -1338,7 +1338,7 @@
     "title": "합성 공고 75 (분류 44101801)",
     "classificationCode": "44101801",
     "regionCodes": [
-      "48"
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 5",
     "budgetAmount": "10010275",
@@ -1372,8 +1372,8 @@
     "title": "합성 공고 77 (분류 44121512)",
     "classificationCode": "44121512",
     "regionCodes": [
-      "11",
-      "41"
+      "서울특별시",
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 7",
     "budgetAmount": "10010549",
@@ -1391,8 +1391,8 @@
     "title": "합성 공고 78 (분류 44103104)",
     "classificationCode": "44103104",
     "regionCodes": [
-      "26",
-      "48"
+      "부산광역시",
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 8",
     "budgetAmount": "10010686",
@@ -1410,7 +1410,7 @@
     "title": "합성 공고 79 (분류 44122011)",
     "classificationCode": "44122011",
     "regionCodes": [
-      "11"
+      "서울특별시"
     ],
     "agencyName": "벌크 테스트 기관 9",
     "budgetAmount": "10010823",
@@ -1428,7 +1428,7 @@
     "title": "합성 공고 80 (분류 44101801)",
     "classificationCode": "44101801",
     "regionCodes": [
-      "26"
+      "부산광역시"
     ],
     "agencyName": "벌크 테스트 기관 0",
     "budgetAmount": "10010960",
@@ -1446,7 +1446,7 @@
     "title": "합성 공고 81 (분류 44121511)",
     "classificationCode": "44121511",
     "regionCodes": [
-      "41"
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 1",
     "budgetAmount": "10011097",
@@ -1464,7 +1464,7 @@
     "title": "합성 공고 82 (분류 44121512)",
     "classificationCode": "44121512",
     "regionCodes": [
-      "48"
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 2",
     "budgetAmount": "10011234",
@@ -1498,8 +1498,8 @@
     "title": "합성 공고 84 (분류 44122011)",
     "classificationCode": "44122011",
     "regionCodes": [
-      "11",
-      "41"
+      "서울특별시",
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 4",
     "budgetAmount": "10011508",
@@ -1517,8 +1517,8 @@
     "title": "합성 공고 85 (분류 44101801)",
     "classificationCode": "44101801",
     "regionCodes": [
-      "26",
-      "48"
+      "부산광역시",
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 5",
     "budgetAmount": "10011645",
@@ -1536,7 +1536,7 @@
     "title": "합성 공고 86 (분류 44121511)",
     "classificationCode": "44121511",
     "regionCodes": [
-      "11"
+      "서울특별시"
     ],
     "agencyName": "벌크 테스트 기관 6",
     "budgetAmount": "10011782",
@@ -1554,7 +1554,7 @@
     "title": "합성 공고 87 (분류 44121512)",
     "classificationCode": "44121512",
     "regionCodes": [
-      "26"
+      "부산광역시"
     ],
     "agencyName": "벌크 테스트 기관 7",
     "budgetAmount": "10011919",
@@ -1572,7 +1572,7 @@
     "title": "합성 공고 88 (분류 44103104)",
     "classificationCode": "44103104",
     "regionCodes": [
-      "41"
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 8",
     "budgetAmount": "10012056",
@@ -1590,7 +1590,7 @@
     "title": "합성 공고 89 (분류 44122011)",
     "classificationCode": "44122011",
     "regionCodes": [
-      "48"
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 9",
     "budgetAmount": "10012193",
@@ -1624,8 +1624,8 @@
     "title": "합성 공고 91 (분류 44121511)",
     "classificationCode": "44121511",
     "regionCodes": [
-      "11",
-      "41"
+      "서울특별시",
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 1",
     "budgetAmount": "10012467",
@@ -1643,8 +1643,8 @@
     "title": "합성 공고 92 (분류 44121512)",
     "classificationCode": "44121512",
     "regionCodes": [
-      "26",
-      "48"
+      "부산광역시",
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 2",
     "budgetAmount": "10012604",
@@ -1662,7 +1662,7 @@
     "title": "합성 공고 93 (분류 44103104)",
     "classificationCode": "44103104",
     "regionCodes": [
-      "11"
+      "서울특별시"
     ],
     "agencyName": "벌크 테스트 기관 3",
     "budgetAmount": "10012741",
@@ -1680,7 +1680,7 @@
     "title": "합성 공고 94 (분류 44122011)",
     "classificationCode": "44122011",
     "regionCodes": [
-      "26"
+      "부산광역시"
     ],
     "agencyName": "벌크 테스트 기관 4",
     "budgetAmount": "10012878",
@@ -1698,7 +1698,7 @@
     "title": "합성 공고 95 (분류 44101801)",
     "classificationCode": "44101801",
     "regionCodes": [
-      "41"
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 5",
     "budgetAmount": "10013015",
@@ -1716,7 +1716,7 @@
     "title": "합성 공고 96 (분류 44121511)",
     "classificationCode": "44121511",
     "regionCodes": [
-      "48"
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 6",
     "budgetAmount": "10013152",
@@ -1750,8 +1750,8 @@
     "title": "합성 공고 98 (분류 44103104)",
     "classificationCode": "44103104",
     "regionCodes": [
-      "11",
-      "41"
+      "서울특별시",
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 8",
     "budgetAmount": "10013426",
@@ -1769,8 +1769,8 @@
     "title": "합성 공고 99 (분류 44122011)",
     "classificationCode": "44122011",
     "regionCodes": [
-      "26",
-      "48"
+      "부산광역시",
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 9",
     "budgetAmount": "10013563",
@@ -1788,7 +1788,7 @@
     "title": "합성 공고 100 (분류 44101801)",
     "classificationCode": "44101801",
     "regionCodes": [
-      "11"
+      "서울특별시"
     ],
     "agencyName": "벌크 테스트 기관 0",
     "budgetAmount": "10013700",
@@ -1806,7 +1806,7 @@
     "title": "합성 공고 101 (분류 55101500)",
     "classificationCode": "55101500",
     "regionCodes": [
-      "11"
+      "서울특별시"
     ],
     "agencyName": "벌크 테스트 기관 1",
     "budgetAmount": "10013837",
@@ -1824,7 +1824,7 @@
     "title": "합성 공고 102 (분류 55101501)",
     "classificationCode": "55101501",
     "regionCodes": [
-      "26"
+      "부산광역시"
     ],
     "agencyName": "벌크 테스트 기관 2",
     "budgetAmount": "10013974",
@@ -1842,7 +1842,7 @@
     "title": "합성 공고 103 (분류 55121904)",
     "classificationCode": "55121904",
     "regionCodes": [
-      "41"
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 3",
     "budgetAmount": "10014111",
@@ -1860,7 +1860,7 @@
     "title": "합성 공고 104 (분류 55111501)",
     "classificationCode": "55111501",
     "regionCodes": [
-      "48"
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 4",
     "budgetAmount": "10014248",
@@ -1894,8 +1894,8 @@
     "title": "합성 공고 106 (분류 55101500)",
     "classificationCode": "55101500",
     "regionCodes": [
-      "11",
-      "41"
+      "서울특별시",
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 6",
     "budgetAmount": "10014522",
@@ -1913,8 +1913,8 @@
     "title": "합성 공고 107 (분류 55101501)",
     "classificationCode": "55101501",
     "regionCodes": [
-      "26",
-      "48"
+      "부산광역시",
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 7",
     "budgetAmount": "10014659",
@@ -1932,7 +1932,7 @@
     "title": "합성 공고 108 (분류 55121904)",
     "classificationCode": "55121904",
     "regionCodes": [
-      "11"
+      "서울특별시"
     ],
     "agencyName": "벌크 테스트 기관 8",
     "budgetAmount": "10014796",
@@ -1950,7 +1950,7 @@
     "title": "합성 공고 109 (분류 55111501)",
     "classificationCode": "55111501",
     "regionCodes": [
-      "26"
+      "부산광역시"
     ],
     "agencyName": "벌크 테스트 기관 9",
     "budgetAmount": "10014933",
@@ -1968,7 +1968,7 @@
     "title": "합성 공고 110 (분류 55101902)",
     "classificationCode": "55101902",
     "regionCodes": [
-      "41"
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 0",
     "budgetAmount": "10015070",
@@ -1986,7 +1986,7 @@
     "title": "합성 공고 111 (분류 55101500)",
     "classificationCode": "55101500",
     "regionCodes": [
-      "48"
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 1",
     "budgetAmount": "10015207",
@@ -2020,8 +2020,8 @@
     "title": "합성 공고 113 (분류 55121904)",
     "classificationCode": "55121904",
     "regionCodes": [
-      "11",
-      "41"
+      "서울특별시",
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 3",
     "budgetAmount": "10015481",
@@ -2039,8 +2039,8 @@
     "title": "합성 공고 114 (분류 55111501)",
     "classificationCode": "55111501",
     "regionCodes": [
-      "26",
-      "48"
+      "부산광역시",
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 4",
     "budgetAmount": "10015618",
@@ -2058,7 +2058,7 @@
     "title": "합성 공고 115 (분류 55101902)",
     "classificationCode": "55101902",
     "regionCodes": [
-      "11"
+      "서울특별시"
     ],
     "agencyName": "벌크 테스트 기관 5",
     "budgetAmount": "10015755",
@@ -2076,7 +2076,7 @@
     "title": "합성 공고 116 (분류 55101500)",
     "classificationCode": "55101500",
     "regionCodes": [
-      "26"
+      "부산광역시"
     ],
     "agencyName": "벌크 테스트 기관 6",
     "budgetAmount": "10015892",
@@ -2094,7 +2094,7 @@
     "title": "합성 공고 117 (분류 55101501)",
     "classificationCode": "55101501",
     "regionCodes": [
-      "41"
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 7",
     "budgetAmount": "10016029",
@@ -2112,7 +2112,7 @@
     "title": "합성 공고 118 (분류 55121904)",
     "classificationCode": "55121904",
     "regionCodes": [
-      "48"
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 8",
     "budgetAmount": "10016166",
@@ -2146,8 +2146,8 @@
     "title": "합성 공고 120 (분류 55101902)",
     "classificationCode": "55101902",
     "regionCodes": [
-      "11",
-      "41"
+      "서울특별시",
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 0",
     "budgetAmount": "10016440",
@@ -2165,8 +2165,8 @@
     "title": "합성 공고 121 (분류 55101500)",
     "classificationCode": "55101500",
     "regionCodes": [
-      "26",
-      "48"
+      "부산광역시",
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 1",
     "budgetAmount": "10016577",
@@ -2184,7 +2184,7 @@
     "title": "합성 공고 122 (분류 55101501)",
     "classificationCode": "55101501",
     "regionCodes": [
-      "11"
+      "서울특별시"
     ],
     "agencyName": "벌크 테스트 기관 2",
     "budgetAmount": "10016714",
@@ -2202,7 +2202,7 @@
     "title": "합성 공고 123 (분류 55121904)",
     "classificationCode": "55121904",
     "regionCodes": [
-      "26"
+      "부산광역시"
     ],
     "agencyName": "벌크 테스트 기관 3",
     "budgetAmount": "10016851",
@@ -2220,7 +2220,7 @@
     "title": "합성 공고 124 (분류 55111501)",
     "classificationCode": "55111501",
     "regionCodes": [
-      "41"
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 4",
     "budgetAmount": "10016988",
@@ -2238,7 +2238,7 @@
     "title": "합성 공고 125 (분류 55101902)",
     "classificationCode": "55101902",
     "regionCodes": [
-      "48"
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 5",
     "budgetAmount": "10017125",
@@ -2272,8 +2272,8 @@
     "title": "합성 공고 127 (분류 55101501)",
     "classificationCode": "55101501",
     "regionCodes": [
-      "11",
-      "41"
+      "서울특별시",
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 7",
     "budgetAmount": "10017399",
@@ -2291,8 +2291,8 @@
     "title": "합성 공고 128 (분류 55121904)",
     "classificationCode": "55121904",
     "regionCodes": [
-      "26",
-      "48"
+      "부산광역시",
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 8",
     "budgetAmount": "10017536",
@@ -2310,7 +2310,7 @@
     "title": "합성 공고 129 (분류 55111501)",
     "classificationCode": "55111501",
     "regionCodes": [
-      "11"
+      "서울특별시"
     ],
     "agencyName": "벌크 테스트 기관 9",
     "budgetAmount": "10017673",
@@ -2328,7 +2328,7 @@
     "title": "합성 공고 130 (분류 55101902)",
     "classificationCode": "55101902",
     "regionCodes": [
-      "26"
+      "부산광역시"
     ],
     "agencyName": "벌크 테스트 기관 0",
     "budgetAmount": "10017810",
@@ -2346,7 +2346,7 @@
     "title": "합성 공고 131 (분류 55101500)",
     "classificationCode": "55101500",
     "regionCodes": [
-      "41"
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 1",
     "budgetAmount": "10017947",
@@ -2364,7 +2364,7 @@
     "title": "합성 공고 132 (분류 55101501)",
     "classificationCode": "55101501",
     "regionCodes": [
-      "48"
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 2",
     "budgetAmount": "10018084",
@@ -2398,8 +2398,8 @@
     "title": "합성 공고 134 (분류 55111501)",
     "classificationCode": "55111501",
     "regionCodes": [
-      "11",
-      "41"
+      "서울특별시",
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 4",
     "budgetAmount": "10018358",
@@ -2417,8 +2417,8 @@
     "title": "합성 공고 135 (분류 55101902)",
     "classificationCode": "55101902",
     "regionCodes": [
-      "26",
-      "48"
+      "부산광역시",
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 5",
     "budgetAmount": "10018495",
@@ -2436,7 +2436,7 @@
     "title": "합성 공고 136 (분류 55101500)",
     "classificationCode": "55101500",
     "regionCodes": [
-      "11"
+      "서울특별시"
     ],
     "agencyName": "벌크 테스트 기관 6",
     "budgetAmount": "10018632",
@@ -2454,7 +2454,7 @@
     "title": "합성 공고 137 (분류 55101501)",
     "classificationCode": "55101501",
     "regionCodes": [
-      "26"
+      "부산광역시"
     ],
     "agencyName": "벌크 테스트 기관 7",
     "budgetAmount": "10018769",
@@ -2472,7 +2472,7 @@
     "title": "합성 공고 138 (분류 55121904)",
     "classificationCode": "55121904",
     "regionCodes": [
-      "41"
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 8",
     "budgetAmount": "10018906",
@@ -2490,7 +2490,7 @@
     "title": "합성 공고 139 (분류 55111501)",
     "classificationCode": "55111501",
     "regionCodes": [
-      "48"
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 9",
     "budgetAmount": "10019043",
@@ -2524,8 +2524,8 @@
     "title": "합성 공고 141 (분류 55101500)",
     "classificationCode": "55101500",
     "regionCodes": [
-      "11",
-      "41"
+      "서울특별시",
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 1",
     "budgetAmount": "10019317",
@@ -2543,8 +2543,8 @@
     "title": "합성 공고 142 (분류 55101501)",
     "classificationCode": "55101501",
     "regionCodes": [
-      "26",
-      "48"
+      "부산광역시",
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 2",
     "budgetAmount": "10019454",
@@ -2562,7 +2562,7 @@
     "title": "합성 공고 143 (분류 55121904)",
     "classificationCode": "55121904",
     "regionCodes": [
-      "11"
+      "서울특별시"
     ],
     "agencyName": "벌크 테스트 기관 3",
     "budgetAmount": "10019591",
@@ -2580,7 +2580,7 @@
     "title": "합성 공고 144 (분류 55111501)",
     "classificationCode": "55111501",
     "regionCodes": [
-      "26"
+      "부산광역시"
     ],
     "agencyName": "벌크 테스트 기관 4",
     "budgetAmount": "10019728",
@@ -2598,7 +2598,7 @@
     "title": "합성 공고 145 (분류 55101902)",
     "classificationCode": "55101902",
     "regionCodes": [
-      "41"
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 5",
     "budgetAmount": "10019865",
@@ -2616,7 +2616,7 @@
     "title": "합성 공고 146 (분류 55101500)",
     "classificationCode": "55101500",
     "regionCodes": [
-      "48"
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 6",
     "budgetAmount": "10020002",
@@ -2650,8 +2650,8 @@
     "title": "합성 공고 148 (분류 55121904)",
     "classificationCode": "55121904",
     "regionCodes": [
-      "11",
-      "41"
+      "서울특별시",
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 8",
     "budgetAmount": "10020276",
@@ -2669,8 +2669,8 @@
     "title": "합성 공고 149 (분류 55111501)",
     "classificationCode": "55111501",
     "regionCodes": [
-      "26",
-      "48"
+      "부산광역시",
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 9",
     "budgetAmount": "10020413",
@@ -2688,7 +2688,7 @@
     "title": "합성 공고 150 (분류 55101902)",
     "classificationCode": "55101902",
     "regionCodes": [
-      "11"
+      "서울특별시"
     ],
     "agencyName": "벌크 테스트 기관 0",
     "budgetAmount": "10020550",
@@ -2706,7 +2706,7 @@
     "title": "합성 공고 151 (분류 72101500)",
     "classificationCode": "72101500",
     "regionCodes": [
-      "11"
+      "서울특별시"
     ],
     "agencyName": "벌크 테스트 기관 1",
     "budgetAmount": "10020687",
@@ -2724,7 +2724,7 @@
     "title": "합성 공고 152 (분류 72101501)",
     "classificationCode": "72101501",
     "regionCodes": [
-      "26"
+      "부산광역시"
     ],
     "agencyName": "벌크 테스트 기관 2",
     "budgetAmount": "10020824",
@@ -2742,7 +2742,7 @@
     "title": "합성 공고 153 (분류 72102103)",
     "classificationCode": "72102103",
     "regionCodes": [
-      "41"
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 3",
     "budgetAmount": "10020961",
@@ -2760,7 +2760,7 @@
     "title": "합성 공고 154 (분류 72141101)",
     "classificationCode": "72141101",
     "regionCodes": [
-      "48"
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 4",
     "budgetAmount": "10021098",
@@ -2794,8 +2794,8 @@
     "title": "합성 공고 156 (분류 72101500)",
     "classificationCode": "72101500",
     "regionCodes": [
-      "11",
-      "41"
+      "서울특별시",
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 6",
     "budgetAmount": "10021372",
@@ -2813,8 +2813,8 @@
     "title": "합성 공고 157 (분류 72101501)",
     "classificationCode": "72101501",
     "regionCodes": [
-      "26",
-      "48"
+      "부산광역시",
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 7",
     "budgetAmount": "10021509",
@@ -2832,7 +2832,7 @@
     "title": "합성 공고 158 (분류 72102103)",
     "classificationCode": "72102103",
     "regionCodes": [
-      "11"
+      "서울특별시"
     ],
     "agencyName": "벌크 테스트 기관 8",
     "budgetAmount": "10021646",
@@ -2850,7 +2850,7 @@
     "title": "합성 공고 159 (분류 72141101)",
     "classificationCode": "72141101",
     "regionCodes": [
-      "26"
+      "부산광역시"
     ],
     "agencyName": "벌크 테스트 기관 9",
     "budgetAmount": "10021783",
@@ -2868,7 +2868,7 @@
     "title": "합성 공고 160 (분류 72151602)",
     "classificationCode": "72151602",
     "regionCodes": [
-      "41"
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 0",
     "budgetAmount": "10021920",
@@ -2886,7 +2886,7 @@
     "title": "합성 공고 161 (분류 72101500)",
     "classificationCode": "72101500",
     "regionCodes": [
-      "48"
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 1",
     "budgetAmount": "10022057",
@@ -2920,8 +2920,8 @@
     "title": "합성 공고 163 (분류 72102103)",
     "classificationCode": "72102103",
     "regionCodes": [
-      "11",
-      "41"
+      "서울특별시",
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 3",
     "budgetAmount": "10022331",
@@ -2939,8 +2939,8 @@
     "title": "합성 공고 164 (분류 72141101)",
     "classificationCode": "72141101",
     "regionCodes": [
-      "26",
-      "48"
+      "부산광역시",
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 4",
     "budgetAmount": "10022468",
@@ -2958,7 +2958,7 @@
     "title": "합성 공고 165 (분류 72151602)",
     "classificationCode": "72151602",
     "regionCodes": [
-      "11"
+      "서울특별시"
     ],
     "agencyName": "벌크 테스트 기관 5",
     "budgetAmount": "10022605",
@@ -2976,7 +2976,7 @@
     "title": "합성 공고 166 (분류 72101500)",
     "classificationCode": "72101500",
     "regionCodes": [
-      "26"
+      "부산광역시"
     ],
     "agencyName": "벌크 테스트 기관 6",
     "budgetAmount": "10022742",
@@ -2994,7 +2994,7 @@
     "title": "합성 공고 167 (분류 72101501)",
     "classificationCode": "72101501",
     "regionCodes": [
-      "41"
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 7",
     "budgetAmount": "10022879",
@@ -3012,7 +3012,7 @@
     "title": "합성 공고 168 (분류 72102103)",
     "classificationCode": "72102103",
     "regionCodes": [
-      "48"
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 8",
     "budgetAmount": "10023016",
@@ -3046,8 +3046,8 @@
     "title": "합성 공고 170 (분류 72151602)",
     "classificationCode": "72151602",
     "regionCodes": [
-      "11",
-      "41"
+      "서울특별시",
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 0",
     "budgetAmount": "10023290",
@@ -3065,8 +3065,8 @@
     "title": "합성 공고 171 (분류 72101500)",
     "classificationCode": "72101500",
     "regionCodes": [
-      "26",
-      "48"
+      "부산광역시",
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 1",
     "budgetAmount": "10023427",
@@ -3084,7 +3084,7 @@
     "title": "합성 공고 172 (분류 72101501)",
     "classificationCode": "72101501",
     "regionCodes": [
-      "11"
+      "서울특별시"
     ],
     "agencyName": "벌크 테스트 기관 2",
     "budgetAmount": "10023564",
@@ -3102,7 +3102,7 @@
     "title": "합성 공고 173 (분류 72102103)",
     "classificationCode": "72102103",
     "regionCodes": [
-      "26"
+      "부산광역시"
     ],
     "agencyName": "벌크 테스트 기관 3",
     "budgetAmount": "10023701",
@@ -3120,7 +3120,7 @@
     "title": "합성 공고 174 (분류 72141101)",
     "classificationCode": "72141101",
     "regionCodes": [
-      "41"
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 4",
     "budgetAmount": "10023838",
@@ -3138,7 +3138,7 @@
     "title": "합성 공고 175 (분류 72151602)",
     "classificationCode": "72151602",
     "regionCodes": [
-      "48"
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 5",
     "budgetAmount": "10023975",
@@ -3172,8 +3172,8 @@
     "title": "합성 공고 177 (분류 72101501)",
     "classificationCode": "72101501",
     "regionCodes": [
-      "11",
-      "41"
+      "서울특별시",
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 7",
     "budgetAmount": "10024249",
@@ -3191,8 +3191,8 @@
     "title": "합성 공고 178 (분류 72102103)",
     "classificationCode": "72102103",
     "regionCodes": [
-      "26",
-      "48"
+      "부산광역시",
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 8",
     "budgetAmount": "10024386",
@@ -3210,7 +3210,7 @@
     "title": "합성 공고 179 (분류 72141101)",
     "classificationCode": "72141101",
     "regionCodes": [
-      "11"
+      "서울특별시"
     ],
     "agencyName": "벌크 테스트 기관 9",
     "budgetAmount": "10024523",
@@ -3228,7 +3228,7 @@
     "title": "합성 공고 180 (분류 72151602)",
     "classificationCode": "72151602",
     "regionCodes": [
-      "26"
+      "부산광역시"
     ],
     "agencyName": "벌크 테스트 기관 0",
     "budgetAmount": "10024660",
@@ -3246,7 +3246,7 @@
     "title": "합성 공고 181 (분류 72101500)",
     "classificationCode": "72101500",
     "regionCodes": [
-      "41"
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 1",
     "budgetAmount": "10024797",
@@ -3264,7 +3264,7 @@
     "title": "합성 공고 182 (분류 72101501)",
     "classificationCode": "72101501",
     "regionCodes": [
-      "48"
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 2",
     "budgetAmount": "10024934",
@@ -3298,8 +3298,8 @@
     "title": "합성 공고 184 (분류 72141101)",
     "classificationCode": "72141101",
     "regionCodes": [
-      "11",
-      "41"
+      "서울특별시",
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 4",
     "budgetAmount": "10025208",
@@ -3317,8 +3317,8 @@
     "title": "합성 공고 185 (분류 72151602)",
     "classificationCode": "72151602",
     "regionCodes": [
-      "26",
-      "48"
+      "부산광역시",
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 5",
     "budgetAmount": "10025345",
@@ -3336,7 +3336,7 @@
     "title": "합성 공고 186 (분류 72101500)",
     "classificationCode": "72101500",
     "regionCodes": [
-      "11"
+      "서울특별시"
     ],
     "agencyName": "벌크 테스트 기관 6",
     "budgetAmount": "10025482",
@@ -3354,7 +3354,7 @@
     "title": "합성 공고 187 (분류 72101501)",
     "classificationCode": "72101501",
     "regionCodes": [
-      "26"
+      "부산광역시"
     ],
     "agencyName": "벌크 테스트 기관 7",
     "budgetAmount": "10025619",
@@ -3372,7 +3372,7 @@
     "title": "합성 공고 188 (분류 72102103)",
     "classificationCode": "72102103",
     "regionCodes": [
-      "41"
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 8",
     "budgetAmount": "10025756",
@@ -3390,7 +3390,7 @@
     "title": "합성 공고 189 (분류 72141101)",
     "classificationCode": "72141101",
     "regionCodes": [
-      "48"
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 9",
     "budgetAmount": "10025893",
@@ -3424,8 +3424,8 @@
     "title": "합성 공고 191 (분류 72101500)",
     "classificationCode": "72101500",
     "regionCodes": [
-      "11",
-      "41"
+      "서울특별시",
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 1",
     "budgetAmount": "10026167",
@@ -3443,8 +3443,8 @@
     "title": "합성 공고 192 (분류 72101501)",
     "classificationCode": "72101501",
     "regionCodes": [
-      "26",
-      "48"
+      "부산광역시",
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 2",
     "budgetAmount": "10026304",
@@ -3462,7 +3462,7 @@
     "title": "합성 공고 193 (분류 72102103)",
     "classificationCode": "72102103",
     "regionCodes": [
-      "11"
+      "서울특별시"
     ],
     "agencyName": "벌크 테스트 기관 3",
     "budgetAmount": "10026441",
@@ -3480,7 +3480,7 @@
     "title": "합성 공고 194 (분류 72141101)",
     "classificationCode": "72141101",
     "regionCodes": [
-      "26"
+      "부산광역시"
     ],
     "agencyName": "벌크 테스트 기관 4",
     "budgetAmount": "10026578",
@@ -3498,7 +3498,7 @@
     "title": "합성 공고 195 (분류 72151602)",
     "classificationCode": "72151602",
     "regionCodes": [
-      "41"
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 5",
     "budgetAmount": "10026715",
@@ -3516,7 +3516,7 @@
     "title": "합성 공고 196 (분류 72101500)",
     "classificationCode": "72101500",
     "regionCodes": [
-      "48"
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 6",
     "budgetAmount": "10026852",
@@ -3550,8 +3550,8 @@
     "title": "합성 공고 198 (분류 72102103)",
     "classificationCode": "72102103",
     "regionCodes": [
-      "11",
-      "41"
+      "서울특별시",
+      "경기도"
     ],
     "agencyName": "벌크 테스트 기관 8",
     "budgetAmount": "10027126",
@@ -3569,8 +3569,8 @@
     "title": "합성 공고 199 (분류 72141101)",
     "classificationCode": "72141101",
     "regionCodes": [
-      "26",
-      "48"
+      "부산광역시",
+      "경상남도"
     ],
     "agencyName": "벌크 테스트 기관 9",
     "budgetAmount": "10027263",
@@ -3588,7 +3588,7 @@
     "title": "합성 공고 200 (분류 72151602)",
     "classificationCode": "72151602",
     "regionCodes": [
-      "11"
+      "서울특별시"
     ],
     "agencyName": "벌크 테스트 기관 0",
     "budgetAmount": "10027400",

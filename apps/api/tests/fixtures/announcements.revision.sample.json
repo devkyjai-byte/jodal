@@ -5,7 +5,9 @@
     "isLatestRevision": true,
     "title": "지역 정보시스템 구축 용역 (최초 공고)",
     "classificationCode": "43211501",
-    "regionCodes": ["11"],
+    "regionCodes": [
+      "서울특별시"
+    ],
     "agencyName": "서울특별시청",
     "budgetAmount": "95000000",
     "bidOpenAt": "2026-09-01T09:00:00+09:00",
@@ -21,7 +23,9 @@
     "isLatestRevision": true,
     "title": "지역 정보시스템 구축 용역 (1차 정정공고 — 예산 변경)",
     "classificationCode": "43211501",
-    "regionCodes": ["11"],
+    "regionCodes": [
+      "서울특별시"
+    ],
     "agencyName": "서울특별시청",
     "budgetAmount": "102000000",
     "bidOpenAt": "2026-09-01T09:00:00+09:00",

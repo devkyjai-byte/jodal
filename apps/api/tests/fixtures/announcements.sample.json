@@ -5,13 +5,15 @@
     "isLatestRevision": true,
     "title": "2026년 정보시스템 유지보수 용역 (서울지역)",
     "classificationCode": "43211501",
-    "regionCodes": ["11"],
+    "regionCodes": [
+      "서울특별시"
+    ],
     "agencyName": "서울특별시청",
     "budgetAmount": "85000000",
     "bidOpenAt": "2026-08-20T09:00:00+09:00",
     "bidCloseAt": "2026-09-05T18:00:00+09:00",
     "rawPayload": {
-      "note": "픽스처 — 정보기술(43211501) + 서울(11) 매칭 검증용",
+      "note": "픽스처 — 정보기술(43211501) + 서울(서울특별시) 매칭 검증용",
       "sourceService": "나라장터 입찰공고정보서비스(시드)"
     }
   },
@@ -37,7 +39,10 @@
     "isLatestRevision": true,
     "title": "사무용품(복사용지·문구류) 정기 납품",
     "classificationCode": "44121511",
-    "regionCodes": ["11", "41"],
+    "regionCodes": [
+      "서울특별시",
+      "경기도"
+    ],
     "agencyName": "경기도교육청",
     "budgetAmount": "15000000",
     "bidOpenAt": "2026-08-18T09:00:00+09:00",
@@ -53,7 +58,9 @@
     "isLatestRevision": true,
     "title": "기관 홍보 인쇄물 제작 및 출판",
     "classificationCode": "55101500",
-    "regionCodes": ["26"],
+    "regionCodes": [
+      "부산광역시"
+    ],
     "agencyName": "부산광역시청",
     "budgetAmount": "9500000",
     "bidOpenAt": "2026-08-19T09:00:00+09:00",
@@ -69,7 +76,9 @@
     "isLatestRevision": true,
     "title": "지역 상수도 시설 부대설비 공사(분류코드 파싱 실패 원문)",
     "classificationCode": null,
-    "regionCodes": ["48"],
+    "regionCodes": [
+      "경상남도"
+    ],
     "agencyName": "경상남도청",
     "budgetAmount": "230000000",
     "bidOpenAt": "2026-08-21T09:00:00+09:00",

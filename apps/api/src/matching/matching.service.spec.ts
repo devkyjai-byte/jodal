@@ -1,6 +1,6 @@
 import type { PrismaService } from '../prisma/prisma.service';
 import type { NotificationsService } from '../notifications/notifications.service';
-import { MatchingService } from './matching.service';
+import { MatchingService, scoreMatch } from './matching.service';
 
 interface FakeCompany {
   id: string;
@@ -234,5 +234,53 @@ describe('MatchingService.scoreAndUpsertForAnnouncements (팬아웃 재매칭)',
     const service = new MatchingService(prisma, makeStubNotificationsService());
     const result = await service.scoreAndUpsertForAnnouncements([]);
     expect(result).toEqual({ matchIds: [] });
+  });
+});
+
+/**
+ * 회귀 테스트 (02-REVIEW.md CR-01) — company.regionCodes와 announcement.regionCodes가
+ * 동일한 표기(예: "서울특별시")를 쓸 때 지역 매칭 가점(+25)이 실제로 적용되는지 검증한다.
+ * 기존 tracer.e2e-spec.ts는 score > 0만 확인해 분류코드 가점(60)만으로도 통과했기 때문에,
+ * 픽스처 JSON이 숫자 지역코드("11")를 쓰고 있어 지역 가점이 한 번도 적용되지 않는 결함을
+ * 잡아내지 못했다 — 이 스펙은 그 결함을 명시적으로 재현/차단한다.
+ */
+describe('scoreMatch — 지역 매칭 가점(+25)', () => {
+  const baseCompany = {
+    classificationCodes: [],
+    hasPerformances: false,
+    hasCertifications: false,
+  };
+
+  it('company.regionCodes와 announcement.regionCodes가 동일 표기로 겹치면 +25 가점이 적용된다', () => {
+    const score = scoreMatch(
+      { ...baseCompany, regionCodes: ['서울특별시'] },
+      { classificationCode: null, regionCodes: ['서울특별시'] },
+    );
+    // classificationCode가 NULL이면 최소 20점 보장 + 지역 가점 25 = 45
+    expect(score).toBe(45);
+  });
+
+  it('지역이 겹치지 않으면 지역 가점이 적용되지 않는다', () => {
+    const score = scoreMatch(
+      { ...baseCompany, regionCodes: ['서울특별시'] },
+      { classificationCode: null, regionCodes: ['부산광역시'] },
+    );
+    expect(score).toBe(20); // classificationCode NULL 최소 보장 20점만, 지역 가점 없음
+  });
+
+  it('두 표기가 다르면(예: 전체 명칭 vs 숫자 코드) 문자열이 일치하지 않아 가점이 적용되지 않는다 — 표기 통일이 깨지면 이 테스트가 실패해야 한다', () => {
+    const score = scoreMatch(
+      { ...baseCompany, regionCodes: ['서울특별시'] },
+      { classificationCode: null, regionCodes: ['11'] },
+    );
+    expect(score).toBe(20); // 표기 불일치 → 지역 가점 미적용(exact-string 계약 명시)
+  });
+
+  it('announcement.regionCodes가 빈 배열(전국)이면 부분 가점 +15가 적용된다', () => {
+    const score = scoreMatch(
+      { ...baseCompany, regionCodes: ['서울특별시'] },
+      { classificationCode: null, regionCodes: [] },
+    );
+    expect(score).toBe(35); // 20(NULL 최소 보장) + 15(전국 부분 가점)
   });
 });
