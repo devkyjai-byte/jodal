@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, type FormEvent } from 'react';
+import { useEffect, useState, type FormEvent } from 'react';
 import { ApiError, signup, storeAccessToken } from '../../lib/api-client';
 
 /**
@@ -17,11 +17,14 @@ function maskBusinessRegNo(bizNo: string): string {
 }
 
 /**
- * sessionStorage 초안 읽기 — useState의 lazy initializer로만 호출한다(마운트 시 1회).
- * useEffect 안에서 setState를 직접 호출하지 않기 위한 의도적 선택
- * (react-hooks/set-state-in-effect 린트 규칙 — 캐스케이딩 렌더 방지).
- * 서버 프리렌더(window 없음)에서는 항상 빈 값을 반환하므로, 초안이 있는 재방문
- * 사용자의 첫 클라이언트 렌더에서만 하이드레이션 후 값이 채워진다(허용 가능한 트레이드오프).
+ * sessionStorage 초안 읽기. 서버 프리렌더(window 없음)에서는 항상 null을 반환한다.
+ *
+ * 이 값은 반드시 useEffect(마운트 후, 클라이언트 전용)에서만 state에 반영해야 한다 —
+ * useState의 lazy initializer에서 호출하면 서버가 렌더링한 HTML(항상 빈 입력)과
+ * 클라이언트의 첫 렌더 결과(초안이 있으면 마스킹된 뷰)가 달라져 React가 매 재방문마다
+ * "Hydration failed" 예외를 던진다(값은 결국 올바르게 표시되지만 콘솔 오류가 남는다 —
+ * UAT 재검증에서 발견·수정). useEffect로 옮기면 최초 렌더는 항상 서버와 동일한 빈 상태이고,
+ * 마운트 직후 1회 setState로 갱신되는 짧은 깜빡임만 남는다 — 이 트레이드오프가 맞다.
  */
 function readBizNoDraft(): string | null {
   if (typeof window === 'undefined') return null;
@@ -37,7 +40,8 @@ function readBizNoDraft(): string | null {
  * [Rule 2 - Missing Critical] 이 링크를 추가한다(02-02가 남긴 스텁, 02-04-SUMMARY.md 참고).
  */
 export default function SignupPage() {
-  const [businessRegNo, setBusinessRegNo] = useState(() => readBizNoDraft() ?? '');
+  // 서버·클라이언트 첫 렌더 모두 빈 상태로 시작해야 hydration mismatch가 나지 않는다.
+  const [businessRegNo, setBusinessRegNo] = useState('');
   const [companyName, setCompanyName] = useState('');
   const [contactEmail, setContactEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -45,7 +49,17 @@ export default function SignupPage() {
 
   // 재방문(같은 탭에서 뒤로 왔다 다시 방문 등) 시 이전에 입력한 사업자등록번호를
   // 마스킹된 상태로만 노출한다 — 평문 재노출 금지(§엣지 케이스).
-  const [isBizNoMasked, setIsBizNoMasked] = useState(() => readBizNoDraft() !== null);
+  const [isBizNoMasked, setIsBizNoMasked] = useState(false);
+
+  // 마운트 후 1회만 실행 — sessionStorage는 클라이언트에만 존재하므로 여기서 읽어야
+  // 서버 렌더 결과와 항상 일치하는 첫 페인트를 보장한다(readBizNoDraft 주석 참고).
+  useEffect(() => {
+    const draft = readBizNoDraft();
+    if (draft !== null) {
+      setBusinessRegNo(draft);
+      setIsBizNoMasked(true);
+    }
+  }, []);
 
   const [fieldError, setFieldError] = useState<string | null>(null);
   const [submitError, setSubmitError] = useState<string | null>(null);
